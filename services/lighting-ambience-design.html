@@ -1,0 +1,552 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Lighting & Ambience Design - Entrust</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/venobox.min.css">
+    <link rel="stylesheet" href="../assets/css/odometer.min.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/carouselTicker.css">
+    <link rel="stylesheet" href="../assets/css/animation.css">
+    <link rel="stylesheet" href="../assets/css/swiper.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body>
+    <div class="preloader overflow-hidden">
+        <div class="site-name"><span><img style="width: 100px;margin-bottom: 15px;" src="../assets/img/favicon.png" alt="img"></span></div>
+
+    </div>
+
+    <!-- header -->
+    <header class="entrust-navbar">
+
+        <!-- LEFT -->
+        <div class=".tl-primary-btn.white-btn">
+            <a href="../contact.html" class="tl-primary-btn header-btn">Get in Touch <span class="icon"><i
+                        class="fa-regular fa-arrow-right"></i></span> </a>
+            <a href="../contact.html" class="tl-primary-btn spc-header-btn" style="padding: 0px;border: none;"><span class="icon"><i
+                        class="fa-regular fa-arrow-right"></i></span> </a>
+        </div>
+
+        <!-- CENTER LOGO -->
+        <a href="../index.html" class="entrust-navbar__logo">
+            <img class="entrust-logo" src="../assets/img/logo/logo-2.png" alt="Entrust Interior Designers Logo">
+        </a>
+
+        <!-- RIGHT -->
+        <div class="entrust-navbar__right">
+            <button class="entrust-hamburger" id="entrust-ham-btn" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ── OVERLAY ── -->
+    <div class="entrust-overlay" id="entrust-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <div class="entrust-overlay__inner">
+
+            <!-- NAV LINKS -->
+            <nav class="entrust-overlay__nav">
+                <p class="entrust-overlay__nav-label">Navigation</p>
+                <div class="entrust-overlay__divider"></div>
+                <ul class="entrust-overlay__links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../services.html">Services</a></li>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li><a href="../blogs.html">Blogs</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- DETAILS -->
+            <div class="entrust-overlay__details">
+
+                <!-- Address -->
+                <div>
+                    <p class="entrust-overlay__section-label">Our Studio</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <p class="entrust-overlay__address">
+                        Entrust Interior Designers,<br>
+                        Bengaluru, Karnataka 560043,<br>
+                        India
+                    </p>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <p class="entrust-overlay__section-label">Reach Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <a href="tel:+919845012345" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" />
+                        </svg>
+                        +91 98450 12345
+                    </a>
+                    <a href="mailto:info@entrust.com" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        info@entrust.com
+                    </a>
+                </div>
+
+                <!-- Social -->
+                <div>
+                    <p class="entrust-overlay__section-label">Follow Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <div class="entrust-overlay__social">
+
+                        <!-- Instagram -->
+                        <a href="#" class="entrust-social-link" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+
+                        <!-- Facebook -->
+                        <a href="#" class="entrust-social-link" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="#" class="entrust-social-link" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="#" class="entrust-social-link" aria-label="YouTube">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="antra-smooth-wrapper">
+        <div id="antra-smooth-content">
+
+            <section class="page-header">
+                <div class="bg-img" data-background="../assets/img/bg-img/sdb.png"></div>
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="page-header-content">
+                        <h1 class="title">Service Details</h1>
+                        <h4 class="sub-title"><a class='home' href='../index.html'>Home </a><span class="icon">-</span><a
+                                class='inner-page' href='../services/lighting-ambience-design.html'> Lighting &amp; Ambience
+                                Design</a></h4>
+                    </div>
+                </div>
+            </section>
+
+            <section class="service-details pt-130 pb-130">
+                <div class="container container-2">
+                    <div class="row pin-inner">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="service-details-left-content pin-box">
+                                <div class="service-category-list">
+                                    <h3 class="list-title">Other Services</h3>
+                                    <ul>
+                                        <li><a href="../services/residential-interior-design.html">Residential Interior Design</a>
+                                        </li>
+                                        <li><a href="../services/space-planning-layout-design.html">Space Planning &amp; Layout
+                                                Design</a></li>
+                                        <li><a href="../services/furniture-materials-finish-selection.html">Furniture, Materials
+                                                &amp; Finish Selection</a></li>
+                                        <li><a href="../services/3d-visualisation-design-consultation.html">3D Visualisation &amp;
+                                                Design Consultation</a></li>
+                                        <li><a href="../services/modular-kitchen-storage-design.html">Modular Kitchen &amp; Storage
+                                                Design</a></li>
+                                        <li class="active"><a href="../services/lighting-ambience-design.html">Lighting &amp;
+                                                Ambience Design</a></li>
+                                    </ul>
+                                </div>
+                                <div class="service-details-cta">
+                                    <div class="cta-bg" data-background="../assets/img/bg-img/service-cta-bg-2.png"></div>
+                                    <div class="icon"><img src="../assets/img/icon/service-details-cta.png" alt="icon">
+                                    </div>
+                                    <span>Do You Need Help?</span>
+                                    <a class="number" href="tel:+919845012345">+91 98450 12345</a>
+                                    <a class="mail" href="mailto:info@entrust.com">info@entrust.com</a>
+                                    <div class="cta-btn"><a href="../contact.html">Get a call Back</a></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12">
+                            <div class="service-details-content scroll-content">
+                                <div class="service-details-img">
+                                    <img src="../assets/img/service/service-img-6.png" alt="img">
+                                </div>
+                                <h1 class="details-title">About the service</h1>
+                                <p>Lighting is the single most transformative element in interior design. A space that
+                                    is perfectly planned and beautifully furnished can still fall flat if its lighting
+                                    is not carefully considered and conversely, a thoughtfully layered lighting scheme
+                                    can elevate even the simplest interior into something extraordinary. Our lighting
+                                    and ambience design service addresses every dimension of how light interacts with
+                                    your space, from the functional requirements of task lighting to the mood-defining
+                                    qualities of accent and decorative illumination.</p>
+                                <p>We approach every lighting project as a multi-sensory design challenge, considering
+                                    how the quality, colour temperature, direction, and intensity of light transforms a
+                                    space across different times of day, different seasons, and different activities.
+                                    Our team works closely with electrical engineers, lighting suppliers, and smart home
+                                    technology specialists to deliver lighting schemes that are as technically precise
+                                    as they are atmospherically compelling.</p>
+                                <div class="service-details-items">
+                                    <div class="service-details-item">
+                                        <div class="icon"><img src="../assets/img/icon/service-details-3.png"
+                                                alt="service"></div>
+                                        <div class="content">
+                                            <h3 class="title">Lighting Concept Design</h3>
+                                            <p>A holistic lighting concept developed for every room, specifying fixture
+                                                types, positions, beam angles, and colour temperatures to achieve the
+                                                desired atmosphere.</p>
+                                        </div>
+                                    </div>
+                                    <div class="service-details-item">
+                                        <div class="icon"><img src="../assets/img/icon/service-details-3.png"
+                                                alt="service"></div>
+                                        <div class="content">
+                                            <h3 class="title">Layered Light Schemes</h3>
+                                            <p>Three-layer lighting design combining ambient, task, and accent lighting
+                                                to give every space flexibility, depth, and visual richness.</p>
+                                        </div>
+                                    </div>
+                                    <div class="service-details-item">
+                                        <div class="icon"><img src="../assets/img/icon/service-details-3.png"
+                                                alt="service"></div>
+                                        <div class="content">
+                                            <h3 class="title">Smart Lighting Control</h3>
+                                            <p>Integrated lighting control systems that allow scenes to be pre-set,
+                                                adjusted by voice or app, and automated to respond to time of day and
+                                                occupancy.</p>
+                                        </div>
+                                    </div>
+                                    <div class="service-details-item">
+                                        <div class="icon"><img src="../assets/img/icon/service-details-3.png"
+                                                alt="service"></div>
+                                        <div class="content">
+                                            <h3 class="title">Decorative Fixture Selection</h3>
+                                            <p>Curation of statement pendant lights, chandeliers, wall sconces, and
+                                                table lamps that serve as both light sources and sculptural design
+                                                elements.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="service-details-img-wrap">
+                                    <div class="details-img"><img src="../assets/img/service/service-img-4.png"
+                                            alt="img"></div>
+                                    <div class="details-img"><img src="../assets/img/service/service-img-3.png"
+                                            alt="img"></div>
+                                </div>
+                                <h2 class="details-title">Types of Spaces We Light</h2>
+                                <p>We design lighting schemes for every type of residential and commercial space living
+                                    rooms, dining areas, bedrooms, kitchens, bathrooms, home offices, staircases, and
+                                    outdoor terraces, as well as commercial environments including offices, retail
+                                    stores, restaurants, hospitality venues, and showrooms. Each space type has its own
+                                    unique lighting requirements and we bring the specialist knowledge needed to address
+                                    them. Good lighting design for a restaurant, for example, demands a completely
+                                    different approach from the lighting of a master bedroom or a high-street retail
+                                    space.</p>
+                                <h2 class="details-title">Key Principles of Ambience Design</h2>
+                                <p>Effective lighting design is governed by several core principles: the layering of
+                                    light sources at different heights and intensities, the careful selection of colour
+                                    temperature (warm whites for relaxation and dining, cooler whites for task areas and
+                                    workspaces), the control of glare and shadow, the use of light to define zones and
+                                    highlight architectural features, and the integration of natural light management
+                                    through blinds and window treatments. Our designers apply these principles with
+                                    precision and artistry to create spaces that feel exactly right at every hour of the
+                                    day.</p>
+                                <div class="service-details-list-wrap">
+                                    <ul>
+                                        <li><i class="fa-sharp fa-solid fa-circle-check"></i>Comprehensive room-by-room
+                                            lighting concept design.</li>
+                                        <li><i class="fa-sharp fa-solid fa-circle-check"></i>Full fixture specification
+                                            and supplier coordination.</li>
+                                        <li><i class="fa-sharp fa-solid fa-circle-check"></i>Smart lighting system
+                                            design and integration support.</li>
+                                        <li><i class="fa-sharp fa-solid fa-circle-check"></i>Architectural lighting
+                                            details for new builds and renovations.</li>
+                                    </ul>
+                                    <ul>
+                                        <li><i class="fa-sharp fa-solid fa-circle-check"></i>Flexible lighting schemes
+                                            adaptable to every mood and activity.</li>
+                                        <li><i class="fa-sharp fa-solid fa-circle-check"></i>Dedicated lighting designer
+                                            on every project.</li>
+                                        <li><i class="fa-sharp fa-solid fa-circle-check"></i>Energy-efficient LED
+                                            specifications throughout.</li>
+                                        <li><i class="fa-sharp fa-solid fa-circle-check"></i>We are passionate about the
+                                            transformative power of light.</li>
+                                    </ul>
+                                </div>
+                                <p class="mb-50">Lighting and ambience design is not a finishing touch it is a
+                                    foundational design decision that should be considered from the very beginning of
+                                    any interior project. At Entrust, we treat light as a primary design material,
+                                    investing the same level of care and expertise in our lighting schemes as in any
+                                    other aspect of the spaces we create. The result is interiors that are not only
+                                    beautiful to look at but deeply pleasurable to live and work within.</p>
+                                <div class="service-faq">
+                                    <h3 class="faq-title">Frequently asked questions</h3>
+                                    <div class="faq-accordion fade-wrapper">
+                                        <div class="accordion" id="accordionExample">
+                                            <div class="accordion-item fade-top">
+                                                <h2 class="accordion-header" id="headingOne">
+                                                    <button class="accordion-button" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseOne"
+                                                        aria-expanded="true" aria-controls="collapseOne">
+                                                        When in the design process should lighting be planned?
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseOne" class="accordion-collapse collapse show"
+                                                    aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        Lighting should be planned as early as possible in the design
+                                                        process ideally at the same time as the spatial layout is being
+                                                        developed. This is because lighting positions affect the
+                                                        placement of electrical back boxes in ceilings, walls, and
+                                                        floors, which need to be confirmed before any plastering or
+                                                        finishing work takes place. Retrofitting lighting into a
+                                                        completed interior is possible but always more expensive and
+                                                        disruptive than planning it correctly from the start.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item fade-top">
+                                                <h2 class="accordion-header" id="headingTwo">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+                                                        aria-expanded="false" aria-controls="collapseTwo">
+                                                        What is the difference between warm white and cool white
+                                                        lighting?
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseTwo" class="accordion-collapse collapse"
+                                                    aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        Warm white light (typically 2700K to 3000K colour temperature)
+                                                        has a golden, amber quality that creates a relaxed, intimate
+                                                        atmosphere ideal for living rooms, dining areas, bedrooms, and
+                                                        hospitality spaces. Cool white light (4000K to 6500K) has a
+                                                        crisper, more energising quality that supports concentration and
+                                                        visual clarity better suited to kitchens, bathrooms, home
+                                                        offices, and retail environments. A well-designed home typically
+                                                        uses a mix of both, controlled to allow the atmosphere to shift
+                                                        throughout the day.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item fade-top">
+                                                <h2 class="accordion-header" id="headingThree">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseThree"
+                                                        aria-expanded="false" aria-controls="collapseThree">
+                                                        Can you integrate smart lighting into an existing home?
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseThree" class="accordion-collapse collapse"
+                                                    aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        Yes, we can retrofit smart lighting control into existing homes
+                                                        using a variety of approaches from wireless smart switch systems
+                                                        that require minimal wiring changes to more comprehensive wired
+                                                        control systems installed during a renovation. We assess the
+                                                        existing electrical infrastructure and recommend the most
+                                                        practical and cost-effective smart lighting solution for your
+                                                        specific situation.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="accordion-item fade-top">
+                                                <h2 class="accordion-header" id="headingFour">
+                                                    <button class="accordion-button collapsed" type="button"
+                                                        data-bs-toggle="collapse" data-bs-target="#collapseFour"
+                                                        aria-expanded="false" aria-controls="collapseFour">
+                                                        Do you specify only high-end lighting fixtures, or can you work
+                                                        within a budget?
+                                                    </button>
+                                                </h2>
+                                                <div id="collapseFour" class="accordion-collapse collapse"
+                                                    aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                                                    <div class="accordion-body">
+                                                        We work across a wide range of budgets and have strong
+                                                        relationships with suppliers at every price point from
+                                                        affordable quality brands to premium international fixture
+                                                        manufacturers. We are skilled at creating the maximum visual
+                                                        impact within your budget, often combining a small number of
+                                                        investment statement pieces with more affordable supporting
+                                                        fixtures to achieve a sophisticated result without unnecessary
+                                                        expense.
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+           <footer class="footer-section overflow-hidden">
+                <div class="footer-bg" data-background="../assets/img/bg-img/footer-bg.png"></div>
+                <div class="footer-shade"></div>
+                <div class="container container-2">
+                    <div class="row footer-wrap">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="widget-header">
+                                    <div class="footer-logo"><a href="../index.html"><img src="../assets/img/logo/logo-1.png"
+                                                alt="logo"></a></div>
+                                </div>
+                                <p class="mb-10">Elevating interiors with timeless design and refined elegance. Crafting spaces that leave a lasting impression.</p>
+                                <p class="mb-0">Entrust Interior Designers, <br> Bengaluru, Karnataka 560043, <br> India</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2">
+                                <ul class="footer-list">
+                                    <li><a href="../index.html">Home</a></li>
+                                    <li><a href="../about.html">About</a></li>
+                                    <li><a href="../services.html">Services</a></li>
+                                    <li><a href="../portfolio.html">Portfolio</a></li>
+                                    <li><a href="../gallery.html">Gallery</a></li>
+                                    <li><a href="../blogs.html">Blogs</a></li>
+                                    <li><a href="../contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2 pl-0">
+                                <ul class="footer-list">
+                                    <li><a>Our Services</a></li>
+                                    <li><a href="../services/residential-interior-design.html">Residential Interior Design</a></li>
+                                    <li><a href="../services/modular-kitchen-storage-design.html">Modular Kitchen &amp; Storage Design</a></li>
+                                    <li><a href="../services/space-planning-layout-design.html">Space Planning & Layout Design</a></li>
+                                    <li><a href="../services/furniture-materials-finish-selection.html">Furniture, Materials & Finish Selection</a></li>
+                                    <li><a href="../services/3d-visualisation-design-consultation.html">3D Visualisation & Design Consultation</a></li>
+                                    <li><a href="../services/lighting-ambience-design.html"> Lighting &amp; Ambience Design</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="footer-address">
+                                    <a class="number" href="tel:+91 98450 12345">+91 98450 12345</a>
+                                    <a class="mail" href="mailto:info@entrust.com">info@entrust.com</a>
+                                                                        <ul class="social-list">
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                    <p class="mb-0">
+                                        © <script>document.write(new Date().getFullYear())</script> entrust. All Rights Reserved.
+                                    </p>
+                                    <p>Designed and Developed by <a href="https://thinkb.agency" target="_blank">thinkB</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-text"><span>ENTRUST</span></div>
+            </footer>
+
+        </div>
+    </div>
+
+    <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+
+    <script src="../assets/js/vendor/jquary-3.7.1.min.js"></script>
+    <script src="../assets/js/vendor/bootstrap-bundle.js"></script>
+    <script src="../assets/js/vendor/imagesloaded-pkgd.js"></script>
+    <script src="../assets/js/vendor/waypoints.min.js"></script>
+    <script src="../assets/js/vendor/venobox.min.js"></script>
+    <script src="../assets/js/vendor/odometer.min.js"></script>
+    <script src="../assets/js/vendor/meanmenu.js"></script>
+    <script src="../assets/js/vendor/jquery.isotope.js"></script>
+    <script src="../assets/js/vendor/swiper.min.js"></script>
+    <script src="../assets/js/vendor/split-type.min.js"></script>
+    <script src="../assets/js/vendor/gsap.min.js"></script>
+    <script src="../assets/js/vendor/scroll-trigger.min.js"></script>
+    <script src="../assets/js/vendor/scroll-smoother.js"></script>
+    <script src="../assets/js/vendor/jquery.carouselTicker.js"></script>
+    <script src="../assets/js/vendor/nice-select.js"></script>
+    <script src="../assets/js/vendor/three.min.js"></script>
+    <script src="../assets/js/vendor/panolens.min.js"></script>
+    <script src="../assets/js/vendor/jquery.event.move.min.js"></script>
+    <script src="../assets/js/vendor/jquery.twentytwenty.min.js"></script>
+    <script src="../assets/js/slider.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script>
+        const entrust_hamBtn = document.getElementById('entrust-ham-btn');
+        const entrust_overlay = document.getElementById('entrust-overlay');
+
+        function entrust_openMenu() {
+            entrust_hamBtn.classList.add('entrust-is-open');
+            entrust_overlay.classList.add('entrust-is-open');
+            entrust_hamBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function entrust_closeMenu() {
+            entrust_hamBtn.classList.remove('entrust-is-open');
+            entrust_overlay.classList.remove('entrust-is-open');
+            entrust_hamBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        entrust_hamBtn.addEventListener('click', () => {
+            entrust_overlay.classList.contains('entrust-is-open')
+                ? entrust_closeMenu()
+                : entrust_openMenu();
+        });
+
+        // Close on nav link click
+        entrust_overlay.querySelectorAll('.entrust-overlay__links a').forEach(link => {
+            link.addEventListener('click', entrust_closeMenu);
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') entrust_closeMenu();
+        });
+    </script>
+
+</body>
+
+</html>

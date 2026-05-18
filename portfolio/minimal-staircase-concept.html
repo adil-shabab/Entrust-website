@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Minimal Staircase Concept - Entrust</title>
+    <link rel="shortcut icon" type="image/x-icon" href="../assets/img/favicon.png">
+    <link rel="stylesheet" href="../assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="../assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="../assets/css/venobox.min.css">
+    <link rel="stylesheet" href="../assets/css/odometer.min.css">
+    <link rel="stylesheet" href="../assets/css/nice-select.css">
+    <link rel="stylesheet" href="../assets/css/carouselTicker.css">
+    <link rel="stylesheet" href="../assets/css/animation.css">
+    <link rel="stylesheet" href="../assets/css/swiper.min.css">
+    <link rel="stylesheet" href="../assets/css/main.css">
+</head>
+
+<body>
+    <div class="preloader overflow-hidden">
+        <div class="site-name"><span><img style="width: 100px;margin-bottom: 15px;" src="../assets/img/favicon.png"
+                    alt="img"></span></div>
+    </div>
+
+
+    <!-- header -->
+    <header class="entrust-navbar">
+
+        <!-- LEFT -->
+        <div class=".tl-primary-btn.white-btn">
+            <a href="../contact.html" class="tl-primary-btn header-btn">Get in Touch <span class="icon"><i
+                        class="fa-regular fa-arrow-right"></i></span> </a>
+            <a href="../contact.html" class="tl-primary-btn spc-header-btn" style="padding: 0px;border: none;"><span class="icon"><i
+                        class="fa-regular fa-arrow-right"></i></span> </a>
+        </div>
+
+        <!-- CENTER LOGO -->
+        <a href="../index.html" class="entrust-navbar__logo">
+            <img class="entrust-logo" src="../assets/img/logo/logo-2.png" alt="Entrust Interior Designers Logo">
+        </a>
+
+        <!-- RIGHT -->
+        <div class="entrust-navbar__right">
+            <button class="entrust-hamburger" id="entrust-ham-btn" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ── OVERLAY ── -->
+    <div class="entrust-overlay" id="entrust-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <div class="entrust-overlay__inner">
+
+            <!-- NAV LINKS -->
+            <nav class="entrust-overlay__nav">
+                <p class="entrust-overlay__nav-label">Navigation</p>
+                <div class="entrust-overlay__divider"></div>
+                <ul class="entrust-overlay__links">
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="../about.html">About</a></li>
+                    <li><a href="../services.html">Services</a></li>
+                    <li><a href="../portfolio.html">Portfolio</a></li>
+                    <li><a href="../gallery.html">Gallery</a></li>
+                    <li><a href="../blogs.html">Blogs</a></li>
+                    <li><a href="../contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- DETAILS -->
+            <div class="entrust-overlay__details">
+
+                <!-- Address -->
+                <div>
+                    <p class="entrust-overlay__section-label">Our Studio</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <p class="entrust-overlay__address">
+                        Entrust Interior Designers,<br>
+                        Bengaluru, Karnataka 560043,<br>
+                        India
+                    </p>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <p class="entrust-overlay__section-label">Reach Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <a href="tel:+919845012345" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" />
+                        </svg>
+                        +91 98450 12345
+                    </a>
+                    <a href="mailto:info@entrust.com" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        info@entrust.com
+                    </a>
+                </div>
+
+                <!-- Social -->
+                <div>
+                    <p class="entrust-overlay__section-label">Follow Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <div class="entrust-overlay__social">
+
+                        <!-- Instagram -->
+                        <a href="#" class="entrust-social-link" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+
+                        <!-- Facebook -->
+                        <a href="#" class="entrust-social-link" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="#" class="entrust-social-link" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="#" class="entrust-social-link" aria-label="YouTube">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <div id="antra-smooth-wrapper">
+        <div id="antra-smooth-content">
+
+            <section class="page-header">
+                <div class="bg-img" data-background="../assets/img/project/portfolio-detail-banner.jpg"></div>
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="page-header-content">
+                        <h1 class="title">Portfolio Details</h1>
+                        <h4 class="sub-title"><a class='home' href='../index.html'>Home </a><span class="icon">-</span><a
+                                class='inner-page' href='../portfolio/minimal-staircase-concept.html'> Minimal Staircase Concept</a>
+                        </h4>
+                    </div>
+                </div>
+            </section>
+
+            <section class="portfolio-details pt-130 pb-130">
+                <div class="container container-2">
+                    <div class="project-details-wrap">
+                        <h1 class="details-title">Minimal Staircase Concept</h1>
+                        <p style="margin-bottom: 30px;">A sculptural staircase design that transforms a purely
+                            functional element into the defining architectural centrepiece of a contemporary home.</p>
+
+                        <div class="project-details-img">
+                            <img src="../assets/img/project/project-img-3.png" alt="img">
+                        </div>
+
+                        <h2 class="details-title-2">Concept &amp; Approach</h2>
+
+                        <h3 class="details-title-3">Concept</h3>
+                        <p>Staircases are among the most expressive architectural elements within a home, and this
+                            project approached the brief with that conviction at its core. The concept was to strip the
+                            staircase back to its purest geometric essence a floating sequence of solid white oak treads
+                            cantilevered from a single white plaster wall, with a frameless glass balustrade that allows
+                            uninterrupted sightlines through and beyond the structure. The result is a staircase that
+                            appears to defy gravity, creating a dramatic moment of architectural poetry at the heart of
+                            the home. Every extraneous detail was eliminated no visible fixings, no decorative
+                            mouldings, no unnecessary materiality leaving only the essential relationship between solid,
+                            void, and light.</p>
+
+                        <h3 class="details-title-3">Challenges</h3>
+                        <p>The structural and technical demands of a cantilevered floating staircase of this scale
+                            presented considerable engineering challenges. Each tread needed to be independently
+                            structurally sound while appearing to have no visible means of support, requiring a
+                            precisely engineered concealed steel armature to be cast into the load-bearing wall during
+                            the construction phase. The frameless glass balustrade specification required extensive
+                            structural glass calculations to satisfy building regulations without introducing any
+                            visible structural steel into the design. Lighting the staircase without creating visible
+                            fixtures was a further complexity that demanded early coordination between the design and
+                            electrical engineering teams.</p>
+
+                        <h3 class="details-title-3">Solutions</h3>
+                        <p>The cantilevered tread system was resolved through an engineered steel plate armature
+                            embedded within the structural wall, onto which each solid oak tread was mechanically fixed
+                            and then finished flush with a white micro-cement coating on the wall face, completely
+                            hiding all fixing points. The frameless glass balustrade was achieved using purpose-designed
+                            channel fixings routed into the staircase structure itself, holding the glass panels in
+                            place with no visible hardware above floor level. Integrated LED strips were recessed into
+                            the underside edge of each tread, providing a warm continuous wash of light that illuminates
+                            the staircase beautifully at night without any visible light source.</p>
+
+                        <h3 class="details-title-3">Suggestions</h3>
+                        <div class="project-details-list">
+                            <ul>
+                                <li><i class="fa-sharp fa-solid fa-circle-check"></i><strong>Floating Treads:</strong>
+                                    Solid white oak treads individually cantilevered from the structural wall to create
+                                    the impression of a staircase floating freely within the void of the double-height
+                                    space.</li>
+                                <li><i class="fa-sharp fa-solid fa-circle-check"></i><strong>Frameless Glass:</strong> A
+                                    fully frameless structural glass balustrade specified to eliminate visual mass and
+                                    preserve the open, airy quality of the staircase and the spaces it connects.</li>
+                                <li><i class="fa-sharp fa-solid fa-circle-check"></i><strong>Integrated Tread
+                                        Lighting:</strong> LED strips recessed into the underside edge of each tread
+                                    provide safe, atmospheric illumination after dark without introducing any visible
+                                    light fittings.</li>
+                            </ul>
+                            <ul>
+                                <li><i class="fa-sharp fa-solid fa-circle-check"></i><strong>Micro-Cement Wall
+                                        Finish:</strong> The load-bearing staircase wall was finished in a seamless
+                                    white micro-cement plaster that conceals all structural fixings and creates a
+                                    flawless monolithic backdrop.</li>
+                                <li><i class="fa-sharp fa-solid fa-circle-check"></i><strong>Acoustic Underlay:</strong>
+                                    Acoustic isolation pads between the structural steel armature and each timber tread
+                                    prevent transmission of impact noise, ensuring the staircase remains completely
+                                    silent in use.</li>
+                            </ul>
+                        </div>
+
+                        <div class="project-details-items">
+                            <div class="project-details-item text-center">
+                                <h3 class="title">(16)</h3>
+                                <span>stair treads</span>
+                            </div>
+                            <div class="project-details-item text-center">
+                                <h3 class="title">(3.8m)</h3>
+                                <span>total rise</span>
+                            </div>
+                            <div class="project-details-item text-center">
+                                <h3 class="title">(280mm)</h3>
+                                <span>tread depth</span>
+                            </div>
+                            <div class="project-details-item text-center">
+                                <h3 class="title">(5m2)</h3>
+                                <span>floor plan</span>
+                            </div>
+                        </div>
+
+                        <h3 class="details-title-2">Final Outcome</h3>
+                        <p>The completed staircase has become the most talked-about feature of the home an element that
+                            visitors respond to with genuine astonishment when they first encounter it. The engineering
+                            precision required to achieve the floating appearance has been entirely vindicated by the
+                            visual impact of the result. By day, the white oak treads glow warmly in the natural light
+                            that floods the double-height stairwell. By night, the integrated tread lighting transforms
+                            the staircase into a glowing sculptural installation that can be seen from across the entire
+                            ground floor. This project demonstrates how the most rigorous application of minimalist
+                            principles when pursued with true commitment and technical excellence can elevate functional
+                            architecture to the level of art.</p>
+                    </div>
+                </div>
+            </section>
+
+            <footer class="footer-section overflow-hidden">
+                <div class="footer-bg" data-background="../assets/img/bg-img/footer-bg.png"></div>
+                <div class="footer-shade"></div>
+                <div class="container container-2">
+                    <div class="row footer-wrap">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="widget-header">
+                                    <div class="footer-logo"><a href="../index.html"><img src="../assets/img/logo/logo-1.png"
+                                                alt="logo"></a></div>
+                                </div>
+                                <p class="mb-10">Elevating interiors with timeless design and refined elegance. Crafting
+                                    spaces that leave a lasting impression.</p>
+                                <p class="mb-0">Entrust Interior Designers, <br> Bengaluru, Karnataka 560043, <br> India
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2">
+                                <ul class="footer-list">
+                                    <li><a href="../index.html">Home</a></li>
+                                    <li><a href="../about.html">About</a></li>
+                                    <li><a href="../services.html">Services</a></li>
+                                    <li><a href="../portfolio.html">Portfolio</a></li>
+                                    <li><a href="../gallery.html">Gallery</a></li>
+                                    <li><a href="../blogs.html">Blogs</a></li>
+                                    <li><a href="../contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2 pl-0">
+                                <ul class="footer-list">
+                                    <li><a>Our Services</a></li>
+                                    <li><a href="../services/residential-interior-design.html">Residential Interior Design</a></li>
+                                    <li><a href="../services/modular-kitchen-storage-design.html">Modular Kitchen &amp; Storage
+                                            Design</a></li>
+                                    <li><a href="../services/space-planning-layout-design.html">Space Planning & Layout Design</a>
+                                    </li>
+                                    <li><a href="../services/furniture-materials-finish-selection.html">Furniture, Materials &
+                                            Finish Selection</a></li>
+                                    <li><a href="../services/3d-visualisation-design-consultation.html">3D Visualisation & Design
+                                            Consultation</a></li>
+                                    <li><a href="../services/lighting-ambience-design.html"> Lighting &amp; Ambience Design</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="footer-address">
+                                    <a class="number" href="tel:+91 98450 12345">+91 98450 12345</a>
+                                    <a class="mail" href="mailto:info@entrust.com">info@entrust.com</a>
+                                    <ul class="social-list">
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                    <p class="mb-0">
+                                        ©
+                                        <script>document.write(new Date().getFullYear())</script> entrust. All Rights
+                                        Reserved.
+                                    </p>
+                                    <p>Designed and Developed by <a href="https://thinkb.agency"
+                                            target="_blank">thinkB</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-text"><span>ENTRUST</span></div>
+            </footer>
+
+        </div>
+    </div>
+
+    <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+
+    <script src="../assets/js/vendor/jquary-3.7.1.min.js"></script>
+    <script src="../assets/js/vendor/bootstrap-bundle.js"></script>
+    <script src="../assets/js/vendor/imagesloaded-pkgd.js"></script>
+    <script src="../assets/js/vendor/waypoints.min.js"></script>
+    <script src="../assets/js/vendor/venobox.min.js"></script>
+    <script src="../assets/js/vendor/odometer.min.js"></script>
+    <script src="../assets/js/vendor/meanmenu.js"></script>
+    <script src="../assets/js/vendor/jquery.isotope.js"></script>
+    <script src="../assets/js/vendor/swiper.min.js"></script>
+    <script src="../assets/js/vendor/split-type.min.js"></script>
+    <script src="../assets/js/vendor/gsap.min.js"></script>
+    <script src="../assets/js/vendor/scroll-trigger.min.js"></script>
+    <script src="../assets/js/vendor/scroll-smoother.js"></script>
+    <script src="../assets/js/vendor/jquery.carouselTicker.js"></script>
+    <script src="../assets/js/vendor/nice-select.js"></script>
+    <script src="../assets/js/vendor/three.min.js"></script>
+    <script src="../assets/js/vendor/panolens.min.js"></script>
+    <script src="../assets/js/vendor/jquery.event.move.min.js"></script>
+    <script src="../assets/js/vendor/jquery.twentytwenty.min.js"></script>
+    <script src="../assets/js/slider.js"></script>
+    <script src="../assets/js/main.js"></script>
+
+    <script>
+        const entrust_hamBtn = document.getElementById('entrust-ham-btn');
+        const entrust_overlay = document.getElementById('entrust-overlay');
+
+        function entrust_openMenu() {
+            entrust_hamBtn.classList.add('entrust-is-open');
+            entrust_overlay.classList.add('entrust-is-open');
+            entrust_hamBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function entrust_closeMenu() {
+            entrust_hamBtn.classList.remove('entrust-is-open');
+            entrust_overlay.classList.remove('entrust-is-open');
+            entrust_hamBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        entrust_hamBtn.addEventListener('click', () => {
+            entrust_overlay.classList.contains('entrust-is-open')
+                ? entrust_closeMenu()
+                : entrust_openMenu();
+        });
+
+        // Close on nav link click
+        entrust_overlay.querySelectorAll('.entrust-overlay__links a').forEach(link => {
+            link.addEventListener('click', entrust_closeMenu);
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') entrust_closeMenu();
+        });
+    </script>
+
+</body>
+
+</html>

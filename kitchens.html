@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Kitchens – Entrust Interior Designers</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/animation.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cal+Sans&display=swap');
+
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --ink: #0c0b09;
+            --paper: #f4f0e8;
+            --sand: #c6a34f;
+            --warm: #e8dfd0;
+            --dark: #111009;
+        }
+
+        body {
+            font-family: 'Cal Sans', serif;
+            background: var(--paper);
+            color: var(--ink);
+        }
+
+        /* ── HERO ── */
+        .k-hero {
+            position: relative;
+            height: 90vh;
+            min-height: 560px;
+            overflow: hidden;
+            display: flex;
+            align-items: flex-end;
+        }
+
+        .k-hero__bg {
+            position: absolute;
+            inset: 0;
+            background: var(--dark);
+            border-top: 2px solid var(--sand);
+            border-bottom: 2px solid var(--sand);
+        }
+
+        .k-hero__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .45;
+        }
+
+        .k-hero__content {
+            position: relative;
+            z-index: 2;
+            padding: 0 6vw 7vw;
+        }
+
+        .k-hero__eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            font-size: .75rem;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--sand);
+            margin-bottom: 1.6rem;
+        }
+
+        .k-hero__eyebrow::before {
+            content: '';
+            width: 36px;
+            height: 1px;
+            background: var(--sand);
+        }
+
+        .k-hero__title {
+            font-size: clamp(3.2rem, 7vw, 6.5rem);
+            font-weight: 400;
+            line-height: .95;
+            color: #fff;
+            margin-bottom: 2rem;
+        }
+
+        .k-hero__title em {
+            font-style: normal;
+            color: var(--sand);
+        }
+
+        .k-hero__subtitle {
+            font-size: clamp(1rem, 1.6vw, 1.25rem);
+            color: rgba(255, 255, 255, .55);
+            max-width: 500px;
+            line-height: 1.7;
+        }
+
+        /* ── APPROACH SECTION: big type + side image ── */
+        .k-approach {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 70vh;
+            border-bottom: 2px solid var(--sand);
+        }
+
+        .k-approach__left {
+            background: var(--dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 7vw 6vw;
+        }
+
+        .k-approach__tag {
+            font-size: .7rem;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--sand);
+            margin-bottom: 2rem;
+        }
+
+        .k-approach__heading {
+            font-size: clamp(2.2rem, 4vw, 4rem);
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.08;
+            margin-bottom: 2.5rem;
+        }
+
+        .k-approach__heading em {
+            font-style: normal;
+            color: var(--sand);
+        }
+
+        .k-approach__body {
+            font-size: 1.05rem;
+            color: rgba(255, 255, 255, .45);
+            line-height: 1.85;
+            max-width: 400px;
+        }
+
+        .k-approach__right {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .k-approach__right img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ── TYPES GRID ── */
+        .k-types {
+            padding: 8vw 6vw;
+            background: var(--paper);
+            border-bottom: 2px solid var(--sand);
+
+        }
+
+        .k-types__header {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            margin-bottom: 4rem;
+            gap: 2rem;
+        }
+
+        .k-types__heading {
+            font-size: clamp(2rem, 3.5vw, 3.2rem);
+            font-weight: 400;
+            line-height: 1.1;
+        }
+
+        .k-types__heading em {
+            font-style: normal;
+            color: var(--sand);
+        }
+
+        .k-types__intro {
+            max-width: 340px;
+            font-size: .95rem;
+            color: rgba(12, 11, 9, .5);
+            line-height: 1.75;
+        }
+
+        .k-types__grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1px;
+            border: 1px solid rgba(198, 163, 79, .3);
+        }
+
+        .k-type-card {
+            background: var(--warm);
+            padding: 3.5rem 2.5rem;
+            position: relative;
+            border-right: 1px solid rgba(198, 163, 79, .3);
+            transition: background .3s;
+        }
+
+        .k-type-card:last-child {
+            border-right: none;
+        }
+
+        .k-type-card:hover {
+            background: var(--dark);
+        }
+
+        .k-type-card:hover .k-type-card__title,
+        .k-type-card:hover .k-type-card__body {
+            color: #fff;
+        }
+
+        .k-type-card:hover .k-type-card__num {
+            color: var(--sand);
+        }
+
+        .k-type-card:hover .k-type-card__list li {
+            color: rgba(255, 255, 255, .55);
+        }
+
+        .k-type-card__num {
+            font-size: 4.5rem;
+            font-weight: 400;
+            color: rgba(12, 11, 9, .08);
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            transition: color .3s;
+        }
+
+        .k-type-card__title {
+            font-size: 1.45rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+            transition: color .3s;
+        }
+
+        .k-type-card__body {
+            font-size: .9rem;
+            color: rgba(12, 11, 9, .5);
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            transition: color .3s;
+        }
+
+        .k-type-card__list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: .5rem;
+        }
+
+        .k-type-card__list li {
+            font-size: .72rem;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: rgba(12, 11, 9, .4);
+            display: flex;
+            align-items: center;
+            gap: .7rem;
+            transition: color .3s;
+        }
+
+        .k-type-card__list li::before {
+            content: '';
+            width: 14px;
+            height: 1px;
+            background: var(--sand);
+            flex-shrink: 0;
+        }
+
+        /* ── FULL BLEED CTA ── */
+        .k-cta {
+            position: relative;
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .k-cta__bg {
+            position: absolute;
+            inset: 0;
+            background: var(--dark);
+            border-bottom: 2px solid var(--sand);
+        }
+
+        .k-cta__bg img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: .3;
+        }
+
+        .k-cta__inner {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            padding: 6rem 2rem;
+        }
+
+        .k-cta__tag {
+            font-size: .7rem;
+            letter-spacing: .35em;
+            text-transform: uppercase;
+            color: var(--sand);
+            margin-bottom: 1.5rem;
+        }
+
+        .k-cta__heading {
+            font-size: clamp(2.2rem, 5vw, 4.5rem);
+            font-weight: 400;
+            color: #fff;
+            line-height: 1.05;
+            margin-bottom: 2.5rem;
+        }
+
+        .k-cta__heading em {
+            font-style: normal;
+            color: var(--sand);
+        }
+
+        .k-cta__btn {
+            display: inline-flex;
+            align-items: center;
+            gap: .8rem;
+            font-family: 'Cal Sans', serif;
+            font-size: .75rem;
+            letter-spacing: .25em;
+            text-transform: uppercase;
+            color: var(--ink);
+            background: var(--sand);
+            padding: 1.1rem 2.5rem;
+            text-decoration: none;
+            border: none;
+        }
+
+        .k-cta__btn:hover {
+            background: #d4b05a;
+            color: var(--ink);
+        }
+
+        /* ── RESPONSIVE ── */
+        @media (max-width: 900px) {
+            .k-strip {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .k-approach {
+                grid-template-columns: 1fr;
+            }
+
+            .k-approach__right {
+                height: 55vw;
+            }
+
+            .k-types__grid {
+                grid-template-columns: 1fr;
+            }
+
+            .k-type-card {
+                border-right: none;
+                border-bottom: 1px solid rgba(198, 163, 79, .3);
+            }
+
+            .k-types__header {
+                flex-direction: column;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .k-strip {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="preloader overflow-hidden">
+        <div class="site-name"><span><img style="width:100px;margin-bottom:15px;" src="./assets/img/favicon.png"
+                    alt="img"></span></div>
+    </div>
+
+    <!-- ── HEADER ── -->
+    <header class="entrust-navbar">
+        <div class=".tl-primary-btn.white-btn">
+            <a href="contact.html" class="tl-primary-btn header-btn">Get in Touch <span class="icon"><i
+                        class="fa-regular fa-arrow-right"></i></span></a>
+            <a href="contact.html" class="tl-primary-btn spc-header-btn" style="padding: 0px;border: none;"><span class="icon"><i
+                        class="fa-regular fa-arrow-right"></i></span> </a>
+        </div>
+        <a href="./index.html" class="entrust-navbar__logo">
+            <img class="entrust-logo" src="./assets/img/logo/logo-2.png" alt="Entrust Interior Designers Logo">
+        </a>
+        <div class="entrust-navbar__right">
+            <button class="entrust-hamburger" id="entrust-ham-btn" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ── OVERLAY ── -->
+    <div class="entrust-overlay" id="entrust-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <div class="entrust-overlay__inner">
+            <nav class="entrust-overlay__nav">
+                <p class="entrust-overlay__nav-label">Navigation</p>
+                <div class="entrust-overlay__divider"></div>
+                <ul class="entrust-overlay__links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./services.html">Services</a></li>
+                    <li><a href="./portfolio.html">Portfolio</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./blogs.html">Blogs</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="entrust-overlay__details">
+                <div>
+                    <p class="entrust-overlay__section-label">Our Studio</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <p class="entrust-overlay__address">Entrust Interior Designers,<br>Bengaluru, Karnataka
+                        560043,<br>India</p>
+                </div>
+                <div>
+                    <p class="entrust-overlay__section-label">Reach Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <a href="tel:+919845012345" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" />
+                        </svg>
+                        +91 98450 12345
+                    </a>
+                    <a href="mailto:info@entrust.com" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        info@entrust.com
+                    </a>
+                </div>
+                <div>
+                    <p class="entrust-overlay__section-label">Follow Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <div class="entrust-overlay__social">
+                        <a href="#" class="entrust-social-link" aria-label="Instagram"><svg width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg></a>
+                        <a href="#" class="entrust-social-link" aria-label="Facebook"><svg width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg></a>
+                        <a href="#" class="entrust-social-link" aria-label="LinkedIn"><svg width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg></a>
+                        <a href="#" class="entrust-social-link" aria-label="YouTube"><svg width="18" height="18"
+                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                                stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+                            </svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="antra-smooth-wrapper">
+        <div id="antra-smooth-content">
+
+            <!-- ── BREADCRUMB ── -->
+            <section class="page-header">
+                <div class="bg-img" data-background="assets/img/bg-img/ktbg.jpg"></div>
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="page-header-content">
+                        <h1 class="title">Kitchens</h1>
+                        <h4 class="sub-title"><a class="home" href="index.html">Home</a><span class="icon">-</span><a
+                                class="inner-page" href="kitchens.html">Kitchens</a></h4>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── HERO ── -->
+            <section class="k-hero">
+                <div class="k-hero__bg">
+                    <img src="assets/img/bg-img/kmbg.jpg" alt="Kitchen interior">
+                </div>
+                <div class="k-hero__content">
+                    <p class="k-hero__eyebrow">Modular Kitchen Design</p>
+                    <h1 class="k-hero__title">Where Craft<br>Meets <em>Culinary</em><br>Living</h1>
+                    <p class="k-hero__subtitle">Kitchens designed around how you cook — combining smart storage, refined finishes, and layouts tailored to every workflow.</p>
+                </div>
+            </section>
+
+            <!-- ── OUR APPROACH ── -->
+            <div class="k-approach">
+                <div class="k-approach__left">
+                    <p class="k-approach__tag">Our Approach</p>
+                    <h2 class="k-approach__heading">Designed Around<br>How You <em>Cook</em><br>& Entertain</h2>
+                    <p class="k-approach__body">We begin with how you actually use your kitchen — the rituals, the
+                        chaos, the quiet mornings. Every decision, from the pull-out corner carousel to the backsplash
+                        tile, follows from that understanding. The result is a kitchen that works as beautifully as it
+                        looks.</p>
+                </div>
+                <div class="k-approach__right">
+                    <img src="assets/img/bg-img/kmain.jpg" alt="Kitchen approach">
+                </div>
+            </div>
+
+            <!-- ── KITCHEN TYPES ── -->
+            <section class="k-types">
+                <div class="k-types__header">
+                    <h2 class="k-types__heading">Kitchen<br><em>Configurations</em><br>We Deliver</h2>
+                    <p class="k-types__intro">Every kitchen layout has a personality. We match the configuration to your
+                        space geometry and cooking habits never the other way around.</p>
+                </div>
+                <div class="k-types__grid">
+                    <a href="./kitchens/kitchen-detail.html">
+                    <div class="k-type-card">
+                        <div class="k-type-card__num">01</div>
+                        <h3 class="k-type-card__title">U-Shape Kitchen</h3>
+                        <p class="k-type-card__body">Three-wall layout that maximizes storage and workspace, creating an
+                            efficient cooking zone with everything easily accessible.</p>
+                        <ul class="k-type-card__list">
+                            <li>Maximum storage capacity</li>
+                            <li>Efficient work triangle</li>
+                            <li>Ideal for larger families</li>
+                        </ul>
+                    </div>
+                    </a>
+                    <a href="./kitchens/kitchen-detail.html">
+                    <div class="k-type-card">
+                        <div class="k-type-card__num">02</div>
+                        <h3 class="k-type-card__title">Galley Kitchen</h3>
+                        <p class="k-type-card__body">Parallel counters on both sides designed for efficiency, perfect
+                            for compact spaces and uninterrupted workflow.</p>
+                        <ul class="k-type-card__list">
+                            <li>Space-saving layout</li>
+                            <li>Streamlined workflow</li>
+                            <li>Minimal movement required</li>
+                        </ul>
+                    </div>
+                    </a>
+                    <a href="./kitchens/kitchen-detail.html">
+                    <div class="k-type-card" style="border-right: none;">
+                        <div class="k-type-card__num">03</div>
+                        <h3 class="k-type-card__title">G-Shape Kitchen</h3>
+                        <p class="k-type-card__body">Extended U-shape with an added peninsula, offering extra counter
+                            space and a semi-enclosed functional design.</p>
+                        <ul class="k-type-card__list">
+                            <li>Additional workspace</li>
+                            <li>Built-in breakfast counter</li>
+                            <li>Enhanced storage options</li>
+                        </ul>
+                    </div>
+                    </a>
+                    <a href="./kitchens/kitchen-detail.html">
+                    <div class="k-type-card">
+                        <div class="k-type-card__num">04</div>
+                        <h3 class="k-type-card__title">L-Shape Kitchen</h3>
+                        <p class="k-type-card__body">Two adjoining walls forming an open layout that allows smooth
+                            movement and easy integration with dining or living areas.</p>
+                        <ul class="k-type-card__list">
+                            <li>Open and flexible design</li>
+                            <li>Efficient corner usage</li>
+                            <li>Ideal for small to medium homes</li>
+                        </ul>
+                    </div>
+                    </a>
+                    <a href="./kitchens/kitchen-detail.html">
+                    <div class="k-type-card">
+                        <div class="k-type-card__num">05</div>
+                        <h3 class="k-type-card__title">Island Kitchen</h3>
+                        <p class="k-type-card__body">A central island adds functionality and style, serving as a prep
+                            area, dining spot, and social hub.</p>
+                        <ul class="k-type-card__list">
+                            <li>Multi-purpose island unit</li>
+                            <li>Perfect for open layouts</li>
+                            <li>Extra seating space</li>
+                        </ul>
+                    </div>
+                    </a>
+                    <a href="./kitchens/kitchen-detail.html">
+                    <div class="k-type-card">
+                        <div class="k-type-card__num">06</div>
+                        <h3 class="k-type-card__title">One Counter Kitchen</h3>
+                        <p class="k-type-card__body">Single-wall kitchen that keeps everything aligned in one straight
+                            line, ideal for studio apartments or compact homes.</p>
+                        <ul class="k-type-card__list">
+                            <li>Compact and minimal design</li>
+                            <li>Easy installation</li>
+                            <li>Cost-effective solution</li>
+                        </ul>
+                    </div>
+                    </a>
+                </div>
+            </section>
+
+            <!-- ── FULL BLEED CTA ── -->
+            <section class="k-cta">
+                <div class="k-cta__bg">
+                    <img src="assets/img/service/service-img-3.png" alt="">
+                </div>
+                <div class="k-cta__inner">
+                    <p class="k-cta__tag">Start Your Project</p>
+                    <h2 class="k-cta__heading">Ready to Design<br>Your <em>Dream Kitchen?</em></h2>
+                    <a href="contact.html" class="k-cta__btn">Book a Consultation →</a>
+                </div>
+            </section>
+
+            <!-- ── NEWSLETTER ── -->
+            <section class="newsletter-section bg-white pt-130 pb-130 overflow-hidden">
+                <div class="bg-shape"><img src="assets/img/shapes/newsletter-shape.png" alt="shape"></div>
+                <div class="container">
+                    <div class="newsletter-wrap">
+                        <div class="section-heading text-center">
+                            <h4 class="sub-heading">Subscribe to the newsletter</h4>
+                            <h2 class="section-title">Join <span>our newsletter <br> stay</span> up to date</h2>
+                            <p>Join our newsletter. Learn something new, gain access to exclusive content, <br> and stay
+                                informed with the latest updates in the industry.</p>
+                        </div>
+                        <div class="newsletter-form">
+                            <input type="text" id="email" name="email" class="form-control"
+                                placeholder="Email address..">
+                            <button type="submit"><i class="fa-regular fa-arrow-right-long"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ── FOOTER ── -->
+            <footer class="footer-section overflow-hidden">
+                <div class="footer-bg" data-background="assets/img/bg-img/footer-bg.png"></div>
+                <div class="footer-shade"></div>
+                <div class="container container-2">
+                    <div class="row footer-wrap">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="widget-header">
+                                    <div class="footer-logo"><a href="index.html"><img src="assets/img/logo/logo-1.png"
+                                                alt="logo"></a></div>
+                                </div>
+                                <p class="mb-10">Elevating interiors with timeless design and refined elegance. Crafting
+                                    spaces that leave a lasting impression.</p>
+                                <p class="mb-0">Entrust Interior Designers, <br> Bengaluru, Karnataka 560043, <br> India
+                                </p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2">
+                                <ul class="footer-list">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="services.html">Services</a></li>
+                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="gallery.html">Gallery</a></li>
+                                    <li><a href="blogs.html">Blogs</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2 pl-0">
+                                <ul class="footer-list">
+                                    <li><a>Our Services</a></li>
+                                    <li><a href="./services/residential-interior-design.html">Residential Interior
+                                            Design</a></li>
+                                    <li><a href="./services/modular-kitchen-storage-design.html">Modular Kitchen &amp;
+                                            Storage Design</a></li>
+                                    <li><a href="./services/space-planning-layout-design.html">Space Planning &amp;
+                                            Layout Design</a></li>
+                                    <li><a href="./services/furniture-materials-finish-selection.html">Furniture,
+                                            Materials &amp; Finish Selection</a></li>
+                                    <li><a href="./services/3d-visualisation-design-consultation.html">3D Visualisation
+                                            &amp; Design Consultation</a></li>
+                                    <li><a href="./services/lighting-ambience-design.html">Lighting &amp; Ambience
+                                            Design</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="footer-address">
+                                    <a class="number" href="tel:+91 98450 12345">+91 98450 12345</a>
+                                    <a class="mail" href="mailto:info@entrust.com">info@entrust.com</a>
+                                    <ul class="social-list">
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                    <p class="mb-0">©
+                                        <script>document.write(new Date().getFullYear())</script> entrust. All Rights
+                                        Reserved.
+                                    </p>
+                                    <p>Designed and Developed by <a href="https://thinkb.agency"
+                                            target="_blank">thinkB</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-text"><span>ENTRUST</span></div>
+            </footer>
+
+        </div>
+    </div>
+
+    <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+
+    <script src="assets/js/vendor/jquary-3.7.1.min.js"></script>
+    <script src="assets/js/vendor/bootstrap-bundle.js"></script>
+    <script src="assets/js/vendor/imagesloaded-pkgd.js"></script>
+    <script src="assets/js/vendor/waypoints.min.js"></script>
+    <script src="assets/js/vendor/venobox.min.js"></script>
+    <script src="assets/js/vendor/odometer.min.js"></script>
+    <script src="assets/js/vendor/meanmenu.js"></script>
+    <script src="assets/js/vendor/jquery.isotope.js"></script>
+    <script src="assets/js/vendor/swiper.min.js"></script>
+    <script src="assets/js/vendor/split-type.min.js"></script>
+    <script src="assets/js/vendor/gsap.min.js"></script>
+    <script src="assets/js/vendor/scroll-trigger.min.js"></script>
+    <script src="assets/js/vendor/scroll-smoother.js"></script>
+    <script src="assets/js/vendor/jquery.carouselTicker.js"></script>
+    <script src="assets/js/vendor/nice-select.js"></script>
+    <script src="assets/js/vendor/three.min.js"></script>
+    <script src="assets/js/vendor/panolens.min.js"></script>
+    <script src="assets/js/vendor/jquery.event.move.min.js"></script>
+    <script src="assets/js/vendor/jquery.twentytwenty.min.js"></script>
+    <script src="assets/js/slider.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script>
+        const entrust_hamBtn = document.getElementById('entrust-ham-btn');
+        const entrust_overlay = document.getElementById('entrust-overlay');
+        function entrust_openMenu() { entrust_hamBtn.classList.add('entrust-is-open'); entrust_overlay.classList.add('entrust-is-open'); entrust_hamBtn.setAttribute('aria-expanded', 'true'); document.body.style.overflow = 'hidden'; }
+        function entrust_closeMenu() { entrust_hamBtn.classList.remove('entrust-is-open'); entrust_overlay.classList.remove('entrust-is-open'); entrust_hamBtn.setAttribute('aria-expanded', 'false'); document.body.style.overflow = ''; }
+        entrust_hamBtn.addEventListener('click', () => { entrust_overlay.classList.contains('entrust-is-open') ? entrust_closeMenu() : entrust_openMenu(); });
+        entrust_overlay.querySelectorAll('.entrust-overlay__links a').forEach(link => { link.addEventListener('click', entrust_closeMenu); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') entrust_closeMenu(); });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <title>Entrust - Interior Designers</title>
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/venobox.min.css">
+    <link rel="stylesheet" href="assets/css/odometer.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/carouselTicker.css">
+    <link rel="stylesheet" href="assets/css/animation.css">
+    <link rel="stylesheet" href="assets/css/twentytwenty.min.css">
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- SweetAlert2 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap');
+
+        :root {
+            --entrust-charcoal: #1c1a17;
+            --entrust-ivory: #f5f0e8;
+            --entrust-gold: #C6A34F;
+            --entrust-gold-light: #e2c99a;
+            --entrust-muted: #8a8278;
+            --entrust-border: rgba(201, 169, 110, 0.2);
+            --entrust-border-hover: rgba(201, 169, 110, 0.55);
+            --config-images-bg: #f9f5ee;
+        }
+
+        /* =============================================
+           ENTRUST SPLIT BANNER
+           Left: fullscreen video · Right: 3 nav boxes
+        ============================================= */
+        .entrust-banner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            min-height: 100vh;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* ---- Left: video half ---- */
+        .entrust-banner__video-side {
+            position: relative;
+            overflow: hidden;
+            background: var(--entrust-charcoal);
+        }
+
+        .entrust-banner__video-side video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Dark gradient overlay so any text on video stays readable */
+        .entrust-banner__video-side::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(22,41,80,0.35) 0%, rgba(24,22,18,0.25) 100%);
+            pointer-events: none;
+        }
+
+        /* Optional tagline overlaid on video */
+        .entrust-banner__video-caption {
+            position: absolute;
+            bottom: 48px;
+            left: 48px;
+            z-index: 2;
+            pointer-events: none;
+        }
+
+        .entrust-banner__video-caption-eyebrow {
+            display: block;
+            font-family: 'Cal Sans', serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.35em;
+            text-transform: uppercase;
+            color: var(--entrust-gold);
+            margin-bottom: 10px;
+        }
+
+        .entrust-banner__video-caption-title {
+            font-family: 'Cal Sans', serif;
+            font-size: clamp(28px, 3.2vw, 52px);
+            font-weight: 300;
+            color: var(--entrust-ivory);
+            line-height: 1.15;
+            margin: 0;
+        }
+
+        .entrust-banner__video-caption-title em {
+            font-style: italic;
+            color: var(--entrust-gold);
+        }
+
+        /* ---- Right: 3-box navigation half ---- */
+        .entrust-banner__nav-side {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr 1fr;
+            background: var(--entrust-charcoal);
+            gap: 2px;
+        }
+
+        /* All three boxes share base styles */
+        .entrust-banner__nav-box {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 32px 28px;
+            text-decoration: none;
+            cursor: pointer;
+            background: #1e1c19;
+            transition: background 0.4s ease;
+            min-height: 0;           /* let grid control height */
+        }
+
+        /* Third box spans full width (both columns) */
+        .entrust-banner__nav-box:nth-child(3) {
+            grid-column: 1 / -1;
+        }
+
+        /* Background image layer */
+        .entrust-banner__nav-box-bg {
+            position: absolute;
+            inset: 0;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s ease;
+            opacity: 0.55;
+        }
+
+        .entrust-banner__nav-box:hover .entrust-banner__nav-box-bg {
+            transform: scale(1.06);
+            opacity: 0.75;
+        }
+
+        /* Dark gradient bottom overlay on each box */
+        .entrust-banner__nav-box::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(22,41,80,0.82) 0%, rgba(22,41,80,0.1) 60%, transparent 100%);
+            z-index: 1;
+            transition: opacity 0.4s ease;
+        }
+
+        .entrust-banner__nav-box:hover::before {
+            background: linear-gradient(to top, rgba(22,41,80,0.92) 0%, rgba(22,41,80,0.2) 60%, transparent 100%);
+        }
+
+        /* Content above overlay */
+        .entrust-banner__nav-box-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .entrust-banner__nav-box-tag {
+            display: inline-block;
+            font-family: 'Cal Sans', serif;
+            font-size: 12px;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--entrust-gold);
+            margin-bottom: 8px;
+        }
+
+        .entrust-banner__nav-box-title {
+            font-family: 'Cal Sans', serif;
+            font-size: clamp(18px, 2vw, 28px);
+            font-weight: 300;
+            color: var(--entrust-ivory);
+            margin: 0 0 10px;
+            line-height: 1.2;
+        }
+
+        .entrust-banner__nav-box-desc {
+            font-family: 'Cal Sans', serif;
+            font-size: 16px;
+            font-weight: 300;
+            color: rgba(245, 240, 232, 0.55);
+            letter-spacing: 0.02em;
+            line-height: 1.55;
+            margin: 0 0 16px;
+            max-width: 340px;
+
+            /* Hide by default, reveal on hover */
+            max-height: 0;
+            overflow: hidden;
+            opacity: 0;
+            transition: max-height 0.4s ease, opacity 0.35s ease;
+        }
+
+        .entrust-banner__nav-box:hover .entrust-banner__nav-box-desc {
+            max-height: 60px;
+            opacity: 1;
+        }
+
+        .entrust-banner__nav-box-arrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Cal Sans', serif;
+            font-size: 12px;
+            font-weight: 400;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--entrust-gold);
+            transform: translateX(0);
+            transition: transform 0.3s ease, gap 0.3s ease;
+        }
+
+        .entrust-banner__nav-box:hover .entrust-banner__nav-box-arrow {
+            transform: translateX(6px);
+            gap: 12px;
+        }
+
+        .entrust-banner__nav-box-arrow svg {
+            width: 14px;
+            height: 14px;
+            stroke: var(--entrust-gold);
+            flex-shrink: 0;
+        }
+
+        /* Gold left-border on hover */
+        .entrust-banner__nav-box::after {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 3px;
+            background: var(--entrust-gold);
+            transform: scaleY(0);
+            transform-origin: bottom;
+            transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            z-index: 3;
+        }
+
+        .entrust-banner__nav-box:hover::after {
+            transform: scaleY(1);
+        }
+
+        /* =============================================
+           RESPONSIVE — banner
+        ============================================= */
+
+        /* Medium laptops (≤1280px) — nav side slightly narrower */
+        @media (max-width: 1280px) {
+            .entrust-banner__nav-box-title {
+                font-size: clamp(16px, 1.8vw, 24px);
+            }
+        }
+
+        /* Small laptops & tablets (≤1024px) — stack: video top, boxes below */
+        @media (max-width: 1024px) {
+            .entrust-banner {
+                grid-template-columns: 1fr;
+                grid-template-rows: 56vh auto;
+                min-height: auto;
+            }
+
+            .entrust-banner__video-side {
+                height: 56vh;
+                min-height: 320px;
+            }
+
+            .entrust-banner__nav-side {
+                grid-template-columns: 1fr 1fr;
+                grid-template-rows: auto;
+            }
+
+            /* Third box still spans full width */
+            .entrust-banner__nav-box:nth-child(3) {
+                grid-column: 1 / -1;
+            }
+
+            .entrust-banner__nav-box {
+                min-height: 200px;
+                padding: 24px 22px;
+            }
+
+            .entrust-banner__video-caption {
+                bottom: 32px;
+                left: 32px;
+            }
+        }
+
+        /* Tablets portrait & mobile (≤768px) — single column all the way */
+        @media (max-width: 768px) {
+            .entrust-banner {
+                grid-template-rows: 50vh auto;
+            }
+
+            .entrust-banner__video-side {
+                height: 50vh;
+                min-height: 280px;
+            }
+
+            .entrust-banner__nav-side {
+                grid-template-columns: 1fr;
+                grid-template-rows: repeat(3, auto);
+            }
+
+            /* Reset column span on mobile */
+            .entrust-banner__nav-box:nth-child(3) {
+                grid-column: auto;
+            }
+
+            .entrust-banner__nav-box {
+                min-height: 180px;
+                padding: 22px 20px;
+            }
+
+            .entrust-banner__video-caption {
+                bottom: 24px;
+                left: 24px;
+            }
+
+            /* Always show desc on mobile (no hover) */
+            .entrust-banner__nav-box-desc {
+                max-height: 80px;
+                opacity: 1;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .entrust-banner__video-side {
+                height: 44vh;
+                min-height: 240px;
+            }
+
+            .entrust-banner__nav-box {
+                min-height: 160px;
+                padding: 20px 18px;
+            }
+
+            .entrust-banner__nav-box-title {
+                font-size: 20px;
+            }
+
+            .entrust-banner__video-caption {
+                bottom: 20px;
+                left: 20px;
+            }
+
+            .entrust-banner__video-caption-title {
+                font-size: 26px;
+            }
+        }
+
+        /* =============================================
+           DESIGN VISION SECTION (unchanged)
+        ============================================= */
+        .design-vision-section {
+            background-color: var(--config-images-bg);
+            padding: 120px 0 140px;
+            position: relative;
+            overflow: hidden;
+            font-family: 'Cal Sans', serif;
+            border: none !important;
+        }
+
+        .design-vision-section::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--entrust-gold), transparent);
+        }
+
+        .design-vision-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--entrust-gold), transparent);
+        }
+
+        .dv-watermark {
+            position: absolute;
+            top: 50%; left: 50%;
+            transform: translate(-50%, -50%);
+            font-family: 'Cal Sans', serif;
+            font-size: clamp(80px, 14vw, 200px);
+            font-weight: 300;
+            color: rgba(201, 169, 110, 0.04);
+            white-space: nowrap;
+            pointer-events: none;
+            user-select: none;
+            letter-spacing: 0.15em;
+            z-index: 0;
+        }
+
+        .dv-heading-wrap {
+            text-align: center;
+            margin-bottom: 72px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dv-eyebrow {
+            font-family: 'Cal Sans', serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--entrust-gold);
+            display: block;
+            margin-bottom: 20px;
+        }
+
+        .dv-main-title {
+            font-family: 'Cal Sans', serif;
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 300;
+            color: #162950;
+            line-height: 1.1;
+            margin: 0 0 24px;
+        }
+
+        .dv-main-title em { color: var(--entrust-gold); }
+
+        .dv-description {
+            font-family: 'Golos Text', sans-serif;
+            font-size: 15px;
+            font-weight: 300;
+            color: var(--entrust-muted);
+            max-width: 520px;
+            margin: 0 auto;
+            line-height: 1.75;
+        }
+
+        .dv-step-indicator {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 8px 0;
+            margin-bottom: 56px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dv-step {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            padding: 0 20px;
+            position: relative;
+        }
+
+        .dv-step:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            right: 0; top: 14px;
+            width: 1px; height: 28px;
+            background: var(--entrust-border);
+        }
+
+        .dv-step-num {
+            width: 28px; height: 28px;
+            border-radius: 50%;
+            border: 1px solid var(--entrust-border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 11px;
+            font-weight: 500;
+            color: var(--entrust-muted);
+            transition: all 0.4s ease;
+        }
+
+        .dv-step.active .dv-step-num  { border-color: var(--entrust-gold); background: var(--entrust-gold); color: #fff; }
+        .dv-step.completed .dv-step-num { border-color: var(--entrust-gold); color: var(--entrust-gold); }
+
+        .dv-step-label { font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--entrust-muted); }
+        .dv-step.active .dv-step-label { color: var(--entrust-charcoal); }
+
+        .dv-config-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1px;
+            background: var(--entrust-border);
+            border: 1px solid var(--entrust-border);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 0;
+        }
+
+        .dv-room-panel { background: #fff; }
+
+        .dv-room-header {
+            font-family: 'Cal Sans', serif;
+            padding: 28px 24px 20px;
+            border-bottom: 1px solid var(--entrust-border);
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+        }
+
+        .dv-room-icon { width: 36px; height: 36px; flex-shrink: 0; opacity: 0.6; }
+        .dv-room-title-wrap { flex: 1; }
+
+        .dv-room-number {
+            font-size: 10px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            color: var(--entrust-gold);
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .dv-room-name {
+            font-family: 'Golos Text', sans-serif;
+            font-size: 20px;
+            font-weight: 400;
+            color: var(--entrust-charcoal);
+            margin: 0;
+        }
+
+        .dv-option-list { padding: 12px 0; }
+
+        .dv-option {
+            font-family: 'Golos Text', sans-serif;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            padding: 14px 24px;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            position: relative;
+        }
+
+        .dv-option:hover { background: var(--config-images-bg); }
+        .dv-option.selected { background: var(--config-images-bg); }
+
+        .dv-option.selected::before {
+            content: '';
+            position: absolute;
+            left: 0; top: 0; bottom: 0;
+            width: 2px;
+            background: var(--entrust-gold);
+        }
+
+        .dv-option-radio {
+            width: 16px; height: 16px;
+            border-radius: 50%;
+            border: 1px solid var(--entrust-border-hover);
+            flex-shrink: 0;
+            position: relative;
+            transition: all 0.25s ease;
+        }
+
+        .dv-option.selected .dv-option-radio { border-color: var(--entrust-gold); }
+
+        .dv-option.selected .dv-option-radio::after {
+            content: '';
+            position: absolute;
+            inset: 3px;
+            border-radius: 50%;
+            background: var(--entrust-gold);
+        }
+
+        .dv-option-text {
+            font-family: 'Jost', sans-serif;
+            font-size: 13px;
+            font-weight: 400;
+            color: var(--entrust-muted);
+            letter-spacing: 0.02em;
+            transition: color 0.25s ease;
+            line-height: 1.4;
+        }
+
+        .dv-option.selected .dv-option-text { color: #162950; font-weight: 500; }
+
+        .dv-room-preview {
+            overflow: hidden;
+            height: 0;
+            transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+            position: relative;
+            background: var(--entrust-charcoal);
+        }
+
+        .dv-room-preview.visible { height: 250px; }
+
+        .dv-room-preview img {
+            width: 100%; height: 250px;
+            object-fit: cover;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .dv-room-preview img.loaded { opacity: 1; }
+
+        .dv-room-preview-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 32px 16px 12px;
+            background: linear-gradient(to top, rgba(24,22,18,0.82) 0%, transparent 100%);
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--entrust-ivory);
+            letter-spacing: 0.05em;
+            pointer-events: none;
+        }
+
+        .dv-room-preview-placeholder {
+            width: 100%; height: 250px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(201,169,110,0.06);
+        }
+
+        .dv-room-preview-placeholder svg { opacity: 0.2; }
+
+        .dv-contact-fields-wrap {
+            margin: 48px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dv-contact-fields-wrap::before {
+            content: '';
+            display: block;
+            width: 40px; height: 1px;
+            background: var(--entrust-gold);
+            margin: 0 auto 28px;
+            opacity: 0.5;
+        }
+
+        .dv-contact-hint {
+            text-align: center;
+            font-family: 'Jost', sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--entrust-muted);
+            margin-bottom: 24px;
+        }
+
+        .dv-contact-fields {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .dv-cf { position: relative; }
+
+        .dv-cf label {
+            display: block;
+            font-family: 'Jost', sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #162950;
+            margin-bottom: 8px;
+        }
+
+        .dv-cf input {
+            width: 100%;
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid rgba(201,169,110,0.35);
+            outline: none;
+            padding: 8px 0 10px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            color: var(--entrust-charcoal);
+            letter-spacing: 0.03em;
+            transition: border-color 0.3s ease;
+            border-radius: 0;
+        }
+
+        .dv-cf input::placeholder { color: rgba(138,130,120,0.45); font-size: 13px; }
+        .dv-cf input:focus { border-bottom-color: var(--entrust-gold); }
+        .dv-cf.dv-cf-error label { color: #c0392b; }
+        .dv-cf.dv-cf-error input { border-bottom-color: rgba(192,57,43,0.6); }
+        .dv-cf.dv-cf-error input::placeholder { color: rgba(192,57,43,0.45); }
+
+        .dv-cta-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .dv-progress-text { font-size: 12px; letter-spacing: 0.1em; color: var(--entrust-muted); }
+        .dv-progress-text span { color: var(--entrust-gold); font-weight: 500; }
+
+        .dv-visualise-btn {
+            display: inline-flex;
+            border-radius: 12px;
+            align-items: center;
+            gap: 12px;
+            padding: 16px 40px;
+            background: #162950;
+            color: var(--entrust-ivory);
+            font-family: 'Jost', sans-serif;
+            font-size: 12px;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: all 0.35s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .dv-visualise-btn::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: var(--entrust-gold);
+            transform: translateX(-100%);
+            transition: transform 0.4s ease;
+            z-index: 0;
+        }
+
+        .dv-visualise-btn:hover::before { transform: translateX(0); }
+        .dv-visualise-btn span, .dv-visualise-btn svg { position: relative; z-index: 1; }
+        .dv-visualise-btn:disabled { opacity: 0.4; cursor: not-allowed; }
+        .dv-visualise-btn:disabled::before { display: none; }
+
+        @keyframes dvShake {
+            0%,100% { transform: translateX(0); }
+            20% { transform: translateX(-5px); }
+            60% { transform: translateX(5px); }
+        }
+
+        .dv-visualise-btn.shake { animation: dvShake 0.4s ease; }
+
+        .dv-reset-btn {
+            border-radius: 12px;
+            background: none;
+            border: 1px solid var(--entrust-border-hover);
+            padding: 16px 28px;
+            font-family: 'Jost', sans-serif;
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--entrust-muted);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dv-reset-btn:hover { border-color: var(--entrust-gold); color: var(--entrust-charcoal); }
+
+        /* =============================================
+           RESULT OVERLAY
+        ============================================= */
+        #dvOverlayRoot {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            z-index: 999999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.45s ease;
+        }
+
+        #dvOverlayRoot.active { opacity: 1; pointer-events: all; }
+
+        .dv-overlay-backdrop {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(24,22,18,0.88);
+        }
+
+        .dv-overlay-panel {
+            position: relative;
+            z-index: 1;
+            background: var(--entrust-charcoal);
+            width: 92vw;
+            max-width: 1080px;
+            max-height: 92vh;
+            overflow-y: auto;
+            transform: translateY(28px) scale(0.97);
+            transition: transform 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        #dvOverlayRoot.active .dv-overlay-panel { transform: translateY(0) scale(1); }
+
+        .dv-overlay-close {
+            position: absolute;
+            top: 16px; right: 16px;
+            width: 36px; height: 36px;
+            background: rgba(255,255,255,0.08);
+            border: 1px solid rgba(255,255,255,0.12);
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            z-index: 2;
+        }
+
+        .dv-overlay-close:hover { background: var(--entrust-gold); border-color: var(--entrust-gold); }
+        .dv-overlay-close svg { width: 13px; height: 13px; stroke: rgba(255,255,255,0.7); }
+        .dv-overlay-close:hover svg { stroke: #fff; }
+
+        .dv-result-mosaic {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-template-rows: 200px 200px;
+            gap: 2px;
+            background: rgba(201,169,110,0.15);
+        }
+
+        .dv-mosaic-cell {
+            position: relative;
+            overflow: hidden;
+            background: rgba(255,255,255,0.04);
+        }
+
+        .dv-mosaic-cell img {
+            width: 100%; height: 100%;
+            object-fit: cover;
+            display: block;
+            opacity: 0;
+            transition: opacity 0.4s ease, transform 0.5s ease;
+        }
+
+        .dv-mosaic-cell img.loaded { opacity: 1; }
+        .dv-mosaic-cell:hover img { transform: scale(1.04); }
+
+        .dv-mosaic-label {
+            position: absolute;
+            bottom: 0; left: 0; right: 0;
+            padding: 20px 12px 10px;
+            background: linear-gradient(to top, rgba(24,22,18,0.85) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .dv-mosaic-room-tag {
+            display: block;
+            font-family: 'Jost', sans-serif;
+            font-size: 8px;
+            font-weight: 400;
+            letter-spacing: 0.22em;
+            text-transform: uppercase;
+            color: var(--entrust-gold);
+            margin-bottom: 2px;
+        }
+
+        .dv-mosaic-style-name {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 13px;
+            font-weight: 300;
+            color: var(--entrust-ivory);
+            letter-spacing: 0.03em;
+        }
+
+        .dv-mosaic-empty {
+            width: 100%; height: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(201,169,110,0.05);
+        }
+
+        .dv-mosaic-empty svg { opacity: 0.15; }
+
+        .dv-result-bar { padding: 24px 32px; display: flex; justify-content: center; }
+
+        .dv-submit-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px 48px;
+            background: var(--entrust-gold);
+            color: var(--entrust-charcoal);
+            font-family: 'Jost', sans-serif;
+            font-size: 11px;
+            font-weight: 500;
+            letter-spacing: 0.25em;
+            text-transform: uppercase;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .dv-submit-btn:hover { background: var(--entrust-gold-light); }
+        .dv-submit-btn:disabled { opacity: 0.5; cursor: not-allowed; }
+
+        .dv-success-msg { display: none; text-align: center; padding: 36px 32px 40px; }
+
+        .dv-success-icon {
+            width: 52px; height: 52px;
+            border: 1px solid var(--entrust-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 18px;
+        }
+
+        .dv-success-icon svg { width: 22px; height: 22px; stroke: var(--entrust-gold); }
+
+        .dv-success-msg h4 {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--entrust-ivory);
+            margin: 0 0 10px;
+        }
+
+        .dv-success-msg p {
+            font-size: 13px;
+            font-weight: 300;
+            letter-spacing: 0.03em;
+            color: rgba(245,240,232,0.45);
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* =============================================
+           PANORAMA hint (unchanged)
+        ============================================= */
+        .pano-hint-overlay {
+            position: absolute; inset: 0;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            background: rgba(22,41,80,0.45);
+            z-index: 10; pointer-events: none;
+            opacity: 0; transition: opacity 0.6s ease;
+        }
+
+        .pano-hint-overlay.visible { opacity: 1; }
+        .pano-hint-overlay.fade-out { opacity: 0; transition: opacity 0.8s ease; }
+
+        .pano-hint-ring {
+            width: 72px; height: 72px;
+            border-radius: 50%;
+            border: 2px solid rgba(198,163,79,0.7);
+            display: flex; align-items: center; justify-content: center;
+            position: relative;
+            animation: panoRingSpin 2.5s linear infinite;
+        }
+
+        .pano-hint-ring::before {
+            content: '';
+            position: absolute; inset: -2px;
+            border-radius: 50%;
+            border: 2px solid transparent;
+            border-top-color: var(--entrust-gold);
+            animation: panoRingSpin 1.4s linear infinite;
+        }
+
+        @keyframes panoRingSpin { to { transform: rotate(360deg); } }
+
+        .pano-hint-icon { font-size: 26px; color: var(--entrust-gold); animation: panoIconPulse 1.8s ease-in-out infinite; }
+
+        @keyframes panoIconPulse {
+            0%,100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.88); }
+        }
+
+        .pano-hint-text {
+            margin-top: 14px;
+            font-family: 'Jost', sans-serif;
+            font-size: 11px; font-weight: 400;
+            letter-spacing: 0.3em; text-transform: uppercase;
+            color: rgba(245,240,232,0.85);
+        }
+
+        .pano-release-toast {
+            position: absolute; bottom: 24px; left: 50%;
+            transform: translateX(-50%) translateY(10px);
+            background: rgba(22,41,80,0.85);
+            color: var(--entrust-ivory);
+            font-family: 'Jost', sans-serif;
+            font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase;
+            padding: 10px 24px;
+            border: 1px solid rgba(198,163,79,0.3);
+            white-space: nowrap;
+            opacity: 0; pointer-events: none;
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            z-index: 20;
+        }
+
+        .pano-release-toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+        .antra-panoroma-container { position: relative; }
+
+        /* =============================================
+           CONFIGURATOR RESPONSIVE (unchanged)
+        ============================================= */
+        @media (max-width: 1280px) { .dv-config-grid { grid-template-columns: repeat(4, 1fr); } }
+
+        @media (max-width: 1024px) {
+            .dv-config-grid { grid-template-columns: repeat(2, 1fr); }
+            .dv-contact-fields { grid-template-columns: 1fr; gap: 20px; }
+            .dv-step { padding: 0 14px; }
+            .dv-room-preview.visible { height: 300px; }
+            .dv-room-preview img, .dv-room-preview-placeholder { height: 300px; }
+            .dv-result-mosaic { grid-template-columns: repeat(2, 1fr); grid-template-rows: repeat(4, 180px); }
+        }
+
+        @media (max-width: 768px) {
+            .design-vision-section { padding: 80px 0 100px; }
+            .dv-heading-wrap { margin-bottom: 48px; }
+            .dv-config-grid { grid-template-columns: 1fr; }
+            .dv-contact-fields { grid-template-columns: 1fr; }
+            .dv-step-indicator { display: none; }
+            .dv-cta-row { flex-direction: column; gap: 12px; }
+            .dv-visualise-btn, .dv-reset-btn { width: 100%; justify-content: center; }
+            .dv-result-mosaic { grid-template-columns: 1fr; grid-template-rows: repeat(8, 160px); }
+            .dv-contact-fields-wrap { margin: 24px; }
+        }
+
+        @media (max-width: 480px) {
+            .dv-room-header { padding: 20px 18px 16px; }
+            .dv-option { padding: 12px 18px; }
+            .dv-room-preview.visible { height: 220px; }
+            .dv-room-preview img, .dv-room-preview-placeholder { height: 220px; }
+        }
+
+        /* SweetAlert2 brand overrides (unchanged) */
+        .swal2-popup.swal-entrust { background: #1c1a17 !important; border: 1px solid rgba(201,169,110,0.25) !important; border-radius: 4px !important; font-family: 'Jost', sans-serif !important; }
+        .swal-entrust .swal2-title { color: #f5f0e8 !important; font-family: 'Cormorant Garamond', serif !important; font-size: 22px !important; font-weight: 300 !important; }
+        .swal-entrust .swal2-html-container { color: rgba(245,240,232,0.55) !important; font-size: 13px !important; font-family: 'Jost', sans-serif !important; letter-spacing: 0.04em !important; }
+        .swal-entrust .swal2-confirm { background: #C6A34F !important; color: #1c1a17 !important; font-family: 'Jost', sans-serif !important; font-size: 11px !important; letter-spacing: 0.2em !important; text-transform: uppercase !important; border-radius: 4px !important; padding: 12px 32px !important; box-shadow: none !important; }
+        .swal-entrust .swal2-icon { border-color: rgba(201,169,110,0.4) !important; }
+        .swal-entrust .swal2-icon.swal2-warning { color: #C6A34F !important; border-color: rgba(201,169,110,0.4) !important; }
+        .swal-entrust .swal2-icon.swal2-warning .swal2-icon-content { color: #C6A34F !important; }
+    </style>
+</head>
+
+<body>
+
+    <!-- preloader -->
+    <div class="preloader overflow-hidden">
+        <div class="site-name"><span><img style="width: 100px;margin-bottom: 15px;" src="./assets/img/favicon.png" alt="img"></span></div>
+    </div>
+
+    <!-- header (unchanged) -->
+    <header class="entrust-navbar">
+        <div class=".tl-primary-btn.white-btn">
+            <a href="./contact.html" class="tl-primary-btn header-btn">Get in Touch <span class="icon"><i class="fa-regular fa-arrow-right"></i></span></a>
+            <a href="contact.html" class="tl-primary-btn spc-header-btn" style="padding: 0px;border: none;"><span class="icon"><i
+                        class="fa-regular fa-arrow-right"></i></span> </a>
+        </div>
+        <a href="./index.html" class="entrust-navbar__logo">
+            <img class="entrust-logo" src="./assets/img/logo/logo-2.png" alt="Entrust Interior Designers Logo">
+        </a>
+        <div class="entrust-navbar__right">
+            <button class="entrust-hamburger" id="entrust-ham-btn" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- overlay nav (unchanged) -->
+    <div class="entrust-overlay" id="entrust-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <div class="entrust-overlay__inner">
+            <nav class="entrust-overlay__nav">
+                <p class="entrust-overlay__nav-label">Navigation</p>
+                <div class="entrust-overlay__divider"></div>
+                <ul class="entrust-overlay__links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./services.html">Services</a></li>
+                    <li><a href="./portfolio.html">Portfolio</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./blogs.html">Blogs</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="entrust-overlay__details">
+                <div>
+                    <p class="entrust-overlay__section-label">Our Studio</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <p class="entrust-overlay__address">Entrust Interior Designers,<br>Bengaluru, Karnataka 560043,<br>India</p>
+                </div>
+                <div>
+                    <p class="entrust-overlay__section-label">Reach Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <a href="tel:+919845012345" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                        +91 98450 12345
+                    </a>
+                    <a href="mailto:info@entrust.com" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                        info@entrust.com
+                    </a>
+                </div>
+                <div>
+                    <p class="entrust-overlay__section-label">Follow Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <div class="entrust-overlay__social">
+                        <a href="#" class="entrust-social-link" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+                        <a href="#" class="entrust-social-link" aria-label="Facebook"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+                        <a href="#" class="entrust-social-link" aria-label="LinkedIn"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></a>
+                        <a href="#" class="entrust-social-link" aria-label="YouTube"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="antra-smooth-wrapper">
+        <div id="antra-smooth-content">
+
+            <!-- =============================================
+                 NEW SPLIT BANNER
+                 Replaces the old swiper slider.
+                 Uses only entrust-banner-* class names.
+            ============================================= -->
+            <section class="entrust-banner" id="entrust-banner">
+
+                <!-- LEFT: autoplay video -->
+                <div class="entrust-banner__video-side">
+                    <video autoplay muted loop playsinline>
+                        <source src="assets/img/bg-img/video-bg-3.mp4" type="video/mp4">
+                    </video>
+
+                    <!-- Tagline overlay on the video -->
+                    <div class="entrust-banner__video-caption">
+                        <span class="entrust-banner__video-caption-eyebrow">Designed for modern living</span>
+                        <h1 class="entrust-banner__video-caption-title">
+                            The Art of<br>Thoughtfully<br><em>Designed Interiors</em>
+                        </h1>
+                    </div>
+                </div>
+
+                <!-- RIGHT: 3 navigatable boxes -->
+                <nav class="entrust-banner__nav-side" aria-label="Quick navigation">
+
+                    <!-- Box 1 — top left -->
+                    <a href="./kitchens.html" class="entrust-banner__nav-box">
+                        <div class="entrust-banner__nav-box-bg"
+                             style="background-image: url('assets/img/bg-img/slider-img-1.png');"></div>
+                        <div class="entrust-banner__nav-box-content">
+                            <span class="entrust-banner__nav-box-tag">Kitchen Services</span>
+                                <h2 class="entrust-banner__nav-box-title">Kitchen Design<br>& Planning</h2>
+                                <p class="entrust-banner__nav-box-desc">From layout to finish kitchens that blend style, efficiency, and everyday functionality.</p>
+                            <span class="entrust-banner__nav-box-arrow">
+                                Explore
+                                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 7h12M8 2l5 5-5 5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- Box 2 — top right -->
+                    <a href="./wardrobes.html" class="entrust-banner__nav-box">
+                        <div class="entrust-banner__nav-box-bg"
+                             style="background-image: url('assets/img/bg-img/slider-img-2.png');"></div>
+                        <div class="entrust-banner__nav-box-content">
+                            <span class="entrust-banner__nav-box-tag">Wardrobe Designs</span>
+                                <h2 class="entrust-banner__nav-box-title">Our Wardrobe<br>Showcase</h2>
+                                <p class="entrust-banner__nav-box-desc">Thoughtfully crafted wardrobes that combine smart storage and seamless functionality.</p>
+                            <span class="entrust-banner__nav-box-arrow">
+                                View Work
+                                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 7h12M8 2l5 5-5 5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+
+                    <!-- Box 3 — full-width bottom -->
+                    <a href="./living-spaces.html" class="entrust-banner__nav-box">
+                        <div class="entrust-banner__nav-box-bg"
+                             style="background-image: url('assets/img/bg-img/slider-img-3.png');"></div>
+                        <div class="entrust-banner__nav-box-content">
+                            <span class="entrust-banner__nav-box-tag">Living Room Designs</span>
+                                <h2 class="entrust-banner__nav-box-title">Living Room<br>Concepts & Styling</h2>
+                                <p class="entrust-banner__nav-box-desc">Create a welcoming space where comfort meets style & design for everyday living.</p>
+                            <span class="entrust-banner__nav-box-arrow">
+                                Get in Touch
+                                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M1 7h12M8 2l5 5-5 5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
+                                </svg>
+                            </span>
+                        </div>
+                    </a>
+
+                </nav>
+
+            </section>
+            <!-- /.entrust-banner -->
+
+
+            <!-- =============================================
+                 DESIGN VISION CONFIGURATOR — 8 rooms × 6 options
+                 (unchanged from document 6)
+            ============================================= -->
+            <section class="design-vision-section" id="design-vision">
+                <div class="dv-watermark" aria-hidden="true">VISION</div>
+
+                <div class="container">
+
+                    <div class="dv-heading-wrap">
+                        <span class="dv-eyebrow">Curate Your Space</span>
+                        <h2 class="dv-main-title">Design Your <em>Vision</em></h2>
+                        <p class="dv-description">Every home has a language. Tell us how you want each room to feel and we'll show you what your space could become. Select one style from each room to reveal your personalised design story.</p>
+                    </div>
+
+                    <div class="dv-step-indicator" id="stepIndicator">
+                        <div class="dv-step active" data-step="kitchen"><div class="dv-step-num">01</div><span class="dv-step-label">Kitchen</span></div>
+                        <div class="dv-step" data-step="living"><div class="dv-step-num">02</div><span class="dv-step-label">Living</span></div>
+                        <div class="dv-step" data-step="bedroom"><div class="dv-step-num">03</div><span class="dv-step-label">Bedroom</span></div>
+                        <div class="dv-step" data-step="bathroom"><div class="dv-step-num">04</div><span class="dv-step-label">Bathroom</span></div>
+                        <div class="dv-step" data-step="dining"><div class="dv-step-num">05</div><span class="dv-step-label">Dining</span></div>
+                        <div class="dv-step" data-step="office"><div class="dv-step-num">06</div><span class="dv-step-label">Office</span></div>
+                        <div class="dv-step" data-step="foyer"><div class="dv-step-num">07</div><span class="dv-step-label">Foyer</span></div>
+                        <div class="dv-step" data-step="balcony"><div class="dv-step-num">08</div><span class="dv-step-label">Balcony</span></div>
+                    </div>
+
+                    <!-- Row 1 -->
+                    <div class="dv-config-grid" id="configGrid" style="margin-bottom:1px;">
+
+                        <!-- Kitchen -->
+                        <div class="dv-room-panel">
+                            <div class="dv-room-header">
+                                <svg class="dv-room-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="8" width="28" height="20" rx="1" stroke="#c9a96e" stroke-width="1"/><line x1="4" y1="14" x2="32" y2="14" stroke="#c9a96e" stroke-width="1"/><line x1="18" y1="14" x2="18" y2="28" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="1.5" fill="#c9a96e"/><circle cx="25" cy="11" r="1.5" fill="#c9a96e"/><rect x="7" y="17" width="8" height="5" rx="0.5" stroke="#c9a96e" stroke-width="0.75"/></svg>
+                                <div class="dv-room-title-wrap"><span class="dv-room-number">Room 01</span><h3 class="dv-room-name">Kitchen</h3></div>
+                            </div>
+                            <div class="dv-option-list">
+                                <div class="dv-option" data-room="kitchen" data-value="contemporary" data-label="Contemporary" data-img="assets/img/config-images/contemporary-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
+                                <div class="dv-option" data-room="kitchen" data-value="modular-natural" data-label="Modular Natural" data-img="assets/img/config-images/designer-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modular Natural</span></div>
+                                <div class="dv-option" data-room="kitchen" data-value="timber-designer" data-label="Timber Designer Feature" data-img="assets/img/config-images/natural-timber-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Timber Designer Feature</span></div>
+                                <div class="dv-option" data-room="kitchen" data-value="sleek-gloss" data-label="Sleek Gloss Finish" data-img="assets/img/config-images/contemporary-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Sleek Gloss Finish</span></div>
+                                <div class="dv-option" data-room="kitchen" data-value="industrial-open" data-label="Industrial Open Shelf" data-img="assets/img/config-images/designer-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Industrial Open Shelf</span></div>
+                                <div class="dv-option" data-room="kitchen" data-value="classic-shaker" data-label="Classic Shaker Style" data-img="assets/img/config-images/natural-timber-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic Shaker Style</span></div>
+                            </div>
+                            <div class="dv-room-preview" id="preview-kitchen"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
+                        </div>
+
+                        <!-- Living Room -->
+                        <div class="dv-room-panel">
+                            <div class="dv-room-header">
+                                <svg class="dv-room-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="18" width="28" height="10" rx="1" stroke="#c9a96e" stroke-width="1"/><path d="M8 18V14a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v4" stroke="#c9a96e" stroke-width="1"/><rect x="7" y="22" width="6" height="4" rx="0.5" stroke="#c9a96e" stroke-width="0.75"/><rect x="23" y="22" width="6" height="4" rx="0.5" stroke="#c9a96e" stroke-width="0.75"/><line x1="13" y1="24" x2="23" y2="24" stroke="#c9a96e" stroke-width="0.75"/><line x1="8" y1="28" x2="8" y2="31" stroke="#c9a96e" stroke-width="1"/><line x1="28" y1="28" x2="28" y2="31" stroke="#c9a96e" stroke-width="1"/></svg>
+                                <div class="dv-room-title-wrap"><span class="dv-room-number">Room 02</span><h3 class="dv-room-name">Living Room</h3></div>
+                            </div>
+                            <div class="dv-option-list">
+                                <div class="dv-option" data-room="living" data-value="modern-minimal" data-label="Modern Minimal Lounge" data-img="assets/img/config-images/modern-minimal-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern Minimal Lounge</span></div>
+                                <div class="dv-option" data-room="living" data-value="organic-living" data-label="Organic Living Space" data-img="assets/img/config-images/organic-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Organic Living Space</span></div>
+                                <div class="dv-option" data-room="living" data-value="curated-aesthetic" data-label="Curated Aesthetic Lounge" data-img="assets/img/config-images/aesthetic-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Curated Aesthetic Lounge</span></div>
+                                <div class="dv-option" data-room="living" data-value="bold-eclectic" data-label="Bold Eclectic Statement" data-img="assets/img/config-images/modern-minimal-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Bold Eclectic Statement</span></div>
+                                <div class="dv-option" data-room="living" data-value="warm-classic" data-label="Warm Classic Interior" data-img="assets/img/config-images/organic-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Warm Classic Interior</span></div>
+                                <div class="dv-option" data-room="living" data-value="coastal-light" data-label="Coastal Light Living" data-img="assets/img/config-images/aesthetic-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Coastal Light Living</span></div>
+                            </div>
+                            <div class="dv-room-preview" id="preview-living"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
+                        </div>
+
+                        <!-- Bedroom -->
+                        <div class="dv-room-panel">
+                            <div class="dv-room-header">
+                                <svg class="dv-room-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="16" width="28" height="14" rx="1" stroke="#c9a96e" stroke-width="1"/><path d="M4 20h28" stroke="#c9a96e" stroke-width="1"/><path d="M14 16v4" stroke="#c9a96e" stroke-width="1"/><rect x="6" y="10" width="8" height="6" rx="0.5" stroke="#c9a96e" stroke-width="0.75"/><rect x="22" y="10" width="8" height="6" rx="0.5" stroke="#c9a96e" stroke-width="0.75"/><line x1="7" y1="30" x2="7" y2="33" stroke="#c9a96e" stroke-width="1"/><line x1="29" y1="30" x2="29" y2="33" stroke="#c9a96e" stroke-width="1"/></svg>
+                                <div class="dv-room-title-wrap"><span class="dv-room-number">Room 03</span><h3 class="dv-room-name">Bedroom</h3></div>
+                            </div>
+                            <div class="dv-option-list">
+                                <div class="dv-option" data-room="bedroom" data-value="serene-minimal" data-label="Serene Minimal Bedroom" data-img="assets/img/config-images/seren-minimal-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Serene Minimal Bedroom</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="modern-comfort" data-label="Modern Comfort Bedroom" data-img="assets/img/config-images/modern-comfrot-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern Comfort Bedroom</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="luxury-suite" data-label="Luxury Suite Bedroom" data-img="assets/img/config-images/luxury-suite-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Luxury Suite Bedroom</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="japandi-calm" data-label="Japandi Calm Retreat" data-img="assets/img/config-images/seren-minimal-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi Calm Retreat</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="warm-textures" data-label="Warm Textured Haven" data-img="assets/img/config-images/modern-comfrot-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Warm Textured Haven</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="art-deco-glam" data-label="Art Deco Glamour" data-img="assets/img/config-images/luxury-suite-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Art Deco Glamour</span></div>
+                            </div>
+                            <div class="dv-room-preview" id="preview-bedroom"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
+                        </div>
+
+                        <!-- Bathroom -->
+                        <div class="dv-room-panel">
+                            <div class="dv-room-header">
+                                <svg class="dv-room-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="20" width="28" height="10" rx="1" stroke="#c9a96e" stroke-width="1"/><line x1="4" y1="24" x2="32" y2="24" stroke="#c9a96e" stroke-width="0.75"/><path d="M10 20V12a2 2 0 0 1 4 0v2" stroke="#c9a96e" stroke-width="1"/><circle cx="24" cy="14" r="3" stroke="#c9a96e" stroke-width="1"/><line x1="24" y1="11" x2="24" y2="8" stroke="#c9a96e" stroke-width="1"/><line x1="6" y1="30" x2="6" y2="33" stroke="#c9a96e" stroke-width="1"/><line x1="30" y1="30" x2="30" y2="33" stroke="#c9a96e" stroke-width="1"/></svg>
+                                <div class="dv-room-title-wrap"><span class="dv-room-number">Room 04</span><h3 class="dv-room-name">Bathroom</h3></div>
+                            </div>
+                            <div class="dv-option-list">
+                                <div class="dv-option" data-room="bathroom" data-value="contemporary-minimal" data-label="Contemporary Minimal Bath" data-img="assets/img/config-images/contemporary-minimal-bath.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary Minimal Bath</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="spa-inspired" data-label="Spa Inspired Bath" data-img="assets/img/config-images/spa-inspired-bath.png"><div class="dv-option-radio"></div><span class="dv-option-text">Spa Inspired Bath</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="signature-luxury" data-label="Signature Luxury Bath" data-img="assets/img/config-images/signature-luxury-bath.png"><div class="dv-option-radio"></div><span class="dv-option-text">Signature Luxury Bath</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="industrial-stone" data-label="Industrial Stone Bath" data-img="assets/img/config-images/contemporary-minimal-bath.png"><div class="dv-option-radio"></div><span class="dv-option-text">Industrial Stone Bath</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="zen-retreat" data-label="Zen Garden Retreat" data-img="assets/img/config-images/spa-inspired-bath.png"><div class="dv-option-radio"></div><span class="dv-option-text">Zen Garden Retreat</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="classic-marble" data-label="Classic Marble Elegance" data-img="assets/img/config-images/signature-luxury-bath.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic Marble Elegance</span></div>
+                            </div>
+                            <div class="dv-room-preview" id="preview-bathroom"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
+                        </div>
+
+                    </div><!-- /.row-1 -->
+
+                    <!-- Row 2 -->
+                    <div class="dv-config-grid" id="configGrid2" style="border-top:none;border-radius:0 0 10px 10px;">
+
+                        <!-- Dining Room -->
+                        <div class="dv-room-panel">
+                            <div class="dv-room-header">
+                                <svg class="dv-room-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="14" width="28" height="4" rx="1" stroke="#c9a96e" stroke-width="1"/><line x1="8" y1="18" x2="8" y2="28" stroke="#c9a96e" stroke-width="1"/><line x1="28" y1="18" x2="28" y2="28" stroke="#c9a96e" stroke-width="1"/><line x1="18" y1="18" x2="18" y2="28" stroke="#c9a96e" stroke-width="0.75"/><circle cx="10" cy="10" r="2" stroke="#c9a96e" stroke-width="1"/><circle cx="18" cy="8" r="2" stroke="#c9a96e" stroke-width="1"/><circle cx="26" cy="10" r="2" stroke="#c9a96e" stroke-width="1"/></svg>
+                                <div class="dv-room-title-wrap"><span class="dv-room-number">Room 05</span><h3 class="dv-room-name">Dining Room</h3></div>
+                            </div>
+                            <div class="dv-option-list">
+                                <div class="dv-option" data-room="dining" data-value="formal-classic" data-label="Formal Classic Dining" data-img="assets/img/config-images/contemporary-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Formal Classic Dining</span></div>
+                                <div class="dv-option" data-room="dining" data-value="open-social" data-label="Open Social Dining" data-img="assets/img/config-images/modern-minimal-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Open Social Dining</span></div>
+                                <div class="dv-option" data-room="dining" data-value="rustic-farmhouse" data-label="Rustic Farmhouse Table" data-img="assets/img/config-images/natural-timber-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Rustic Farmhouse Table</span></div>
+                                <div class="dv-option" data-room="dining" data-value="luxe-banquet" data-label="Luxe Banquet Setting" data-img="assets/img/config-images/luxury-suite-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Luxe Banquet Setting</span></div>
+                                <div class="dv-option" data-room="dining" data-value="minimal-floating" data-label="Minimal Floating Shelf" data-img="assets/img/config-images/seren-minimal-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal Floating Shelf</span></div>
+                                <div class="dv-option" data-room="dining" data-value="industrial-raw" data-label="Industrial Raw Steel" data-img="assets/img/config-images/designer-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Industrial Raw Steel</span></div>
+                            </div>
+                            <div class="dv-room-preview" id="preview-dining"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
+                        </div>
+
+                        <!-- Home Office -->
+                        <div class="dv-room-panel">
+                            <div class="dv-room-header">
+                                <svg class="dv-room-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="4" y="6" width="28" height="18" rx="1" stroke="#c9a96e" stroke-width="1"/><line x1="4" y1="12" x2="32" y2="12" stroke="#c9a96e" stroke-width="0.75"/><rect x="14" y="24" width="8" height="4" stroke="#c9a96e" stroke-width="0.75"/><line x1="8" y1="28" x2="28" y2="28" stroke="#c9a96e" stroke-width="1"/><circle cx="18" cy="9" r="1.5" fill="#c9a96e"/></svg>
+                                <div class="dv-room-title-wrap"><span class="dv-room-number">Room 06</span><h3 class="dv-room-name">Home Office</h3></div>
+                            </div>
+                            <div class="dv-option-list">
+                                <div class="dv-option" data-room="office" data-value="executive-dark" data-label="Executive Dark Wood" data-img="assets/img/config-images/luxury-suite-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Executive Dark Wood</span></div>
+                                <div class="dv-option" data-room="office" data-value="minimal-light" data-label="Minimal Light Studio" data-img="assets/img/config-images/seren-minimal-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal Light Studio</span></div>
+                                <div class="dv-option" data-room="office" data-value="creative-loft" data-label="Creative Loft Workspace" data-img="assets/img/config-images/organic-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Creative Loft Workspace</span></div>
+                                <div class="dv-option" data-room="office" data-value="biophilic-desk" data-label="Biophilic Nature Desk" data-img="assets/img/config-images/natural-timber-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Biophilic Nature Desk</span></div>
+                                <div class="dv-option" data-room="office" data-value="modern-glass" data-label="Modern Glass & Steel" data-img="assets/img/config-images/contemporary-minimal-bath.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern Glass & Steel</span></div>
+                                <div class="dv-option" data-room="office" data-value="cosy-library" data-label="Cosy Library Nook" data-img="assets/img/config-images/aesthetic-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Cosy Library Nook</span></div>
+                            </div>
+                            <div class="dv-room-preview" id="preview-office"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
+                        </div>
+
+                        <!-- Foyer -->
+                        <div class="dv-room-panel">
+                            <div class="dv-room-header">
+                                <svg class="dv-room-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="10" y="4" width="16" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><rect x="13" y="16" width="6" height="10" rx="0.5" stroke="#c9a96e" stroke-width="0.75"/><circle cx="20" cy="21" r="1" fill="#c9a96e"/><line x1="4" y1="32" x2="32" y2="32" stroke="#c9a96e" stroke-width="1"/><line x1="10" y1="4" x2="4" y2="10" stroke="#c9a96e" stroke-width="0.75"/><line x1="26" y1="4" x2="32" y2="10" stroke="#c9a96e" stroke-width="0.75"/></svg>
+                                <div class="dv-room-title-wrap"><span class="dv-room-number">Room 07</span><h3 class="dv-room-name">Foyer</h3></div>
+                            </div>
+                            <div class="dv-option-list">
+                                <div class="dv-option" data-room="foyer" data-value="grand-statement" data-label="Grand Statement Entry" data-img="assets/img/config-images/luxury-suite-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Grand Statement Entry</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="warm-welcome" data-label="Warm Welcome Hall" data-img="assets/img/config-images/modern-comfrot-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Warm Welcome Hall</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="minimal-art" data-label="Minimal Art Gallery" data-img="assets/img/config-images/seren-minimal-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal Art Gallery</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="earthy-tones" data-label="Earthy Tone Passage" data-img="assets/img/config-images/natural-timber-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Earthy Tone Passage</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="arch-curve" data-label="Arch & Curve Detail" data-img="assets/img/config-images/aesthetic-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Arch & Curve Detail</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="mirror-light" data-label="Mirror & Light Play" data-img="assets/img/config-images/contemporary-minimal-bath.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mirror & Light Play</span></div>
+                            </div>
+                            <div class="dv-room-preview" id="preview-foyer"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
+                        </div>
+
+                        <!-- Balcony -->
+                        <div class="dv-room-panel">
+                            <div class="dv-room-header">
+                                <svg class="dv-room-icon" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><line x1="4" y1="28" x2="32" y2="28" stroke="#c9a96e" stroke-width="1"/><line x1="4" y1="20" x2="32" y2="20" stroke="#c9a96e" stroke-width="0.75"/><line x1="8" y1="20" x2="8" y2="28" stroke="#c9a96e" stroke-width="1"/><line x1="16" y1="20" x2="16" y2="28" stroke="#c9a96e" stroke-width="0.75"/><line x1="24" y1="20" x2="24" y2="28" stroke="#c9a96e" stroke-width="0.75"/><line x1="28" y1="20" x2="28" y2="28" stroke="#c9a96e" stroke-width="1"/><path d="M10 20 Q18 10 26 20" stroke="#c9a96e" stroke-width="0.75" fill="none"/><circle cx="18" cy="8" r="3" stroke="#c9a96e" stroke-width="0.75"/><line x1="18" y1="11" x2="18" y2="14" stroke="#c9a96e" stroke-width="0.75"/></svg>
+                                <div class="dv-room-title-wrap"><span class="dv-room-number">Room 08</span><h3 class="dv-room-name">Balcony</h3></div>
+                            </div>
+                            <div class="dv-option-list">
+                                <div class="dv-option" data-room="balcony" data-value="urban-garden" data-label="Urban Garden Terrace" data-img="assets/img/config-images/organic-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Urban Garden Terrace</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="zen-outdoor" data-label="Zen Outdoor Lounge" data-img="assets/img/config-images/spa-inspired-bath.png"><div class="dv-option-radio"></div><span class="dv-option-text">Zen Outdoor Lounge</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="coastal-deck" data-label="Coastal Deck Retreat" data-img="assets/img/config-images/aesthetic-living.png"><div class="dv-option-radio"></div><span class="dv-option-text">Coastal Deck Retreat</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="luxury-pergola" data-label="Luxury Pergola Sit-out" data-img="assets/img/config-images/luxury-suite-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Luxury Pergola Sit-out</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="minimal-planter" data-label="Minimal Planter Wall" data-img="assets/img/config-images/seren-minimal-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal Planter Wall</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="rustic-wood-deck" data-label="Rustic Wood Deck" data-img="assets/img/config-images/natural-timber-kitchen.png"><div class="dv-option-radio"></div><span class="dv-option-text">Rustic Wood Deck</span></div>
+                            </div>
+                            <div class="dv-room-preview" id="preview-balcony"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
+                        </div>
+
+                    </div><!-- /.row-2 -->
+
+                    <!-- Contact fields (unchanged) -->
+                    <div class="dv-contact-fields-wrap" id="dvContactWrap">
+                        <p class="dv-contact-hint">Your details</p>
+                        <div class="dv-contact-fields">
+                            <div class="dv-cf" id="dvCfName"><label for="dvName">Your Name</label><input type="text" id="dvName" placeholder="e.g. Your Name" autocomplete="name"></div>
+                            <div class="dv-cf" id="dvCfPhone"><label for="dvPhone">Phone Number</label><input type="tel" id="dvPhone" placeholder="e.g. +91 98450 00000" autocomplete="tel"></div>
+                            <div class="dv-cf" id="dvCfEmail"><label for="dvEmail">Email Address</label><input type="email" id="dvEmail" placeholder="e.g. you@email.com" autocomplete="email"></div>
+                        </div>
+                    </div>
+
+                    <!-- CTA row (unchanged) -->
+                    <div class="dv-cta-row">
+                        <span class="dv-progress-text" id="progressText"><span>0</span> of 8 rooms selected</span>
+                        <button class="dv-reset-btn" id="resetBtn" type="button">Clear All</button>
+                        <button class="dv-visualise-btn" id="visualiseBtn" type="button" disabled>
+                            <span>Visualise My Design</span>
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 7h12M8 2l5 5-5 5" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                        </button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- Service section (unchanged) -->
+            <section class="service-section pt-150 pb-110 overflow-hidden tl-bg-color fade-wrapper">
+                <div class="bg-shape" data-background="assets/img/shapes/service-bg-shape-1.png"></div>
+                <div class="container">
+                    <div class="row section-heading-wrap fade-top">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12"><div class="section-heading mb-0"><h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">WHO We Are</h4></div></div>
+                        <div class="col-lg-8 col-md-12"><div class="section-heading section-heading-2 mb-0"><h2 class="section-title cursor-effect">A Fresh Perspective <span>in Interior</span> Design</h2><p class="mb-0">At Entrust, we are a growing interior design company focused on creating spaces that are functional, elegant, and thoughtfully designed. With a fresh approach and a strong eye for detail, we help transform ideas into interiors and architectural concepts that reflect each client's vision and lifestyle.</p></div></div>
+                    </div>
+                    <div class="row gy-xl-0 gy-4">
+                        <div class="col-xl-3 col-lg-6 col-md-12"><div class="service-item slide-anim" data-delay="0.3" data-offset="100" data-direction="left"><div class="service-top"><h3 class="title"><a>Architectural <br> Design</a></h3><div class="icon"><img src="assets/img/icon/service-icon-1.png" alt="service"></div></div><p>We create practical designs balancing function, structure, and aesthetics with clarity and purpose.</p></div></div>
+                        <div class="col-xl-3 col-lg-6 col-md-12"><div class="service-item slide-anim" data-delay="0.3" data-offset="100" data-direction="bottom"><div class="service-top"><h3 class="title"><a>Interior Design <br> & Planning</a></h3><div class="icon"><img src="assets/img/icon/service-icon-2.png" alt="service"></div></div><p>We design interiors that combine style, comfort, and functionality tailored to your vision and everyday needs.</p></div></div>
+                        <div class="col-xl-3 col-lg-6 col-md-12"><div class="service-item slide-anim" data-delay="0.3" data-offset="100" data-direction="bottom"><div class="service-top"><h3 class="title"><a>Consulting <br> Services</a></h3><div class="icon"><img src="assets/img/icon/service-icon-3.png" alt="service"></div></div><p>We help simplify your design journey with professional advice on planning, materials, layouts, and project direction.</p></div></div>
+                        <div class="col-xl-3 col-lg-6 col-md-12"><div class="service-item slide-anim" data-delay="0.3" data-offset="100" data-direction="right"><div class="service-top"><h3 class="title"><a>Project <br> Management</a></h3><div class="icon"><img src="assets/img/icon/service-icon-4.png" alt="service"></div></div><p>We ensure smooth coordination, quality execution, and timely progress to bring your design vision to life with ease.</p></div></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Video (unchanged) -->
+            <div class="video-area-wrap">
+                <div class="video-bg"></div>
+                <video width="100%" autoplay muted loop playsinline>
+                    <source src="assets/img/bg-img/video-bg-3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+
+            <!-- Counter (unchanged) -->
+            <section class="counter-section counter-1">
+                <div class="counter-text"><span>ENTRUST</span></div>
+                <div class="counter-element scroll-area"><img class="scroll-img" src="assets/img/images/counter-img-1.png" alt="counter"></div>
+                <div class="container container-2"></div>
+            </section>
+
+            <!-- Process (unchanged) -->
+            <section class="process-section overflow-hidden fade-wrapper">
+                <div class="bg-shape" data-background="assets/img/shapes/process-shape-1.png"></div>
+                <div class="container container-2">
+                    <div class="heading-space align-items-end">
+                        <div class="section-heading mb-0">
+                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">How We Work</h4>
+                            <h2 class="section-title cursor-effect title-2">A Thoughtful <span>Design <br> process</span> for exceptional <br> results.</h2>
+                        </div>
+                        <div class="process-desc"><p class="mb-0">Every project begins with understanding your vision and evolves through<br> careful planning, creative execution, and attention to detail. <br> Our process is designed to make your journey smooth, <br> collaborative, and inspiring from start to finish.</p></div>
+                    </div>
+                    <div class="row gy-xl-0 gy-4 process-wrap fade-wrapper">
+                        <div class="col-xl-3 col-lg-6 col-md-6"><div class="process-item fade-top"><div class="process-thumb"><img src="assets/img/images/process-img-1.png" alt="process"></div><div class="process-content"><h3 class="title"><span>01</span>. Initial Consultation</h3><p>We begin by understanding <br> your vision, space, and <br> functional requirements.</p></div><span class="number">01</span></div></div>
+                        <div class="col-xl-3 col-lg-6 col-md-6"><div class="process-item fade-top"><div class="process-thumb"><img src="assets/img/images/process-img-2.png" alt="process"></div><div class="process-content"><h3 class="title"><span>02</span>. Design & Planning</h3><p>We create layouts, concepts, <br> and design directions tailored <br> to your style and needs.</p></div><span class="number">02</span></div></div>
+                        <div class="col-xl-3 col-lg-6 col-md-6"><div class="process-item fade-top"><div class="process-thumb"><img src="assets/img/images/process-img-3.png" alt="process"></div><div class="process-content"><h3 class="title"><span>03</span>. Execution & Coordination</h3><p>We manage design progress, <br> materials, and on-site details <br> for smooth implementation.</p></div><span class="number">03</span></div></div>
+                        <div class="col-xl-3 col-lg-6 col-md-6"><div class="process-item fade-top"><div class="process-thumb"><img src="assets/img/images/process-img-4.png" alt="process"></div><div class="process-content"><h3 class="title"><span>04</span>. Final Styling & Handover</h3><p>We complete the finishing <br> touches and deliver a space <br> ready to be experienced.</p></div><span class="number">04</span></div></div>
+                    </div>
+                    <div class="process-text"><h5 class="bottom-text">Ready to transform your space? <a href="./contact.html">Let's bring your vision to life.</a></h5></div>
+                </div>
+            </section>
+
+            <!-- Project section (unchanged) -->
+            <section class="project-section fade-wrapper" style="padding-top: 300px;">
+                <div class="project-text"><span>Interior</span></div>
+                <div class="project-house-img"><img src="assets/img/images/project-house.png" alt="img"></div>
+            </section>
+
+            <!-- Testimonial (unchanged) -->
+            <section class="testimonial-section pt-150 pb-130 fade-wrapper">
+                <div class="container container-2">
+                    <div class="row section-heading-wrap fade-top">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12"><div class="section-heading mb-0"><h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">WHY CHOOSE ENTRUST</h4></div></div>
+                        <div class="col-lg-8 col-md-12"><div class="section-heading section-heading-2 mb-0"><h2 class="section-title cursor-effect title-2">Thoughtful Design. <br> <span>Perfect Execution.</span> <br> Spaces You'll Love.</h2></div></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6"><div class="testi-img slide-anim" data-delay="0.3" data-offset="100" data-direction="left"><img src="assets/img/testi/testi-img-1.png" alt="testi"></div></div>
+                        <div class="col-lg-6">
+                            <div class="testi-carousel-wrap slide-anim" data-delay="0.3" data-offset="100" data-direction="right">
+                                <div class="testi-top-content"><div class="right-content rating-list"><p><i class="fa-solid fa-star" style="color:#C6A34F;"></i> Tailored To Your Lifestyle <br><i class="fa-solid fa-star" style="color:#C6A34F;"></i> Transparent From Start To Finish <br><i class="fa-solid fa-star" style="color:#C6A34F;"></i> Designs That Balance Beauty & Function</p></div></div>
+                                <div class="testi-carousel swiper"><div class="swiper-wrapper"><div class="swiper-slide"><div class="testi-item"><p>"We believe every space deserves a design journey built on creativity, clarity, and careful attention to detail."</p><div class="testi-author"><div class="author-img"><img src="assets/img/favicon.png" width="50px" alt="author"></div><h4 class="name">The Entrust Promise <span>Client-First Design Approach</span></h4></div></div></div></div></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Panorama (unchanged) -->
+            <div class="antra-panoroma-area pt-150 fade-wrapper">
+                <div class="bg-shape"><img src="assets/img/shapes/panoroma-shape-1.png" alt="shape"></div>
+                <div class="container">
+                    <div class="section-heading text-center align-items-center fade-top">
+                        <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">360-degree panoramas</h4>
+                        <h2 class="section-title cursor-effect title-2">Create an even <span>greater <br>experience</span></h2>
+                    </div>
+                </div>
+                <div class="antra-panoroma-container container fade-top" id="panoContainer">
+                    <div class="pano-hint-overlay" id="panoHint">
+                        <div class="pano-hint-ring"><i class="fa-solid fa-rotate pano-hint-icon"></i></div>
+                        <span class="pano-hint-text">swipe around for 360-degree · Scroll to zoom</span>
+                    </div>
+                    <div class="pano-release-toast" id="panoReleaseToast"><i class="fa-solid fa-arrow-down" style="margin-right:8px;font-size:10px;"></i>Scroll to continue</div>
+                    <div class="antra-panoroma-img" data-img="assets/img/bg-img/virtual-tours.jpg"></div>
+                </div>
+            </div>
+
+            <!-- Blog (unchanged) -->
+            <section class="blog-section pt-150 fade-wrapper tl-bg-color">
+                <div class="container container-2">
+                    <div class="row section-heading-wrap fade-top">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12"><div class="section-heading mb-0"><h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">our design ideas</h4></div></div>
+                        <div class="col-lg-8 col-md-12"><div class="section-heading section-heading-2 mb-0"><h2 class="section-title cursor-effect title-2">Latest ideas <span>from our <br> Interior</span> designers</h2></div></div>
+                    </div>
+                    <div class="blog-carousel swiper fade-top">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide"><div class="post-card"><div class="post-thumb"><img src="assets/img/blog/b1.jpg" alt="post"><span class="category">exteriors</span></div><div class="post-content"><ul class="post-meta"><li>Mar 30, 2026</li><li>By <span>Admin</span></li></ul><h3 class="title"><a href="./blogs/small-home-space.html">Four Ways for Creating Extra Space in Small Homes</a></h3><p>Modest, recently established interior design company that seeks to address a variety of topics, including…</p></div></div></div>
+                            <div class="swiper-slide"><div class="post-card"><div class="post-thumb"><img src="assets/img/blog/b2.jpg" alt="post"><span class="category">exteriors</span></div><div class="post-content"><ul class="post-meta"><li>Mar 26, 2026</li><li>By <span>Admin</span></li></ul><h3 class="title"><a href="./blogs/modern-interior-tips.html">Transform Your Home With Modern Interior Design Tips</a></h3><p>From minimalist furniture to statement lighting, explore how modern design principles can completely elevate your living space…</p></div></div></div>
+                            <div class="swiper-slide"><div class="post-card"><div class="post-thumb"><img src="assets/img/blog/b3.jpg" alt="post"><span class="category">exteriors</span></div><div class="post-content"><ul class="post-meta"><li>Mar 13, 2026</li><li>By <span>Admin</span></li></ul><h3 class="title"><a href="./blogs/minimalist-space.html">Maximize Your Minimalist Space With Smart Solutions</a></h3><p>Minimalism is more than a trend it's a lifestyle. Learn how to design a clutter-free, elegant home that breathes simplicity and intention…</p></div></div></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Newsletter (unchanged) -->
+            <section class="newsletter-section pb-130 overflow-hidden tl-bg-color fade-wrapper">
+                <div class="bg-shape"><img src="assets/img/shapes/newsletter-shape.png" alt="shape"></div>
+                <div class="container">
+                    <div class="newsletter-wrap">
+                        <div class="section-heading text-center fade-top">
+                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">Subscribe to the newsletter</h4>
+                            <h2 class="section-title cursor-effect">Join <span>our newsletter <br> stay</span> up to date</h2>
+                            <p class="fade-top">Join our newsletter. Learn something new, gain access to exclusive content, <br> and stay informed with the latest updates in the industry.</p>
+                        </div>
+                        <div class="newsletter-form fade-top">
+                            <input type="text" id="email" name="email" class="form-control" placeholder="Email address..">
+                            <button type="submit"><i class="fa-regular fa-arrow-right-long"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Footer (unchanged) -->
+            <footer class="footer-section overflow-hidden">
+                <div class="footer-bg" data-background="assets/img/bg-img/footer-bg.png"></div>
+                <div class="footer-shade"></div>
+                <div class="container container-2">
+                    <div class="row footer-wrap">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="widget-header"><div class="footer-logo"><a href="./index.html"><img src="assets/img/logo/logo-1.png" alt="logo"></a></div></div>
+                                <p class="mb-10">Elevating interiors with timeless design and refined elegance. Crafting spaces that leave a lasting impression.</p>
+                                <p class="mb-0">Entrust Interior Designers, <br> Bengaluru, Karnataka 560043, <br> India</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2">
+                                <ul class="footer-list">
+                                    <li><a href="./index.html">Home</a></li><li><a href="./about.html">About</a></li><li><a href="./services.html">Services</a></li><li><a href="./portfolio.html">Portfolio</a></li><li><a href="./gallery.html">Gallery</a></li><li><a href="./blogs.html">Blogs</a></li><li><a href="./contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2 pl-0">
+                                <ul class="footer-list">
+                                    <li><a>Our Services</a></li>
+                                    <li><a href="./services/residential-interior-design.html">Residential Interior Design</a></li>
+                                    <li><a href="./services/modular-kitchen-storage-design.html">Modular Kitchen &amp; Storage Design</a></li>
+                                    <li><a href="./services/space-planning-layout-design.html">Space Planning & Layout Design</a></li>
+                                    <li><a href="./services/furniture-materials-finish-selection.html">Furniture, Materials & Finish Selection</a></li>
+                                    <li><a href="./services/3d-visualisation-design-consultation.html">3D Visualisation & Design Consultation</a></li>
+                                    <li><a href="./services/lighting-ambience-design.html">Lighting &amp; Ambience Design</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="footer-address">
+                                    <a class="number" href="tel:+919845012345">+91 98450 12345</a>
+                                    <a class="mail" href="mailto:info@entrust.com">info@entrust.com</a>
+                                    <ul class="social-list">
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                    <p class="mb-0">© <script>document.write(new Date().getFullYear())</script> entrust. All Rights Reserved.</p>
+                                    <p>Designed and Developed by <a href="https://thinkb.agency" target="_blank">thinkB</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-text"><span>ENTRUST</span></div>
+            </footer>
+
+        </div>
+    </div>
+
+    <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+
+    <!-- Vendor JS (unchanged) -->
+    <script src="assets/js/vendor/jquary-3.7.1.min.js"></script>
+    <script src="assets/js/vendor/bootstrap-bundle.js"></script>
+    <script src="assets/js/vendor/imagesloaded-pkgd.js"></script>
+    <script src="assets/js/vendor/waypoints.min.js"></script>
+    <script src="assets/js/vendor/venobox.min.js"></script>
+    <script src="assets/js/vendor/odometer.min.js"></script>
+    <script src="assets/js/vendor/meanmenu.js"></script>
+    <script src="assets/js/vendor/jquery.isotope.js"></script>
+    <script src="assets/js/vendor/swiper.min.js"></script>
+    <script src="assets/js/vendor/split-type.min.js"></script>
+    <script src="assets/js/vendor/gsap.min.js"></script>
+    <script src="assets/js/vendor/scroll-trigger.min.js"></script>
+    <script src="assets/js/vendor/scroll-smoother.js"></script>
+    <script src="assets/js/vendor/jquery.carouselTicker.js"></script>
+    <script src="assets/js/vendor/nice-select.js"></script>
+    <script src="assets/js/vendor/three.min.js"></script>
+    <script src="assets/js/vendor/panolens.min.js"></script>
+    <script src="assets/js/vendor/jquery.event.move.min.js"></script>
+    <script src="assets/js/vendor/jquery.twentytwenty.min.js"></script>
+    <script src="assets/js/slider.js"></script>
+    <script src="assets/js/banner-process.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Configurator JS (unchanged) -->
+    <script>
+    (function () {
+
+        var FORMSPREE_URL = 'https://formspree.io/f/mnjokvql';
+
+        var ROOMS = [
+            { id: 'kitchen',  label: 'Kitchen'    },
+            { id: 'living',   label: 'Living Room' },
+            { id: 'bedroom',  label: 'Bedroom'     },
+            { id: 'bathroom', label: 'Bathroom'    },
+            { id: 'dining',   label: 'Dining Room' },
+            { id: 'office',   label: 'Home Office' },
+            { id: 'foyer',    label: 'Foyer'       },
+            { id: 'balcony',  label: 'Balcony'     }
+        ];
+
+        var selectedImg = {}, selectedLabel = {}, selections = {};
+        ROOMS.forEach(function(r){ selectedImg[r.id] = null; selectedLabel[r.id] = null; selections[r.id] = null; });
+
+        var mosaicCells = ROOMS.map(function(r){ return '<div class="dv-mosaic-cell" id="dvCell-' + r.id + '"></div>'; }).join('');
+
+        var overlayHTML = [
+            '<div id="dvOverlayRoot" role="dialog" aria-modal="true" aria-label="Your Design Vision">',
+              '<div class="dv-overlay-backdrop" id="overlayBackdrop"></div>',
+              '<div class="dv-overlay-panel">',
+                '<button class="dv-overlay-close" id="overlayClose" aria-label="Close"><svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 1l12 12M13 1L1 13" stroke-width="1.5" stroke-linecap="round" stroke="rgba(255,255,255,0.7)"/></svg></button>',
+                '<div class="dv-result-mosaic" id="dvResultMosaic">' + mosaicCells + '</div>',
+                '<div class="dv-result-bar" id="dvResultBar"><button class="dv-submit-btn" id="dvSubmitBtn" type="button">Submit My Vision <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button></div>',
+                '<div class="dv-success-msg" id="dvSuccessMsg"><div class="dv-success-icon"><svg viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M4 10l4 4 8-8" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></div><h4>Thank you \u2014 we\'ll be in touch.</h4><p>Your design preferences have been shared with our team.<br>Expect a call within 24 hours.</p></div>',
+              '</div>',
+            '</div>'
+        ].join('');
+
+        document.body.insertAdjacentHTML('beforeend', overlayHTML);
+
+        var visualiseBtn = document.getElementById('visualiseBtn');
+        var resetBtn     = document.getElementById('resetBtn');
+        var progressText = document.getElementById('progressText');
+        var overlay      = document.getElementById('dvOverlayRoot');
+        var overlayClose = document.getElementById('overlayClose');
+        var overlayBD    = document.getElementById('overlayBackdrop');
+        var submitBtn    = document.getElementById('dvSubmitBtn');
+        var successMsg   = document.getElementById('dvSuccessMsg');
+        var resultBar    = document.getElementById('dvResultBar');
+        var nameInput    = document.getElementById('dvName');
+        var phoneInput   = document.getElementById('dvPhone');
+        var emailInput   = document.getElementById('dvEmail');
+        var cfName       = document.getElementById('dvCfName');
+        var cfPhone      = document.getElementById('dvCfPhone');
+        var cfEmail      = document.getElementById('dvCfEmail');
+
+        var PLACEHOLDER_SVG = '<div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div>';
+
+        function countSelected() { return ROOMS.filter(function(r){ return selections[r.id]; }).length; }
+
+        function updateSteps() {
+            document.querySelectorAll('.dv-step').forEach(function(step) {
+                var room = step.dataset.step;
+                step.classList.remove('active', 'completed');
+                if (selections[room]) step.classList.add('completed');
+            });
+            var firstEmpty = ROOMS.find(function(r){ return !selections[r.id]; });
+            if (firstEmpty) {
+                var el = document.querySelector('.dv-step[data-step="' + firstEmpty.id + '"]');
+                if (el) { el.classList.remove('completed'); el.classList.add('active'); }
+            }
+        }
+
+        function updateUI() {
+            var n = countSelected();
+            progressText.querySelector('span').textContent = n;
+            visualiseBtn.disabled = n < 8;
+            updateSteps();
+        }
+
+        function renderMosaicCell(roomId) {
+            var cell  = document.getElementById('dvCell-' + roomId);
+            var label = ROOMS.find(function(r){ return r.id === roomId; }).label;
+            var img   = selectedImg[roomId];
+            var style = selectedLabel[roomId];
+            if (!cell) return;
+            if (img) {
+                var imgEl = new Image();
+                imgEl.onload = function() {
+                    cell.innerHTML = '<img src="' + img + '" alt="' + style + '"><div class="dv-mosaic-label"><span class="dv-mosaic-room-tag">' + label + '</span><div class="dv-mosaic-style-name">' + style + '</div></div>';
+                    var i = cell.querySelector('img');
+                    if (i) { if (i.complete) { i.classList.add('loaded'); } else { i.addEventListener('load', function(){ this.classList.add('loaded'); }); } }
+                };
+                imgEl.onerror = function(){ cell.innerHTML = emptyCell(); };
+                imgEl.src = img;
+            } else { cell.innerHTML = emptyCell(); }
+        }
+
+        function emptyCell() { return '<div class="dv-mosaic-empty"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div>'; }
+
+        document.querySelectorAll('.dv-option').forEach(function(opt) {
+            opt.addEventListener('click', function() {
+                var room = this.dataset.room, value = this.dataset.value, imgSrc = this.dataset.img, lbl = this.dataset.label;
+                document.querySelectorAll('.dv-option[data-room="' + room + '"]').forEach(function(o){ o.classList.remove('selected'); });
+                this.classList.add('selected');
+                selections[room] = value; selectedImg[room] = imgSrc; selectedLabel[room] = lbl;
+                var preview = document.getElementById('preview-' + room);
+                if (preview) {
+                    var img = new Image();
+                    img.onload = function() {
+                        preview.innerHTML = '<img src="' + imgSrc + '" alt="' + lbl + '"><div class="dv-room-preview-label">' + lbl + '</div>';
+                        var pImg = preview.querySelector('img');
+                        if (pImg.complete) { pImg.classList.add('loaded'); } else { pImg.addEventListener('load', function(){ this.classList.add('loaded'); }); }
+                        preview.classList.add('visible');
+                    };
+                    img.onerror = function(){ preview.innerHTML = PLACEHOLDER_SVG; preview.classList.add('visible'); };
+                    img.src = imgSrc;
+                }
+                if (overlay.classList.contains('active')) { renderMosaicCell(room); }
+                updateUI();
+            });
+        });
+
+        function validate() {
+            var missing = [];
+            [cfName, cfPhone, cfEmail].forEach(function(f){ f.classList.remove('dv-cf-error'); });
+            if (!nameInput.value.trim())  { cfName.classList.add('dv-cf-error');  missing.push('<i class="fa-solid fa-user" style="margin-right:8px;color:#C6A34F;"></i>Your Name'); }
+            if (!phoneInput.value.trim()) { cfPhone.classList.add('dv-cf-error'); missing.push('<i class="fa-solid fa-phone" style="margin-right:8px;color:#C6A34F;"></i>Phone Number'); }
+            if (!emailInput.value.trim() || emailInput.value.indexOf('@') === -1) { cfEmail.classList.add('dv-cf-error'); missing.push('<i class="fa-solid fa-envelope" style="margin-right:8px;color:#C6A34F;"></i>Valid Email Address'); }
+            if (missing.length > 0) { Swal.fire({ customClass: { popup: 'swal-entrust' }, title: 'Details needed', html: '<div style="text-align:left;line-height:2.2;font-size:13px;">' + missing.join('<br>') + '</div>', icon: 'warning', confirmButtonText: 'Got it' }); return false; }
+            return true;
+        }
+
+        [nameInput, phoneInput, emailInput].forEach(function(inp){ inp.addEventListener('input', function(){ this.closest('.dv-cf').classList.remove('dv-cf-error'); }); });
+
+        resetBtn.addEventListener('click', function() {
+            document.querySelectorAll('.dv-option').forEach(function(o){ o.classList.remove('selected'); });
+            ROOMS.forEach(function(r){ selections[r.id] = null; selectedImg[r.id] = null; selectedLabel[r.id] = null; var p = document.getElementById('preview-' + r.id); if (p) { p.classList.remove('visible'); p.innerHTML = PLACEHOLDER_SVG; } });
+            nameInput.value = ''; phoneInput.value = ''; emailInput.value = '';
+            [cfName, cfPhone, cfEmail].forEach(function(f){ f.classList.remove('dv-cf-error'); });
+            updateUI();
+            document.querySelectorAll('.dv-step').forEach(function(s){ s.classList.remove('active','completed'); });
+            document.querySelector('.dv-step[data-step="kitchen"]').classList.add('active');
+        });
+
+        visualiseBtn.addEventListener('click', function() {
+            if (!validate()) { document.getElementById('dvContactWrap').scrollIntoView({ behavior: 'smooth', block: 'center' }); visualiseBtn.classList.add('shake'); setTimeout(function(){ visualiseBtn.classList.remove('shake'); }, 500); return; }
+            ROOMS.forEach(function(r){ renderMosaicCell(r.id); });
+            resultBar.style.display = ''; successMsg.style.display = 'none'; submitBtn.disabled = false;
+            submitBtn.innerHTML = 'Submit My Vision <svg width="12" height="12" viewBox="0 0 12 12" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M1 6h10M7 2l4 4-4 4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg>';
+            overlay.classList.add('active'); document.body.style.overflow = 'hidden';
+        });
+
+        submitBtn.addEventListener('click', function() {
+            submitBtn.disabled = true; submitBtn.textContent = 'Sending\u2026';
+            var payload = { name: nameInput.value.trim(), phone: phoneInput.value.trim(), email: emailInput.value.trim(), kitchen: selectedLabel['kitchen'] || '\u2014', living_room: selectedLabel['living'] || '\u2014', bedroom: selectedLabel['bedroom'] || '\u2014', bathroom: selectedLabel['bathroom'] || '\u2014', dining_room: selectedLabel['dining'] || '\u2014', home_office: selectedLabel['office'] || '\u2014', foyer: selectedLabel['foyer'] || '\u2014', balcony: selectedLabel['balcony'] || '\u2014', _subject: 'Design Vision Enquiry from ' + nameInput.value.trim() };
+            fetch(FORMSPREE_URL, { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify(payload) })
+                .then(function(res){ if (res.ok) { resultBar.style.display = 'none'; successMsg.style.display = 'block'; } else { return res.json().then(function(d){ throw new Error(d.error || 'Failed'); }); } })
+                .catch(function(err){ console.error('Formspree error:', err); submitBtn.disabled = false; submitBtn.textContent = 'Try Again'; });
+        });
+
+        function closeOverlay() { overlay.classList.remove('active'); document.body.style.overflow = ''; }
+        overlayClose.addEventListener('click', closeOverlay);
+        overlayBD.addEventListener('click', closeOverlay);
+        document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeOverlay(); });
+
+        updateUI();
+
+    })();
+    </script>
+
+    <!-- Panorama JS (unchanged) -->
+    <script>
+    (function () {
+        var panoContainer = document.getElementById('panoContainer');
+        var panoHint = document.getElementById('panoHint');
+        var releaseToast = document.getElementById('panoReleaseToast');
+        if (!panoContainer || !panoHint) return;
+
+        var hintShown = false, hintDismissed = false, releaseShowing = false, atMaxZoom = false;
+
+        var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) { if (entry.isIntersecting && !hintShown) { hintShown = true; panoHint.classList.add('visible'); setTimeout(function(){ if (!hintDismissed) dismissHint(); }, 3000); } });
+        }, { threshold: 0.4 });
+        observer.observe(panoContainer);
+
+        function dismissHint() { hintDismissed = true; panoHint.classList.add('fade-out'); setTimeout(function(){ panoHint.style.display = 'none'; }, 800); }
+        panoContainer.addEventListener('mousedown', dismissHint, { once: true });
+        panoContainer.addEventListener('touchstart', dismissHint, { once: true, passive: true });
+
+        var panoViewer = null;
+        function findViewer() { if (window.panoramaViewer) { panoViewer = window.panoramaViewer; return true; } if (window.PANOLENS && window.PANOLENS._viewer) { panoViewer = window.PANOLENS._viewer; return true; } return false; }
+        var pollInterval = setInterval(function(){ if (findViewer()) { clearInterval(pollInterval); setupScrollRelease(); } }, 300);
+        setTimeout(function(){ if (!panoViewer) { clearInterval(pollInterval); setupScrollReleaseHeuristic(); } }, 5000);
+
+        function setupScrollRelease() { panoContainer.addEventListener('wheel', function(){ setTimeout(checkFov, 100); }, { passive: true }); }
+        function checkFov() { try { var cam = panoViewer.camera || (panoViewer.getCamera && panoViewer.getCamera()); if (!cam) return; var fov = cam.fov; if (fov <= 11 && !atMaxZoom) { atMaxZoom = true; showReleaseToast(); } if (fov > 15) { atMaxZoom = false; hideReleaseToast(); } } catch(e){} }
+
+        function setupScrollReleaseHeuristic() {
+            var count = 0;
+            panoContainer.addEventListener('wheel', function(e) {
+                if (e.deltaY < 0) { count = Math.min(count + 1, 10); } else { count = Math.max(count - 1, 0); }
+                if (count >= 8 && !atMaxZoom) { atMaxZoom = true; showReleaseToast(); }
+                if (count < 6) { atMaxZoom = false; hideReleaseToast(); }
+            }, { passive: true });
+        }
+
+        function showReleaseToast() { if (releaseShowing) return; releaseShowing = true; releaseToast.classList.add('show'); setTimeout(releasePanoScroll, 2500); }
+        function hideReleaseToast() { releaseShowing = false; releaseToast.classList.remove('show'); }
+        function releasePanoScroll() {
+            var canvas = panoContainer.querySelector('canvas') || panoContainer.querySelector('.panolens-canvas') || panoContainer;
+            canvas.addEventListener('wheel', function(e) { if (atMaxZoom && e.deltaY > 0) { e.stopImmediatePropagation(); window.scrollBy({ top: e.deltaY * 2, behavior: 'smooth' }); } }, { passive: false, capture: true });
+        }
+    })();
+    </script>
+
+    <!-- Nav overlay JS (unchanged) -->
+    <script>
+        const entrust_hamBtn  = document.getElementById('entrust-ham-btn');
+        const entrust_overlay = document.getElementById('entrust-overlay');
+
+        function entrust_openMenu()  { entrust_hamBtn.classList.add('entrust-is-open');    entrust_overlay.classList.add('entrust-is-open');    entrust_hamBtn.setAttribute('aria-expanded','true');  document.body.style.overflow = 'hidden'; }
+        function entrust_closeMenu() { entrust_hamBtn.classList.remove('entrust-is-open'); entrust_overlay.classList.remove('entrust-is-open'); entrust_hamBtn.setAttribute('aria-expanded','false'); document.body.style.overflow = ''; }
+
+        entrust_hamBtn.addEventListener('click', () => { entrust_overlay.classList.contains('entrust-is-open') ? entrust_closeMenu() : entrust_openMenu(); });
+        entrust_overlay.querySelectorAll('.entrust-overlay__links a').forEach(link => { link.addEventListener('click', entrust_closeMenu); });
+        document.addEventListener('keydown', e => { if (e.key === 'Escape') entrust_closeMenu(); });
+    </script>
+
+</body>
+</html>

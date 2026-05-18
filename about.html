@@ -1,0 +1,1661 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+
+    <!-- Site Title -->
+    <title>Entrust - Interior Designers</title>
+
+    <!-- Place favicon.ico in the root directory -->
+    <link rel="shortcut icon" type="image/x-icon" href="assets/img/favicon.png">
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/fontawesome.min.css">
+    <link rel="stylesheet" href="assets/css/venobox.min.css">
+    <link rel="stylesheet" href="assets/css/odometer.min.css">
+    <link rel="stylesheet" href="assets/css/nice-select.css">
+    <link rel="stylesheet" href="assets/css/carouselTicker.css">
+    <link rel="stylesheet" href="assets/css/animation.css">
+    <link rel="stylesheet" href="assets/css/swiper.min.css">
+    <link rel="stylesheet" href="assets/css/main.css">
+
+    <style>
+        /* ─── FOUNDER SECTION ─────────────────────────────────────── */
+
+        .founder-section {
+            background: #faf8f5;
+            position: relative;
+        }
+
+        .founder-bg-line {
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 1px;
+            height: 100%;
+            background: linear-gradient(to bottom, transparent, #e8dfd0 30%, #e8dfd0 70%, transparent);
+            opacity: 0.5;
+        }
+
+        /* .founder-wrap {
+    gap: 0 60px;
+} */
+
+        /* Image block */
+        .founder-img-block {
+            position: relative;
+            padding-bottom: 40px;
+        }
+
+        .founder-img-frame {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .founder-img-frame img {
+            border-radius: 12px;
+            width: 100%;
+            height: 580px;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            filter: grayscale(8%);
+            transition: filter 0.5s ease;
+        }
+
+        .founder-img-frame:hover img {
+            filter: grayscale(0%);
+        }
+
+        .founder-img-border {
+            position: absolute;
+            bottom: -14px;
+            right: -14px;
+            width: calc(100% - 24px);
+            height: calc(100% - 24px);
+            border: 1px solid #C6A34F;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .founder-tag {
+            border-radius: 12px;
+            position: absolute;
+            bottom: 10px;
+            left: -10px;
+            background: #1a1714;
+            color: #C6A34F;
+            padding: 14px 22px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 13px;
+            letter-spacing: 1px;
+            font-weight: 500;
+        }
+
+        .founder-tag .tag-icon {
+            font-size: 16px;
+            opacity: 0.85;
+        }
+
+        /* Content */
+        .founder-content {
+            padding-left: 20px;
+        }
+
+        .founder-bio {
+            font-size: 16px;
+            line-height: 1.9;
+            color: #6b6b62;
+            margin-bottom: 16px;
+        }
+
+        .founder-bio-wrap {
+            margin-bottom: 36px;
+        }
+
+        /* Philosophy list */
+        .founder-philosophy-wrap {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 44px;
+            padding: 32px;
+            background: #faf8f5;
+            border-left: 2px solid #C6A34F;
+        }
+
+        .founder-philosophy-item {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .phi-icon {
+            width: 100px;
+            height: 100px;
+            background: #fff;
+            border: 1px solid #e8dfd0;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #C6A34F;
+            font-size: 40px;
+            margin-top: 2px;
+        }
+
+        .phi-text h5 {
+            font-size: 20px;
+            font-weight: 300;
+            color: #1a1714;
+            margin-bottom: 3px;
+            letter-spacing: 0.3px;
+        }
+
+        .phi-text p {
+            font-size: 16px;
+            color: #8a8a7f;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        /* Signature */
+        .founder-signature-wrap {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding-top: 10px;
+            border-top: 1px solid #eeebe4;
+        }
+
+        .founder-signature {
+            height: 56px;
+            width: auto;
+            opacity: 0.8;
+            min-width: 120px;
+        }
+
+        .founder-name {
+            font-size: 24px;
+            font-weight: 100;
+            color: #1a1714;
+            margin: 0 0 2px;
+            letter-spacing: 0.3px;
+        }
+
+        .founder-role-label {
+            font-size: 12px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: #C6A34F;
+            font-weight: 500;
+        }
+
+        /* ─── TEAM SECTION ────────────────────────────────────────── */
+
+        .team-cards-wrap {
+            margin-top: 20px;
+            margin-bottom: 60px;
+        }
+
+        .team-card {
+            background: #fff;
+            overflow: hidden;
+            transition: transform 0.35s ease, box-shadow 0.35s ease;
+            border-radius: 12px;
+        }
+
+        /* Image */
+        .team-card-img {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 3 / 4;
+            background: #e8e4dc;
+        }
+
+        .team-card-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: top center;
+            display: block;
+            transition: transform 0.5s ease;
+            filter: grayscale(15%);
+        }
+
+        .team-card:hover .team-card-img img {
+            transform: scale(1.04);
+            filter: grayscale(0%);
+        }
+
+        /* Overlay */
+        .team-card-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(26, 23, 20, 0.55);
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
+            padding-bottom: 24px;
+            opacity: 0;
+            transition: opacity 0.35s ease;
+        }
+
+        .team-card:hover .team-card-overlay {
+            opacity: 1;
+        }
+
+        .team-social {
+            display: flex;
+            gap: 10px;
+        }
+
+        .team-social a {
+            width: 38px;
+            height: 38px;
+            border: 1px solid rgba(198, 163, 79, 0.7);
+            border-radius: 6px;
+            color: #C6A34F;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 13px;
+            text-decoration: none;
+            transition: background 0.2s ease, color 0.2s ease;
+            transform: translateY(8px);
+            opacity: 0;
+            transition: transform 0.35s ease 0.05s, opacity 0.35s ease 0.05s, background 0.2s, color 0.2s;
+        }
+
+        .team-card:hover .team-social a {
+            transform: translateY(0);
+            opacity: 1;
+        }
+
+        .team-card:hover .team-social a:nth-child(2) {
+            transition-delay: 0.1s, 0.1s, 0s, 0s;
+        }
+
+        .team-social a:hover {
+            background: #C6A34F;
+            color: #fff;
+            border-color: #C6A34F;
+        }
+
+        /* Card number badge */
+        .team-card-number {
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            font-size: 11px;
+            font-weight: 700;
+            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.9);
+            background: rgba(198, 163, 79, 0.85);
+            padding: 4px 10px;
+            line-height: 1;
+        }
+
+        /* Card info */
+        .team-card-info {
+            padding: 22px 20px 24px;
+            border-top: 2px solid transparent;
+            transition: border-color 0.35s ease;
+        }
+
+        .team-card:hover .team-card-info {
+            border-top-color: #C6A34F;
+        }
+
+        .team-name {
+            font-size: 19px;
+            font-weight: 300;
+            color: #1a1714;
+            margin-bottom: 3px;
+            letter-spacing: 0.2px;
+        }
+
+        .team-role {
+            font-size: 11.5px;
+            letter-spacing: 2.5px;
+            text-transform: uppercase;
+            color: #C6A34F;
+            font-weight: 500;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .team-desc {
+            font-size: 14px;
+            line-height: 1.7;
+            color: #8a8a7f;
+            margin: 0;
+        }
+
+        /* ─── TEAM CTA BANNER ─────────────────────────────────────── */
+
+        .team-cta-wrap {
+            margin-top: 20px;
+        }
+
+        .team-cta-inner {
+            background: #1a1714;
+            padding: 56px 64px;
+            display: grid;
+            grid-template-columns: 1.1fr 0.9fr;
+            gap: 48px;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .team-cta-inner::before {
+            content: 'ENTRUST';
+            position: absolute;
+            right: -20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 100px;
+            font-weight: 900;
+            color: rgba(198, 163, 79, 0.04);
+            letter-spacing: 8px;
+            white-space: nowrap;
+            pointer-events: none;
+            line-height: 1;
+        }
+
+        .cta-eyebrow {
+            display: inline-block;
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: #C6A34F;
+            font-weight: 600;
+            margin-bottom: 14px;
+            border-bottom: 1px solid rgba(198, 163, 79, 0.3);
+            padding-bottom: 8px;
+        }
+
+        .cta-title {
+            font-size: clamp(22px, 2.5vw, 32px);
+            font-weight: 500;
+            color: #fff;
+            line-height: 1.4;
+            margin: 0;
+            letter-spacing: 0.2px;
+        }
+
+        .cta-title span {
+            color: #C6A34F;
+            font-style: italic;
+        }
+
+        .team-cta-right p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.55);
+            margin-bottom: 28px;
+        }
+
+        /* ─── RESPONSIVE ──────────────────────────────────────────── */
+
+        @media (max-width: 991px) {
+            .founder-content {
+                padding-left: 0;
+                margin-top: 40px;
+            }
+
+            .founder-img-frame img {
+                height: 440px;
+            }
+
+            .team-cta-inner {
+                grid-template-columns: 1fr;
+                gap: 28px;
+                padding: 40px 32px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .founder-philosophy-wrap {
+                padding: 24px;
+            }
+
+            .team-cta-inner {
+                padding: 36px 24px;
+            }
+
+            .team-cta-inner::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 600px) {
+
+            .phi-icon{
+                font-size: 30px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <!-- preloader -->
+    <div class="preloader overflow-hidden">
+        <div class="site-name"><span><img style="width: 100px;margin-bottom: 15px;" src="./assets/img/favicon.png" alt="img"></span></div>
+    </div>
+    <!-- /.preloader -->
+
+    <!-- header -->
+    <header class="entrust-navbar">
+
+        <!-- LEFT -->
+        <div class=".tl-primary-btn.white-btn">
+            <a href="contact.html" class="tl-primary-btn header-btn">Get in Touch <span class="icon"><i
+                        class="fa-regular fa-arrow-right"></i></span> </a>
+            <a href="contact.html" class="tl-primary-btn spc-header-btn" style="padding: 0px;border: none;"><span class="icon"><i
+                        class="fa-regular fa-arrow-right"></i></span> </a>
+        </div>
+
+        <!-- CENTER LOGO -->
+        <a href="./index.html" class="entrust-navbar__logo">
+            <img class="entrust-logo" src="./assets/img/logo/logo-2.png" alt="Entrust Interior Designers Logo">
+        </a>
+
+        <!-- RIGHT -->
+        <div class="entrust-navbar__right">
+            <button class="entrust-hamburger" id="entrust-ham-btn" aria-label="Toggle navigation" aria-expanded="false">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ── OVERLAY ── -->
+    <div class="entrust-overlay" id="entrust-overlay" role="dialog" aria-modal="true" aria-label="Navigation menu">
+        <div class="entrust-overlay__inner">
+
+            <!-- NAV LINKS -->
+            <nav class="entrust-overlay__nav">
+                <p class="entrust-overlay__nav-label">Navigation</p>
+                <div class="entrust-overlay__divider"></div>
+                <ul class="entrust-overlay__links">
+                    <li><a href="./index.html">Home</a></li>
+                    <li><a href="./about.html">About</a></li>
+                    <li><a href="./services.html">Services</a></li>
+                    <li><a href="./portfolio.html">Portfolio</a></li>
+                    <li><a href="./gallery.html">Gallery</a></li>
+                    <li><a href="./blogs.html">Blogs</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <!-- DETAILS -->
+            <div class="entrust-overlay__details">
+
+                <!-- Address -->
+                <div>
+                    <p class="entrust-overlay__section-label">Our Studio</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <p class="entrust-overlay__address">
+                        Entrust Interior Designers,<br>
+                        Bengaluru, Karnataka 560043,<br>
+                        India
+                    </p>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <p class="entrust-overlay__section-label">Reach Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <a href="tel:+919845012345" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8a19.79 19.79 0 01-3.07-8.67A2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z" />
+                        </svg>
+                        +91 98450 12345
+                    </a>
+                    <a href="mailto:info@entrust.com" class="entrust-overlay__contact-item">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+                            <polyline points="22,6 12,13 2,6" />
+                        </svg>
+                        info@entrust.com
+                    </a>
+                </div>
+
+                <!-- Social -->
+                <div>
+                    <p class="entrust-overlay__section-label">Follow Us</p>
+                    <div class="entrust-overlay__divider"></div>
+                    <div class="entrust-overlay__social">
+
+                        <!-- Instagram -->
+                        <a href="#" class="entrust-social-link" aria-label="Instagram">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+                                <path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z" />
+                                <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+                            </svg>
+                        </a>
+
+                        <!-- Facebook -->
+                        <a href="#" class="entrust-social-link" aria-label="Facebook">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" />
+                            </svg>
+                        </a>
+
+                        <!-- LinkedIn -->
+                        <a href="#" class="entrust-social-link" aria-label="LinkedIn">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z" />
+                                <rect x="2" y="9" width="4" height="12" />
+                                <circle cx="4" cy="4" r="2" />
+                            </svg>
+                        </a>
+
+                        <!-- YouTube -->
+                        <a href="#" class="entrust-social-link" aria-label="YouTube">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path
+                                    d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z" />
+                                <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" />
+                            </svg>
+                        </a>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div id="antra-smooth-wrapper">
+        <div id="antra-smooth-content">
+
+            <section class="page-header">
+                <div class="bg-img" data-background="assets/img/bg-img/ab.png"></div>
+                <div class="overlay"></div>
+                <div class="container">
+                    <div class="page-header-content">
+                        <h1 class="title">About</h1>
+                        <h4 class="sub-title"><a class='home' href='index.html'>Home </a><span class="icon">-</span><a
+                                class='inner-page' href='about.html'> About</a></h4>
+                    </div>
+                </div>
+            </section>
+            <!-- ./ page-header -->
+
+            <section class="about-section-2 pt-130 pb-130">
+                <div class="shape-1"><img src="assets/img/shapes/about-shape-1.png" alt="shape"></div>
+                <div class="container container-2">
+                    <div class="row about-wrap-2">
+                        <div class="col-lg-8">
+                            <div class="about-content-left">
+                                <div class="section-heading">
+                                    <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                        data-duration="0.9" data-stagger="0.03">OUR DESIGN PHILOSOPHY</h4>
+                                    <h2 class="section-title title-2">We Design <span>Thoughtful Interiors <br> That
+                                            Feel Timeless,</span> Personal,<br> And Inspiring</h2>
+                                </div>
+                                <div class="about-counter-wrap">
+                                    <div class="counter-content">
+                                        <h3 class="title"><span>100%</span></h3>
+                                        <p>Client-first <br> design approach</p>
+                                    </div>
+                                    <div class="counter-img">
+                                        <img src="assets/img/images/about-img-2.png" alt="counter">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-4">
+                            <div class="about-content-right">
+                                <div class="about-img-1">
+                                    <img src="assets/img/images/about-img-3.png" alt="about">
+                                </div>
+                                <div class="about-desc">
+                                    <p>At Entrust, we believe every space should reflect the people who live and work in
+                                        it. Our approach combines thoughtful planning, creative detail, and practical
+                                        functionality to shape interiors that feel elegant, purposeful, and uniquely
+                                        yours.</p>
+                                    <div class="about-btn">
+                                        <a href="contact.html" class="tl-primary-btn">Get in Touch <span class="icon"><i
+                                                    class="fa-regular fa-arrow-right"></i></span></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ./ about-section -->
+
+            <!-- <div class="video-area-wrap">
+                <div class="video-bg"></div>
+
+                <video width="100%" autoplay muted loop playsinline>
+                    <source src="assets/img/bg-img/video-bg-3.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div> -->
+            <!-- ./ video-section -->
+
+            <!-- <section class="history-section bg-grey pt-130 pb-130">
+                <div class="container container-2">
+                    <div class="row section-heading-wrap ml-0 mw-100">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-heading mb-0">
+                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                    data-duration="0.9" data-stagger="0.03">OUR EXPERTISE</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12">
+                            <div class="section-heading section-heading-2 mb-0">
+                                <h2 class="section-title title-2">Thoughtfully Designed Spaces <span> <br>For Every
+                                        Lifestyle And Purpose</span></h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="history-carousel-wrap">
+                        <div class="history-carousel swiper">
+                            <div class="swiper-wrapper">
+                                <div class="swiper-slide">
+                                    <div class="history-item">
+                                        <div class="history-img">
+                                            <img src="assets/img/images/history-img-1.png" alt="history">
+                                        </div>
+                                        <div class="history-content">
+                                            <div class="circle"></div>
+                                            <h3 class="title"><a>Residential Interiors</a></h3>
+                                            <p>Warm, functional, and elegant spaces tailored to your everyday living.
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="history-item">
+                                        <div class="history-img">
+                                            <img src="assets/img/images/history-img-2.png" alt="history">
+                                        </div>
+                                        <div class="history-content">
+                                            <div class="circle"></div>
+                                            <h3 class="title"><a>Modular Kitchens</a></h3>
+                                            <p>Smart layouts, premium finishes, and efficient storage crafted
+                                                beautifully.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="history-item">
+                                        <div class="history-img">
+                                            <img src="assets/img/images/history-img-3.png" alt="history">
+                                        </div>
+                                        <div class="history-content">
+                                            <div class="circle"></div>
+                                            <h3 class="title"><a>Living & Lounge Spaces</a></h3>
+                                            <p>Comfort-driven interiors designed for relaxation, hosting, and
+                                                connection.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-slide">
+                                    <div class="history-item">
+                                        <div class="history-img">
+                                            <img src="assets/img/images/history-img-4.png" alt="history">
+                                        </div>
+                                        <div class="history-content">
+                                            <div class="circle"></div>
+                                            <h3 class="title"><a>Bedroom Design</a></h3>
+                                            <p>Personal retreats that feel calm, refined, and deeply comfortable.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+
+            <!-- ============================================================
+     FOUNDER SECTION
+     Place this after the .award-section and before .newsletter-section
+     ============================================================ -->
+
+            <section class="founder-section pt-130 pb-130 overflow-hidden">
+                <div class="founder-bg-line"></div>
+                <div class="container container-2">
+                    <div class="row align-items-center founder-wrap">
+
+                        <!-- LEFT: Image Side -->
+                        <div class="col-lg-5">
+                            <div class="founder-img-block">
+                                <div class="founder-img-frame">
+                                    <img src="assets/img/images/founder-img.jpeg" alt="Founder">
+                                    <div class="founder-img-border"></div>
+                                </div>
+                                <div class="founder-tag">
+                                    <span class="tag-icon"><i class="fa-regular fa-pen-nib"></i></span>
+                                    <span class="tag-label">Founder &amp; Principal Designer</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- RIGHT: Content Side -->
+                        <div class="col-lg-7">
+                            <div class="founder-content">
+                                <div class="section-heading">
+                                    <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                        data-duration="0.9" data-stagger="0.03">THE MIND BEHIND ENTRUST</h4>
+                                    <h2 class="section-title title-2">Designing With <span>Intention,<br> Building
+                                            With</span>
+                                        Purpose</h2>
+                                </div>
+                                <div class="founder-bio-wrap">
+                                    <p class="founder-bio">Entrust was born from a desire to create spaces that go
+                                        beyond aesthetics spaces that truly resonate with the people who inhabit them.
+                                        Rooted in a deep respect for materials, proportion, and human experience, the
+                                        studio was founded with one clear vision: to make considered, lasting interior
+                                        design accessible to those who care about where they live and work.</p>
+                                    <p class="founder-bio">Every project at Entrust starts with listening to you, your
+                                        lifestyle, and the story your space needs to tell. We believe the most
+                                        meaningful interiors are built on honest conversations and careful craft.</p>
+                                </div>
+                                <div class="founder-philosophy-wrap">
+                                    <div class="founder-philosophy-item">
+                                        <span class="phi-icon"><i class="fa-regular fa-lightbulb"></i></span>
+                                        <div class="phi-text">
+                                            <h5>Vision-Driven</h5>
+                                            <p>Every design starts with your vision, never a preset approach.</p>
+                                        </div>
+                                    </div>
+                                    <div class="founder-philosophy-item">
+                                        <span class="phi-icon"><i class="fa-regular fa-gem"></i></span>
+                                        <div class="phi-text">
+                                            <h5>Detail-Obsessed</h5>
+                                            <p>We refine every detail so the final space feels seamless.</p>
+                                        </div>
+                                    </div>
+                                    <div class="founder-philosophy-item">
+                                        <span class="phi-icon"><i class="fa-regular fa-handshake"></i></span>
+                                        <div class="phi-text">
+                                            <h5>Built on Trust</h5>
+                                            <p>Transparent, collaborative, and client-first at every step.</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="founder-signature-wrap">
+                                    <!-- <img src="assets/img/images/founder-signature.png" alt="signature" -->
+                                        <!-- class="founder-signature"> -->
+                                    <div class="founder-name-block">
+                                        <h4 class="founder-name">Name</h4>
+                                        <span class="founder-role-label">Founder, Entrust</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </section>
+            <!-- /.founder-section -->
+
+            
+            <!-- ============================================================
+     TEAM SECTION
+     Place this after .founder-section and before .newsletter-section
+     ============================================================ -->
+
+            <section class="team-section bg-grey pt-130 pb-130 overflow-hidden">
+                <!-- <div class="bg-shape"><img src="assets/img/shapes/team-bg-shape-1.png" alt="shape"></div> -->
+                <div class="container container-2">
+
+                    <!-- Heading Row -->
+                    <div class="row section-heading-wrap">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-heading mb-0">
+                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                    data-duration="0.9" data-stagger="0.03">THE PEOPLE BEHIND THE WORK</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12">
+                            <div class="section-heading section-heading-2 mb-0">
+                                <h2 class="section-title title-2">A Team That <span>Designs</span> With <br> Care,
+                                    Craft, And
+                                    Curiosity</h2>
+                                <p class="mb-0">Each member of our studio brings a unique perspective to the table —<br>
+                                    united by a shared passion for spaces that feel considered and alive.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Team Cards -->
+                    <div class="row gy-4 team-cards-wrap">
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-card-img">
+                                    <img src="assets/img/team/team-img-2.png" alt="Priya Nair">
+                                    <div class="team-card-overlay">
+                                        <div class="team-social">
+                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-card-info">
+                                    <h4 class="team-name">Priya Nair</h4>
+                                    <span class="team-role">Interior Designer</span>
+                                    <p class="team-desc">Specialises in residential spaces that blend warmth with
+                                        refined modern aesthetics.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-card-img">
+                                    <img src="assets/img/team/team-img-1.png" alt="Rohan Verma">
+                                    <div class="team-card-overlay">
+                                        <div class="team-social">
+                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-card-info">
+                                    <h4 class="team-name">Rohan Verma</h4>
+                                    <span class="team-role">Space Planner</span>
+                                    <p class="team-desc">Transforms difficult layouts into intuitive, functional spaces
+                                        with architectural clarity.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-card-img">
+                                    <img src="assets/img/team/team-img-4.png" alt="Kavitha Rao">
+                                    <div class="team-card-overlay">
+                                        <div class="team-social">
+                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-card-info">
+                                    <h4 class="team-name">lissa</h4>
+                                    <span class="team-role">Materials Specialist</span>
+                                    <p class="team-desc">Brings precision and passion to every material, texture, and
+                                        finish decision.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-3 col-md-6">
+                            <div class="team-card">
+                                <div class="team-card-img">
+                                    <img src="assets/img/team/team-img-3.png" alt="Nikhil Sharma">
+                                    <div class="team-card-overlay">
+                                        <div class="team-social">
+                                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                                            <a href="#"><i class="fab fa-instagram"></i></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="team-card-info">
+                                    <h4 class="team-name">Nikhil Sharma</h4>
+                                    <span class="team-role">3D Visualisation</span>
+                                    <p class="team-desc">Brings design concepts to life with photorealistic renders that
+                                        capture every detail.</p>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- /.team-cards-wrap -->
+
+                    <!-- Team CTA Banner -->
+                    <div class="team-cta-wrap">
+                        <div class="team-cta-inner">
+                            <div class="team-cta-left">
+                                <span class="cta-eyebrow">Join Our Studio</span>
+                                <h3 class="cta-title">We're building something <span>meaningful.</span><br> Come be part
+                                    of it.</h3>
+                            </div>
+                            <div class="team-cta-right">
+                                <p>If you're a designer, planner, or creative thinker who shares our belief in
+                                    considered design, we'd love to hear from you.</p>
+                                <a href="contact.html" style="color: white;" class="tl-primary-btn">Get in Touch <span class="icon"><i
+                                            class="fa-regular fa-arrow-right"></i></span></a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+            <!-- /.team-section -->
+
+            <section class="project-section pt-130 fade-wrapper">
+                <!-- <div class="bg-shape" data-background="assets/img/shapes/project-shape-1.png"></div> -->
+                <!-- <div class="project-text"><span>Interior</span></div> -->
+                <div class="container container-2">
+                    <div class="row section-heading-wrap fade-top">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-heading mb-0">
+                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                    data-duration="0.9" data-stagger="0.03">OUR DESIGN STYLES</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12">
+                            <div class="section-heading section-heading-2 mb-0">
+                                <h2 class="section-title cursor-effect title-2">Thoughtfully <span>Designed
+                                        Spaces</span> Tailored To You</h2>
+                                <p class="mb-0">Discover curated interior concepts shaped by our design
+                                    philosophy<br>modern, refined, and tailored to your lifestyle. From living spaces to
+                                    complete homes,<br>we create interiors that feel uniquely yours.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-carousel swiper fade-top">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-1.png" alt="project">
+                                        <ul>
+                                            <li><a>Residential</a></li>
+                                            <li><a>Living Room</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="./portfolio/modern-living-room.html">Modern Living Room</a></h3>
+                                        <span>Elegant comfort for everyday living</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-2.png" alt="project">
+                                        <ul>
+                                            <li><a>Residential</a></li>
+                                            <li><a>Dining Space</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="./portfolio/luxury-dining-space.html">Luxury Dining Space</a>
+                                        </h3>
+                                        <span>Refined interiors for memorable moments</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-3.png" alt="project">
+                                        <ul>
+                                            <li><a>Residential</a></li>
+                                            <li><a>Stairway Design</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="./portfolio/minimal-staircase-concept.html">Minimal Staircase
+                                                Concept</a></h3>
+                                        <span>Clean lines with architectural depth</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-4.png" alt="project">
+                                        <ul>
+                                            <li><a>Residential</a></li>
+                                            <li><a>Lounge Area</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="./portfolio/contemporary-lounge-interior.html">Contemporary
+                                                Lounge Interior</a></h3>
+                                        <span>Balanced design with premium detailing</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-5.png" alt="project">
+                                        <ul>
+                                            <li><a>Office</a></li>
+                                            <li><a>Workspace</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="./portfolio/executive-office-interior.html">Executive Office
+                                                Interior</a></h3>
+                                        <span>Functional spaces designed to inspire</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ./ history-section -->
+
+            <!-- <section class="process-section overflow-hidden fade-wrapper">
+                <div class="bg-shape" data-background="assets/img/shapes/process-shape-1.png"></div>
+                <div class="container container-2">
+                    <div class="heading-space align-items-end">
+                        <div class="section-heading mb-0">
+                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                data-duration="0.9" data-stagger="0.03">How We Work</h4>
+                            <h2 class="section-title cursor-effect title-2">A Thoughtful <span>Design <br>
+                                    process</span> for exceptional <br> results.</h2>
+                        </div>
+                        <div class="process-desc">
+                            <p class="mb-0">Every project begins with understanding your vision and evolves through<br>
+                                careful planning, creative execution, and attention to detail. <br> Our process is
+                                designed to make your journey smooth, <br> collaborative, and inspiring from start to
+                                finish.</p>
+                        </div>
+                    </div>
+                    <div class="row gy-xl-0 gy-4 process-wrap fade-wrapper">
+                        <div class="col-xl-3 col-lg-6 col-md-6">
+                            <div class="process-item fade-top">
+                                <div class="process-thumb">
+                                    <img src="assets/img/images/process-img-1.png" alt="process">
+                                </div>
+                                <div class="process-content">
+                                    <h3 class="title"><span>01</span>. Initial Consultation</h3>
+                                    <p>We begin by understanding <br> your vision, space, and <br> functional
+                                        requirements.</p>
+                                </div>
+                                <span class="number">01</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6">
+                            <div class="process-item fade-top">
+                                <div class="process-thumb">
+                                    <img src="assets/img/images/process-img-2.png" alt="process">
+                                </div>
+                                <div class="process-content">
+                                    <h3 class="title"><span>02</span>. Design & Planning</h3>
+                                    <p>We create layouts, concepts, <br> and design directions tailored <br> to your
+                                        style and needs.</p>
+                                </div>
+                                <span class="number">02</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6">
+                            <div class="process-item fade-top">
+                                <div class="process-thumb">
+                                    <img src="assets/img/images/process-img-3.png" alt="process">
+                                </div>
+                                <div class="process-content">
+                                    <h3 class="title"><span>03</span>. Execution & Coordination</h3>
+                                    <p>We manage design progress, <br> materials, and on-site details <br> for smooth
+                                        implementation.</p>
+                                </div>
+                                <span class="number">03</span>
+                            </div>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-md-6">
+                            <div class="process-item fade-top">
+                                <div class="process-thumb">
+                                    <img src="assets/img/images/process-img-4.png" alt="process">
+                                </div>
+                                <div class="process-content">
+                                    <h3 class="title"><span>04</span>. Final Styling & Handover</h3>
+                                    <p>We complete the finishing <br> touches and deliver a space <br> ready to be
+                                        experienced.</p>
+                                </div>
+                                <span class="number">04</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="process-text">
+                        <h5 class="bottom-text">Ready to transform your space? <a href="contact.html">Let’s bring your
+                                vision to life.</a></h5>
+                    </div>
+                </div>
+            </section> -->
+            <!-- ./ process-section -->
+
+            <!-- <section class="project-section pt-130 fade-wrapper">
+                <div class="bg-shape" data-background="assets/img/shapes/project-shape-1.png"></div>
+                <div class="project-text"><span>Interior</span></div>
+                <div class="container container-2">
+                    <div class="row section-heading-wrap fade-top">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-heading mb-0">
+                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                    data-duration="0.9" data-stagger="0.03">OUR DESIGN STYLES</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12">
+                            <div class="section-heading section-heading-2 mb-0">
+                                <h2 class="section-title cursor-effect title-2">Thoughtfully <span>Designed
+                                        Spaces</span> Tailored To You</h2>
+                                <p class="mb-0">Discover curated interior concepts shaped by our design
+                                    philosophy<br>modern, refined, and tailored to your lifestyle. From living spaces to
+                                    complete homes,<br>we create interiors that feel uniquely yours.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="project-carousel swiper fade-top">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-1.png" alt="project">
+                                        <ul>
+                                            <li><a>Residential</a></li>
+                                            <li><a>Living Room</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="modern-living-room.html">Modern Living Room</a></h3>
+                                        <span>Elegant comfort for everyday living</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-2.png" alt="project">
+                                        <ul>
+                                            <li><a>Residential</a></li>
+                                            <li><a>Dining Space</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="luxury-dining-space.html">Luxury Dining Space</a>
+                                        </h3>
+                                        <span>Refined interiors for memorable moments</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-3.png" alt="project">
+                                        <ul>
+                                            <li><a>Residential</a></li>
+                                            <li><a>Stairway Design</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="minimal-staircase-concept.html">Minimal Staircase
+                                                Concept</a></h3>
+                                        <span>Clean lines with architectural depth</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-4.png" alt="project">
+                                        <ul>
+                                            <li><a>Residential</a></li>
+                                            <li><a>Lounge Area</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="contemporary-lounge-interior.html">Contemporary
+                                                Lounge Interior</a></h3>
+                                        <span>Balanced design with premium detailing</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="project-item">
+                                    <div class="project-img">
+                                        <img src="assets/img/project/project-img-5.png" alt="project">
+                                        <ul>
+                                            <li><a>Office</a></li>
+                                            <li><a>Workspace</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="project-content">
+                                        <h3 class="title"><a href="executive-office-interior.html">Executive Office
+                                                Interior</a></h3>
+                                        <span>Functional spaces designed to inspire</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <!-- ./ project-section -->
+
+            <section class="award-section bg-grey pt-130 pb-130">
+                <div class="bg-shape"><img src="assets/img/shapes/team-bg-shape-1.png" alt="shape"></div>
+                <div class="container container-2">
+                    <div class="row section-heading-wrap">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-heading mb-0">
+                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                    data-duration="0.9" data-stagger="0.03">OUR SIGNATURE STANDARDS</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12">
+                            <div class="section-heading section-heading-2 mb-0">
+                                <h2 class="section-title title-2">The Design Standards <br> <span>That Shape Every
+                                        Space</span> <br>
+                                    We Create</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row award-wrap">
+                        <div class="col-lg-5">
+                            <div class="award-img">
+                                <img src="assets/img/images/award-img-1.png" alt="img">
+                            </div>
+                        </div>
+                        <div class="col-lg-7">
+                            <div class="award-item-list">
+                                <div class="award-item" data-img="assets/img/images/award-img-1.png">
+                                    <div class="left-content">
+                                        <span class="number">01</span>
+                                        <h3 class="title">Thoughtful Planning</h3>
+                                    </div>
+                                    <div class="mid-content">
+                                        <span>FOUNDATION</span>
+                                    </div>
+                                </div>
+                                <div class="award-item" data-img="assets/img/images/award-img-2.png">
+                                    <div class="left-content">
+                                        <span class="number">02</span>
+                                        <h3 class="title">Refined Aesthetics</h3>
+                                    </div>
+                                    <div class="mid-content">
+                                        <span>VISUAL BALANCE</span>
+                                    </div>
+                                </div>
+                                <div class="award-item" data-img="assets/img/images/award-img-3.png">
+                                    <div class="left-content">
+                                        <span class="number">03</span>
+                                        <h3 class="title">Smart Functionality</h3>
+                                    </div>
+                                    <div class="mid-content">
+                                        <span>EVERYDAY USE</span>
+                                    </div>
+                                </div>
+                                <div class="award-item" data-img="assets/img/images/award-img-4.png">
+                                    <div class="left-content">
+                                        <span class="number">04</span>
+                                        <h3 class="title">Curated Material Choices</h3>
+                                    </div>
+                                    <div class="mid-content">
+                                        <span>QUALITY FINISHES</span>
+                                    </div>
+                                </div>
+                                <div class="award-item" data-img="assets/img/images/award-img-5.png">
+                                    <div class="left-content">
+                                        <span class="number">05</span>
+                                        <h3 class="title">Timeless Appeal</h3>
+                                    </div>
+                                    <div class="mid-content">
+                                        <span>LASTING VALUE</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ./ award-section -->
+
+
+
+            <!-- <section class="gallary-section-2 pb-130 overflow-hidden">
+                <div class="bg-img" data-background="assets/img/bg-img/gallary-bg-1.png"></div>
+                <div class="container container-2">
+                    <div class="row">
+                        <div class="col-lg-4 col-md-12">
+                            <div class="gallary-left-content">
+                                <div class="section-heading white-content mb-0">
+                                    <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                        data-duration="0.9" data-stagger="0.03">our gallery</h4>
+                                    <h2 class="section-title">Interior <br>design</h2>
+                                    <p class="mb-0">
+                                        A glimpse into spaces designed with purpose and passion. <br>
+                                        Where aesthetics meet functionality in perfect harmony. <br>
+                                        Inspired living, beautifully realized.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-8">
+                            <div class="gallary-carousel-wrap">
+                                <div class="gallary-carousel swiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="gallary-inner-item">
+                                                <a><img src="assets/img/images/gallary-img-1.png"
+                                                        alt="img"></a>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="gallary-inner-item">
+                                                <a><img src="assets/img/images/gallary-img-2.png"
+                                                        alt="img"></a>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="gallary-inner-item">
+                                                <a><img src="assets/img/images/gallary-img-3.png"
+                                                        alt="img"></a>
+                                            </div>
+                                        </div>
+                                        <div class="swiper-slide">
+                                            <div class="gallary-inner-item">
+                                                <a><img src="assets/img/images/gallary-img-4.png"
+                                                        alt="img"></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="swiper-arrow">
+                                    <div class="swiper-nav swiper-prev"><i class="fa-regular fa-arrow-left"></i></div>
+                                    <div class="swiper-nav swiper-next"><i class="fa-regular fa-arrow-right"></i></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <!-- ./ gallary-section -->
+
+            <!-- <section class="testimonial-section pt-150 pb-130 fade-wrapper">
+                <div class="container container-2">
+                    <div class="row section-heading-wrap fade-top">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-heading mb-0">
+                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                    data-duration="0.9" data-stagger="0.03">WHY CHOOSE ENTRUST</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12">
+                            <div class="section-heading section-heading-2 mb-0">
+                                <h2 class="section-title cursor-effect title-2">Thoughtful Design. <br> <span>Perfect
+                                        Execution.</span> <br> Spaces You’ll Love.</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6">
+                            <div class="testi-img slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
+                                <img src="assets/img/testi/testi-img-1.png" alt="testi">
+                            </div>
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="testi-carousel-wrap slide-anim" data-delay="0.3" data-offset="100"
+                                data-direction="right">
+                                <div class="testi-top-content">
+                                    <div class="right-content rating-list">
+                                        <p> <i class="fa-solid fa-star" style="color: #C6A34F;"></i> Tailored To Your
+                                            Lifestyle <br> <i class="fa-solid fa-star" style="color: #C6A34F;"></i>
+                                            Transparent From Start To Finish <br> <i class="fa-solid fa-star"
+                                                style="color: #C6A34F;"></i> Designs That Balance Beauty & Function</p>
+                                    </div>
+                                </div>
+                                <div class="testi-carousel swiper">
+                                    <div class="swiper-wrapper">
+                                        <div class="swiper-slide">
+                                            <div class="testi-item">
+                                                <p>“We believe every space deserves a design journey built on
+                                                    creativity, clarity, and careful attention to detail.”</p>
+                                                <div class="testi-author">
+                                                    <div class="author-img">
+                                                        <img src="assets/img/favicon.png" alt="author">
+                                                    </div>
+                                                    <h4 class="name">The Entrust Promise <span>Client-First Design
+                                                            Approach</span></h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <!-- ./ testimonial-section -->
+
+            <!-- <section class="sponsor-section bg-white pt-120 pb-130 overflow-hidden">
+                <div class="container">
+                    <div class="sponsor-text-wrap sponsor-text-wrap-2">
+                        <h5 class="sponsor-text">Our Website <span>75000</span>+ VIP Customer</h5>
+                    </div>
+                    <div class="sponsor-carousel swiper">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide">
+                                <div class="sponsor-item">
+                                    <a><img src="assets/img/sponsor/sponsor-1.png" alt="sponsor"></a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="sponsor-item">
+                                    <a><img src="assets/img/sponsor/sponsor-2.png" alt="sponsor"></a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="sponsor-item">
+                                    <a><img src="assets/img/sponsor/sponsor-3.png" alt="sponsor"></a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="sponsor-item">
+                                    <a><img src="assets/img/sponsor/sponsor-4.png" alt="sponsor"></a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="sponsor-item">
+                                    <a><img src="assets/img/sponsor/sponsor-5.png" alt="sponsor"></a>
+                                </div>
+                            </div>
+                            <div class="swiper-slide">
+                                <div class="sponsor-item">
+                                    <a><img src="assets/img/sponsor/sponsor-6.png" alt="sponsor"></a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section> -->
+            <!-- ./ sponsor-section -->
+
+            <section class="newsletter-section bg-white pt-130 pb-130 overflow-hidden">
+                <div class="bg-shape"><img src="assets/img/shapes/newsletter-shape.png" alt="shape"></div>
+                <div class="container">
+                    <div class="newsletter-wrap">
+                        <div class="section-heading text-center">
+                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                data-duration="0.9" data-stagger="0.03">Subscribe to the newsletter</h4>
+                            <h2 class="section-title">Join <span>our newsletter <br> stay</span> up to date</h2>
+                            <p>Join our newsletter. Learn something new, gain access to exclusive content, <br>
+                                and stay informed with the latest updates in the industry.</p>
+                        </div>
+                        <div class="newsletter-form">
+                            <input type="text" id="email" name="email" class="form-control"
+                                placeholder="Email address..">
+                            <button type="submit"><i class="fa-regular fa-arrow-right-long"></i></button>
+
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ./ newsletter-section -->
+
+            <footer class="footer-section overflow-hidden">
+                <div class="footer-bg" data-background="assets/img/bg-img/footer-bg.png"></div>
+                <div class="footer-shade"></div>
+                <div class="container container-2">
+                    <div class="row footer-wrap">
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="widget-header">
+                                    <div class="footer-logo">
+                                        <a href="index.html"><img src="assets/img/logo/logo-1.png" alt="logo"></a>
+                                    </div>
+                                </div>
+                                <p class="mb-10">Elevating interiors with timeless design and refined elegance. Crafting
+                                    spaces that leave a lasting impression.</p>
+                                <p class="mb-0">Entrust Interior Designers, <br> Bengaluru, Karnataka 560043, <br> India</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2">
+                                <ul class="footer-list">
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About</a></li>
+                                    <li><a href="services.html">Services</a></li>
+                                    <li><a href="portfolio.html">Portfolio</a></li>
+                                    <li><a href="gallery.html">Gallery</a></li>
+                                    <li><a href="blogs.html">Blogs</a></li>
+                                    <li><a href="contact.html">Contact</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget footer-col-2 pl-0">
+                                <ul class="footer-list">
+                                    <li><a>Our Services</a></li>
+                                    <li><a href="./services/residential-interior-design.html">Residential Interior Design</a></li>
+                                    <li><a href="./services/modular-kitchen-storage-design.html">Modular Kitchen &amp; Storage
+                                            Design</a></li>
+                                    <li><a href="./services/space-planning-layout-design.html">Space Planning & Layout Design</a>
+                                    </li>
+                                    <li><a href="./services/furniture-materials-finish-selection.html">Furniture, Materials &
+                                            Finish Selection</a></li>
+                                    <li><a href="./services/3d-visualisation-design-consultation.html">3D Visualisation & Design
+                                            Consultation</a></li>
+                                    <li><a href="./services/lighting-ambience-design.html">Lighting &amp; Ambience Design</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-6">
+                            <div class="footer-widget">
+                                <div class="footer-address">
+                                    <a class="number" href="tel:+919845012345">+91 98450 12345</a>
+                                    <a class="mail" href="mailto:info@entrust.com">info@entrust.com</a>
+                                    <ul class="social-list">
+                                        <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                                        <li><a href="#"><i class="fab fa-youtube"></i></a></li>
+                                    </ul>
+                                    <p class="mb-0">
+                                        ©
+                                        <script>document.write(new Date().getFullYear())</script> entrust. All Rights
+                                        Reserved.
+                                    </p>
+                                    <p>Designed and Developed by <a href="https://thinkb.agency"
+                                            target="_blank">thinkB</a></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="footer-text"><span>ENTRUST</span></div>
+            </footer>
+            <!-- ./ footer-section -->
+
+        </div>
+    </div>
+
+    <div id="scroll-percentage"><span id="scroll-percentage-value"></span></div>
+    <!--scrollup-->
+
+    <!-- JS here -->
+    <script src="assets/js/vendor/jquary-3.7.1.min.js"></script>
+    <script src="assets/js/vendor/bootstrap-bundle.js"></script>
+    <script src="assets/js/vendor/imagesloaded-pkgd.js"></script>
+    <script src="assets/js/vendor/waypoints.min.js"></script>
+    <script src="assets/js/vendor/venobox.min.js"></script>
+    <script src="assets/js/vendor/odometer.min.js"></script>
+    <script src="assets/js/vendor/meanmenu.js"></script>
+    <script src="assets/js/vendor/jquery.isotope.js"></script>
+    <script src="assets/js/vendor/swiper.min.js"></script>
+    <script src="assets/js/vendor/split-type.min.js"></script>
+    <script src="assets/js/vendor/gsap.min.js"></script>
+    <script src="assets/js/vendor/scroll-trigger.min.js"></script>
+    <script src="assets/js/vendor/scroll-smoother.js"></script>
+    <script src="assets/js/vendor/jquery.carouselTicker.js"></script>
+    <script src="assets/js/vendor/nice-select.js"></script>
+    <script src="assets/js/vendor/three.min.js"></script>
+    <script src="assets/js/vendor/panolens.min.js"></script>
+    <script src="assets/js/vendor/jquery.event.move.min.js"></script>
+    <script src="assets/js/vendor/jquery.twentytwenty.min.js"></script>
+    <script src="assets/js/slider.js"></script>
+
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        const entrust_hamBtn = document.getElementById('entrust-ham-btn');
+        const entrust_overlay = document.getElementById('entrust-overlay');
+
+        function entrust_openMenu() {
+            entrust_hamBtn.classList.add('entrust-is-open');
+            entrust_overlay.classList.add('entrust-is-open');
+            entrust_hamBtn.setAttribute('aria-expanded', 'true');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function entrust_closeMenu() {
+            entrust_hamBtn.classList.remove('entrust-is-open');
+            entrust_overlay.classList.remove('entrust-is-open');
+            entrust_hamBtn.setAttribute('aria-expanded', 'false');
+            document.body.style.overflow = '';
+        }
+
+        entrust_hamBtn.addEventListener('click', () => {
+            entrust_overlay.classList.contains('entrust-is-open')
+                ? entrust_closeMenu()
+                : entrust_openMenu();
+        });
+
+        // Close on nav link click
+        entrust_overlay.querySelectorAll('.entrust-overlay__links a').forEach(link => {
+            link.addEventListener('click', entrust_closeMenu);
+        });
+
+        // Close on Escape
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape') entrust_closeMenu();
+        });
+    </script>
+
+</body>
+
+</html>
