@@ -512,6 +512,7 @@
             display: flex;
             align-items: center;
             gap: 14px;
+            background-color: #cacaca;
         }
 
         .dv-room-icon {
@@ -1129,86 +1130,284 @@
 
     <div id="antra-smooth-wrapper">
         <div id="antra-smooth-content">
-
             <!-- =============================================
                  NEW SPLIT BANNER
                  Replaces the old swiper slider.
                  Uses only entrust-banner-* class names.
             ============================================= -->
-            <section class="entrust-banner" id="entrust-banner">
+<section style=" margin-top: 90px; display:flex;width:100%;min-height:320px;background:#fff;border-radius:12px;overflow:hidden;border:0.5px solid #e5e5e5;font-family:sans-serif;">
 
-                <!-- LEFT: autoplay video -->
-                <div class="entrust-banner__video-side">
-                    <video autoplay muted loop playsinline>
-                        <source src="assets/img/bg-img/video-bg-3.mp4" type="video/mp4">
-                    </video>
+<style>
+.slide-in{animation:slideIn 0.8s cubic-bezier(.22,1,.36,1) both}
+@keyframes slideIn{from{opacity:0;transform:translateX(-48px)}to{opacity:1;transform:translateX(0)}}
+.img-wrap{position:relative;width:50%;min-height:320px;overflow:hidden;flex-shrink:0}
+.img-wrap video{width:100%;height:75%;object-fit:cover;display:block}
+.img-overlay{position:absolute;inset:0;background:linear-gradient(to right,transparent 60%,#fff);pointer-events:none}
+.right-panel{
+    width:100%;
+    background:#fff;
+    padding:2rem;
+}
 
-                    <!-- Tagline overlay on the video -->
-                    <div class="entrust-banner__video-caption">
-                        <span class="entrust-banner__video-caption-eyebrow">Designed for modern living</span>
-                        <h1 class="entrust-banner__video-caption-title">
-                            The Art of<br>Thoughtfully<br><em>Designed Interiors</em>
-                        </h1>
-                    </div>
+/* GRID LAYOUT */
+.services-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:20px;
+}
+
+/* THIRD CARD FULL WIDTH */
+.service-wrapper:nth-child(3){
+    grid-column:1 / -1;
+    max-width:50%;
+    margin:auto;
+}
+
+/* EACH CARD BLOCK */
+.service-wrapper{
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+}
+
+/* CARD */
+.service-card{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    padding:18px;
+    border-radius:16px;
+    border:0.5px solid #e5e5e5;
+    background:#ffffff;
+    cursor:pointer;
+    transition:all .25s ease;
+    text-align:left;
+    min-height:110px;
+}
+
+.service-card:hover{
+    background: #eef3ff;
+    border-color:#534AB7;
+    transform:translateY(-4px);
+}
+
+
+/* ICON */
+.icon-wrap{
+    width:52px;
+    height:52px;
+    border-radius:14px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+    font-size:24px;
+    transition:all .25s ease;
+}
+
+.service-wrapper:nth-child(1) .icon-wrap{
+    background:#E1F5EE;
+    color:#0F6E56;
+}
+
+.service-wrapper:nth-child(2) .icon-wrap{
+    background:#EEEDFE;
+    color:#534AB7;
+}
+
+.service-wrapper:nth-child(3) .icon-wrap{
+    background:#FAECE7;
+    color:#993C1D;
+}
+
+.service-card.active .icon-wrap{
+    background:#AFA9EC;
+    color:#26215C;
+}
+
+/* TEXT */
+.card-text{
+    flex:1;
+}
+
+.card-text p{
+    margin: 14px 0 9px 0;
+    font-size: 15px;
+    font-weight: 500;
+    color: #c6a34f;
+}
+
+.card-text span{
+    font-size:13px;
+    line-height:1.5;
+    color:#4d4d4d;
+}
+
+/* ARROW */
+.arrow{
+    font-size:18px;
+    color:#aaa;
+    transition:all .25s ease;
+}
+
+.service-card:hover .arrow,
+.service-card.active .arrow{
+    transform:translateX(5px);
+    color:#534AB7;
+}
+
+/* DETAIL PANEL */
+.detail-panel{
+    border-radius:16px;
+    background:#EEEDFE;
+    border:1px solid #D9D6FF;
+    padding:18px;
+    font-size:13px;
+    color:#3C3489;
+    line-height:1.7;
+    display:none;
+    animation:fadeUp .3s ease both;
+}
+
+.detail-panel.show{
+    display:block;
+}
+
+/* BUTTON */
+.cta-btn{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    margin-top:12px;
+    font-size:13px;
+    font-weight:600;
+    color:#534AB7;
+    background:none;
+    border:none;
+    cursor:pointer;
+    padding:0;
+    transition:all .2s ease;
+}
+
+.cta-btn:hover{
+    transform:translateX(3px);
+}
+
+/* ANIMATION */
+@keyframes fadeUp{
+    from{
+        opacity:0;
+        transform:translateY(10px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* TABLET */
+@media(max-width:991px){
+
+    .services-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+}
+
+/* MOBILE */
+@media(max-width:767px){
+
+    .right-panel{
+        padding:1rem;
+    }
+
+    .services-grid{
+        grid-template-columns:1fr;
+    }
+
+    .service-wrapper:nth-child(3){
+        grid-column:auto;
+        max-width:100%;
+    }
+
+    .service-card{
+        min-height:auto;
+    }
+
+}
+</style>
+<!-- Replace the src below with your actual image path or URL -->
+<div class="img-wrap slide-in">
+    <video autoplay muted loop>
+    <source src="assets/img/config-images/Hailuo_Video_A modern 3D interior room anim_513085875032666112.mp4" type="video/mp4">
+    </video>
+</div>
+<div class="right-panel slide-in">
+
+    <div class="services-grid" id="cards">
+
+        <!-- Card 1 -->
+        <div class="service-wrapper">
+            <div class="service-card" onclick="toggle(this,0)" tabindex="0" role="button" aria-expanded="false">
+
+                <div class="card-text">
+                    <p>Kitchen Services</p>
+                    <h5>Kitchen design & planning</h5>
+                    <span>From layout to finish kitchens that blend style, efficiency, and everyday functionality.</span>
+                </br>
+                    <button  class="cta-btn">
+                        <a href="kitchens.html">Explore → </a>
+                    </button>
                 </div>
 
-                <!-- RIGHT: 3 navigatable boxes -->
-                <nav class="entrust-banner__nav-side" aria-label="Quick navigation">
+            </div>
 
-                    <!-- Box 1 — top left -->
-                    <a href="./kitchens.html" class="entrust-banner__nav-box">
-                        <div class="entrust-banner__nav-box-bg"
-                             style="background-image: url('assets/img/bg-img/slider-img-1.png');"></div>
-                        <div class="entrust-banner__nav-box-content">
-                            <span class="entrust-banner__nav-box-tag">Kitchen Services</span>
-                                <h2 class="entrust-banner__nav-box-title">Kitchen Design<br>& Planning</h2>
-                                <p class="entrust-banner__nav-box-desc">From layout to finish kitchens that blend style, efficiency, and everyday functionality.</p>
-                            <span class="entrust-banner__nav-box-arrow">
-                                Explore
-                                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 7h12M8 2l5 5-5 5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                        </div>
-                    </a>
+        </div>
 
-                    <!-- Box 2 — top right -->
-                    <a href="./wardrobes.html" class="entrust-banner__nav-box">
-                        <div class="entrust-banner__nav-box-bg"
-                             style="background-image: url('assets/img/bg-img/slider-img-2.png');"></div>
-                        <div class="entrust-banner__nav-box-content">
-                            <span class="entrust-banner__nav-box-tag">Wardrobe Designs</span>
-                                <h2 class="entrust-banner__nav-box-title">Our Wardrobe<br>Showcase</h2>
-                                <p class="entrust-banner__nav-box-desc">Thoughtfully crafted wardrobes that combine smart storage and seamless functionality.</p>
-                            <span class="entrust-banner__nav-box-arrow">
-                                View Work
-                                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 7h12M8 2l5 5-5 5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                        </div>
-                    </a>
+        <!-- Card 2 -->
+        <div class="service-wrapper">
+            <div class="service-card" onclick="toggle(this,1)" tabindex="0" role="button" aria-expanded="false">
 
-                    <!-- Box 3 — full-width bottom -->
-                    <a href="./living-spaces.html" class="entrust-banner__nav-box">
-                        <div class="entrust-banner__nav-box-bg"
-                             style="background-image: url('assets/img/bg-img/slider-img-3.png');"></div>
-                        <div class="entrust-banner__nav-box-content">
-                            <span class="entrust-banner__nav-box-tag">Living Room Designs</span>
-                                <h2 class="entrust-banner__nav-box-title">Living Room<br>Concepts & Styling</h2>
-                                <p class="entrust-banner__nav-box-desc">Create a welcoming space where comfort meets style & design for everyday living.</p>
-                            <span class="entrust-banner__nav-box-arrow">
-                                Get in Touch
-                                <svg viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M1 7h12M8 2l5 5-5 5" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/>
-                                </svg>
-                            </span>
-                        </div>
-                    </a>
+                <div class="card-text">
+                    <p>wardrobe Designs</p>
+                    <h5>Our wardrobe showcase</h5>
+                    <span>Thoughtfully crafted wardrobes that combine smart storage and seamless functionality.</span>
+                </br>
+                    <button class="cta-btn">
+                        <a href="wardrobes.html">Explore → </a>
+                    </button>
+                </div>
 
-                </nav>
+            </div>
+        </div>
 
-            </section>
+        <!-- Card 3 -->
+        <div class="service-wrapper">
+            <div class="service-card" onclick="toggle(this,2)" tabindex="0" role="button" aria-expanded="false">
+
+                <div class="card-text">
+                    <p>Living Room Designs</p>
+                    <h5>Living room concepts &amp; styling</h5>
+                    <span>Create a welcoming space where comfort meets style & design for everyday living.</span>
+                </br>
+                    <button class="cta-btn">
+                        <a href="living-spaces.html">Explore → </a>
+                    </button>
+                </div>
+
+            </div>
+
+
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+</section>
             <!-- /.entrust-banner -->
 
 
@@ -1280,16 +1479,16 @@
                                 <div class="dv-room-title-wrap"><h3 class="dv-room-name">Bedroom</h3></div>
                             </div>
                             <div class="dv-option-list">
-                                <div class="dv-option" data-room="bedroom" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/Scandinavian-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
-                                <div class="dv-option" data-room="bedroom" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/Glam-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
-                                <div class="dv-option" data-room="bedroom" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/Modern-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
-                                <div class="dv-option" data-room="bedroom" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/Mid-century-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
-                                <div class="dv-option" data-room="bedroom" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/Minimal-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
-                                <div class="dv-option" data-room="bedroom" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/Contemporary-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
-                                <div class="dv-option" data-room="bedroom" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/Classic-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
-                                <div class="dv-option" data-room="bedroom" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/Boho-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
-                                <div class="dv-option" data-room="bedroom" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/Japandi-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
-                                <div class="dv-option" data-room="bedroom" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/Transitional-bedroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/bedroom_Scandinavian.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/bedroom_Glam.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/bedroom_Modern.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/bedroom_Midcentury.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/bedroom_Minimal.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/bedroom_Contemporary.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/bedroom_Classic.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/bedroom_Boho.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/bedroom_Japandi.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
+                                <div class="dv-option" data-room="bedroom" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/bedroom_Transitional.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
                             </div>
                             <div class="dv-room-preview" id="preview-bedroom"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
                         </div>
@@ -1299,16 +1498,16 @@
                                 <div class="dv-room-title-wrap"><h3 class="dv-room-name">Bathroom</h3></div>
                             </div>
                             <div class="dv-option-list">
-                                <div class="dv-option" data-room="bathroom" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/Scandinavian-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
-                                <div class="dv-option" data-room="bathroom" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/Glam-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
-                                <div class="dv-option" data-room="bathroom" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/Modern-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
-                                <div class="dv-option" data-room="bathroom" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/Mid-century-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
-                                <div class="dv-option" data-room="bathroom" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/Minimal-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
-                                <div class="dv-option" data-room="bathroom" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/Contemporary-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
-                                <div class="dv-option" data-room="bathroom" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/Classic-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
-                                <div class="dv-option" data-room="bathroom" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/Boho-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
-                                <div class="dv-option" data-room="bathroom" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/Japandi-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
-                                <div class="dv-option" data-room="bathroom" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/Transitional-bathroom.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/bathroom_Scandinavian.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/bathroom_Glam.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/bathroom_Modern.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/bathroom_Midcentury.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/bathroom_Minimal.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/bathroom_Contemporary.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/bathroom_Classic.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/bathroom_Boho.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/bathroom_Japandi.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
+                                <div class="dv-option" data-room="bathroom" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/bathroom_Transitional.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
                             </div>
                             <div class="dv-room-preview" id="preview-bathroom"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
                         </div>
@@ -1328,7 +1527,7 @@
                                 <div class="dv-option" data-room="dining" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/Scandinavian-dining.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
                                 <div class="dv-option" data-room="dining" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/Glam-dining.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
                                 <div class="dv-option" data-room="dining" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/Modern-dining.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
-                                <div class="dv-option" data-room="dining" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/Mid-century-dining.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
+                                <div class="dv-option" data-room="dining" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/Midcentury-dining.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
                                 <div class="dv-option" data-room="dining" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/Minimal-dining.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
                                 <div class="dv-option" data-room="dining" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/Contemporary-dining.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
                                 <div class="dv-option" data-room="dining" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/Classic-dining.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
@@ -1346,16 +1545,16 @@
                                 <div class="dv-room-title-wrap"><h3 class="dv-room-name">Home Office</h3></div> 
                             </div>
                             <div class="dv-option-list">
-                                <div class="dv-option" data-room="office" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/Scandinavian-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
-                                <div class="dv-option" data-room="office" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/Glam-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
-                                <div class="dv-option" data-room="office" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/Modern-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
-                                <div class="dv-option" data-room="office" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/Mid-century-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
-                                <div class="dv-option" data-room="office" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/Minimal-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
-                                <div class="dv-option" data-room="office" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/Contemporary-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
-                                <div class="dv-option" data-room="office" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/Classic-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
-                                <div class="dv-option" data-room="office" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/Boho-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
-                                <div class="dv-option" data-room="office" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/Japandi-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
-                                <div class="dv-option" data-room="office" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/Transitional-office.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
+                                <div class="dv-option" data-room="office" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/home_office_Scandinavian.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
+                                <div class="dv-option" data-room="office" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/home_office_Glam.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
+                                <div class="dv-option" data-room="office" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/home_office_Modern.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
+                                <div class="dv-option" data-room="office" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/home_office_Midcentury.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
+                                <div class="dv-option" data-room="office" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/home_office_Minimal.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
+                                <div class="dv-option" data-room="office" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/home_office_Contemporary.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
+                                <div class="dv-option" data-room="office" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/home_office_Classic.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
+                                <div class="dv-option" data-room="office" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/home_office_Boho.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
+                                <div class="dv-option" data-room="office" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/home_office_Japandi.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
+                                <div class="dv-option" data-room="office" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/home_office_Transitional.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
                             </div>
                             <div class="dv-room-preview" id="preview-office"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
                         </div>
@@ -1367,16 +1566,16 @@
                                 <div class="dv-room-title-wrap"><h3 class="dv-room-name">Foyer</h3></div>
                             </div>
                             <div class="dv-option-list">
-                                <div class="dv-option" data-room="foyer" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/Scandinavian-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
-                                <div class="dv-option" data-room="foyer" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/Glam-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
-                                <div class="dv-option" data-room="foyer" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/Modern-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
-                                <div class="dv-option" data-room="foyer" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/Mid-century-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
-                                <div class="dv-option" data-room="foyer" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/Minimal-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
-                                <div class="dv-option" data-room="foyer" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/Contemporary-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
-                                <div class="dv-option" data-room="foyer" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/Classic-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
-                                <div class="dv-option" data-room="foyer" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/Boho-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
-                                <div class="dv-option" data-room="foyer" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/Japandi-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
-                                <div class="dv-option" data-room="foyer" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/Transitional-foyer.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/foyer_Scandinavian.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/foyer_Glam.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/foyer_Modern.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/foyer_Midcentury.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/foyer_Minimal.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/foyer_Contemporary.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/foyer_Classic.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/foyer_Boho.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/foyer_Japandi.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
+                                <div class="dv-option" data-room="foyer" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/foyer_Transitional.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
                             </div>
                             <div class="dv-room-preview" id="preview-foyer"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
                         </div>
@@ -1388,16 +1587,16 @@
                                 <div class="dv-room-title-wrap"><h3 class="dv-room-name">Balcony</h3></div>
                             </div>
                             <div class="dv-option-list">
-                                <div class="dv-option" data-room="balcony" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/Scandinavian-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
-                                <div class="dv-option" data-room="balcony" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/Glam-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
-                                <div class="dv-option" data-room="balcony" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/Modern-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
-                                <div class="dv-option" data-room="balcony" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/Mid-century-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
-                                <div class="dv-option" data-room="balcony" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/Minimal-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
-                                <div class="dv-option" data-room="balcony" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/Contemporary-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
-                                <div class="dv-option" data-room="balcony" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/Classic-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
-                                <div class="dv-option" data-room="balcony" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/Boho-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
-                                <div class="dv-option" data-room="balcony" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/Japandi-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
-                                <div class="dv-option" data-room="balcony" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/Transitional-balcony.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Scandinavian Living" data-label="Scandinavian Living" data-img="assets/img/config-images/balcony_Scandinavian.png"><div class="dv-option-radio"></div><span class="dv-option-text">Scandinavian</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Glam Living" data-label="Glam Living" data-img="assets/img/config-images/balcony_Glam.png"><div class="dv-option-radio"></div><span class="dv-option-text">Glam</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Modern Living" data-label="Modern Living" data-img="assets/img/config-images/balcony_Modern.png"><div class="dv-option-radio"></div><span class="dv-option-text">Modern</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Mid-century Living" data-label="Mid-century Living" data-img="assets/img/config-images/balcony_Midcentury.png"><div class="dv-option-radio"></div><span class="dv-option-text">Mid-century</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Minimal Living" data-label="Minimal Living" data-img="assets/img/config-images/balcony_Minimal.png"><div class="dv-option-radio"></div><span class="dv-option-text">Minimal</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Contemporary Living" data-label="Contemporary Living" data-img="assets/img/config-images/balcony_Contemporary.png"><div class="dv-option-radio"></div><span class="dv-option-text">Contemporary</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Classic Living" data-label="Classic Living" data-img="assets/img/config-images/balcony_Classic.png"><div class="dv-option-radio"></div><span class="dv-option-text">Classic</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Boho Living" data-label="Boho Living" data-img="assets/img/config-images/balcony_Boho.png"><div class="dv-option-radio"></div><span class="dv-option-text">Boho</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Japandi Living" data-label="Japandi Living" data-img="assets/img/config-images/balcony_Japandi.png"><div class="dv-option-radio"></div><span class="dv-option-text">Japandi</span></div>
+                                <div class="dv-option" data-room="balcony" data-value="Transitional Living" data-label="Transitional Living" data-img="assets/img/config-images/balcony_Transitional.png"><div class="dv-option-radio"></div><span class="dv-option-text">Transitional</span></div>
                             </div>
                             <div class="dv-room-preview" id="preview-balcony"><div class="dv-room-preview-placeholder"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="2" y="2" width="28" height="28" rx="1" stroke="#c9a96e" stroke-width="1"/><circle cx="11" cy="11" r="3" stroke="#c9a96e" stroke-width="1"/><path d="M2 22l8-7 7 6 5-4 8 6" stroke="#c9a96e" stroke-width="1"/></svg></div></div>
                         </div>
@@ -1596,7 +1795,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="footer-text"><span>ENTRUST</span></div>
             </footer>
 
         </div>

@@ -17674,7 +17674,7 @@ blockquote .content .author {
 .footer-section {
     position: relative;
     z-index: 1;
-    padding-bottom: 395px
+    padding-bottom: 200px
 }
 
 @media only screen and (max-width: 992px) {
