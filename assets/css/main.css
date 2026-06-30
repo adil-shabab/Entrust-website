@@ -18734,6 +18734,9 @@ blockquote .content .author {
         max-width: 100%;
         overflow-x: hidden;
     }
+    .wcu{
+        min-height: unset !important;
+    }
     .testimonials___section {
         padding: 90px 0 52px;
     }
