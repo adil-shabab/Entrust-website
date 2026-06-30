@@ -800,13 +800,7 @@
         }
 
         .dvx-card-meta {
-            display: block;
-            font-family: 'Jost', sans-serif;
-            font-size: 10px;
-            font-weight: 500;
-            letter-spacing: 0.25em;
-            text-transform: uppercase;
-            color: var(--entrust-muted);
+            display: none;
         }
 
         .dvx-card-mark {
@@ -1657,50 +1651,75 @@
         /* =============================================
            PANORAMA hint (unchanged)
         ============================================= */
+        /* ── Panorama 360° hint — centered icon, no text ── */
         .pano-hint-overlay {
-            position: absolute; inset: 0;
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            background: rgba(22,41,80,0.45);
-            z-index: 10; pointer-events: none;
-            opacity: 0; transition: opacity 0.6s ease;
+            position       : absolute;
+            inset          : 0;
+            display        : flex;
+            align-items    : center;
+            justify-content: center;
+            background     : transparent;
+            z-index        : 10;
+            pointer-events : none;
+            opacity        : 0;
+            transition     : opacity 0.7s ease;
+            will-change    : opacity, transform, filter;
         }
-
         .pano-hint-overlay.visible { opacity: 1; }
-        .pano-hint-overlay.fade-out { opacity: 0; transition: opacity 0.8s ease; }
 
-        .pano-hint-ring {
-            width: 72px; height: 72px;
-            border-radius: 50%;
-            border: 2px solid rgba(198,163,79,0.7);
-            display: flex; align-items: center; justify-content: center;
-            position: relative;
-            animation: panoRingSpin 2.5s linear infinite;
+        /* CSS fallback exit (GSAP handles it when available) */
+        .pano-hint-overlay.fade-out {
+            opacity   : 0;
+            transform : scale(1.55);
+            filter    : blur(6px);
+            transition: opacity 0.65s cubic-bezier(0.4,0,0.2,1),
+                        transform 0.65s cubic-bezier(0.4,0,0.2,1),
+                        filter 0.65s ease;
         }
 
-        .pano-hint-ring::before {
-            content: '';
-            position: absolute; inset: -2px;
-            border-radius: 50%;
-            border: 2px solid transparent;
-            border-top-color: var(--entrust-gold);
-            animation: panoRingSpin 1.4s linear infinite;
+        .pano-hint-icon-wrap {
+            display        : flex;
+            flex-direction : column;
+            align-items    : center;
+            gap            : 0;
+            position       : relative;
         }
 
-        @keyframes panoRingSpin { to { transform: rotate(360deg); } }
-
-        .pano-hint-icon { font-size: 26px; color: var(--entrust-gold); animation: panoIconPulse 1.8s ease-in-out infinite; }
-
-        @keyframes panoIconPulse {
-            0%,100% { opacity: 1; transform: scale(1); }
-            50% { opacity: 0.6; transform: scale(0.88); }
+        /* Ripple ring that expands outward */
+        .pano-hint-icon-wrap::before,
+        .pano-hint-icon-wrap::after {
+            content       : '';
+            position      : absolute;
+            top: 50%; left: 50%;
+            transform     : translate(-50%, -50%);
+            border-radius : 50%;
+            border        : 1.5px solid rgba(255,255,255,0.25);
+            animation     : panoRipple 2.8s ease-out infinite;
+        }
+        .pano-hint-icon-wrap::after {
+            animation-delay: 1.4s;
+        }
+        @keyframes panoRipple {
+            0%   { width: 70px;  height: 70px;  opacity: 0.5; }
+            100% { width: 160px; height: 160px; opacity: 0;   }
         }
 
-        .pano-hint-text {
-            margin-top: 14px;
-            font-family: 'Jost', sans-serif;
-            font-size: 11px; font-weight: 400;
-            letter-spacing: 0.3em; text-transform: uppercase;
-            color: rgba(245,240,232,0.85);
+        /* The 360° image */
+        .pano-360-icon {
+            width         : 100px;
+            height        : 100px;
+            object-fit    : contain;
+            position      : relative;
+            z-index       : 1;
+            opacity       : 0.55;
+            animation     : pano360Breathe 3s ease-in-out infinite;
+            filter        : drop-shadow(0 4px 16px rgba(0,0,0,0.40));
+            user-select   : none;
+            pointer-events: none;
+        }
+        @keyframes pano360Breathe {
+            0%,100% { opacity: 0.48; transform: scale(1);    }
+            50%     { opacity: 0.68; transform: scale(1.06); }
         }
 
         .pano-release-toast {
@@ -2276,57 +2295,78 @@
                 transform 0.24s cubic-bezier(0.4, 0, 1, 1) 0.02s;
         }
 
-        /* Explore link */
+        /* Explore link — pill CTA */
         .fsi-card-link {
             display: inline-flex;
             align-items: center;
-            gap: 9px;
+            gap: 10px;
             font-family: 'Jost', sans-serif;
-            font-size: 10.5px;
-            font-weight: 500;
-            letter-spacing: 0.28em;
+            font-size: 11.5px;
+            font-weight: 700;
+            letter-spacing: 0.20em;
             text-transform: uppercase;
-            color: var(--entrust-gold);
+            color: #1a1208;
             text-decoration: none;
-            padding-bottom: 3px;
-            border-bottom: 1px solid rgba(198,163,79,0.38);
+            padding: 11px 22px 11px 20px;
+            background: var(--entrust-gold);
+            border-radius: 100px;
+            border: none;
+            width: fit-content;
+            position: relative;
+            overflow: hidden;
 
             opacity: 0;
-            transform: translateY(16px);
+            transform: translateY(18px);
             transition:
-                opacity      0.44s cubic-bezier(0.22, 1, 0.36, 1) 0.44s,
-                transform    0.46s cubic-bezier(0.22, 1, 0.36, 1) 0.44s,
-                color        0.3s ease,
-                gap          0.3s ease,
-                border-color 0.3s ease;
+                opacity      0.44s cubic-bezier(0.22, 1, 0.36, 1) 0.50s,
+                transform    0.46s cubic-bezier(0.22, 1, 0.36, 1) 0.50s,
+                background   0.28s ease,
+                gap          0.28s ease;
+        }
+
+        /* Shimmer sweep on the pill */
+        .fsi-card-link::before {
+            content: '';
+            position: absolute;
+            top: 0; left: -75%;
+            width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.35), transparent);
+            transform: skewX(-18deg);
+            transition: left 0.55s ease;
+            pointer-events: none;
         }
 
         .fsi-card.is-active .fsi-card-link {
             opacity: 1;
             transform: translateY(0);
-            /* EXIT: link is first to leave (bottom of content cascade) */
             transition:
                 opacity      0.18s cubic-bezier(0.4, 0, 1, 1) 0s,
                 transform    0.20s cubic-bezier(0.4, 0, 1, 1) 0s,
-                color        0.3s ease,
-                gap          0.3s ease,
-                border-color 0.3s ease;
+                background   0.28s ease,
+                gap          0.28s ease;
         }
 
         .fsi-card-link:hover {
-            color: #f5f0e8;
+            background: #d4b565;
             gap: 16px;
-            border-bottom-color: rgba(245,240,232,0.3);
+        }
+        .fsi-card-link:hover span{
+            color: black;
         }
 
+        .fsi-card-link:hover::before { left: 125%; }
+
         .fsi-card-link svg {
-            width: 14px; height: 14px;
+            width: 15px; height: 15px;
             stroke: currentColor; fill: none;
             flex-shrink: 0;
             transition: transform 0.3s cubic-bezier(0.34, 1.4, 0.64, 1);
         }
 
         .fsi-card-link:hover svg { transform: translateX(5px); }
+
+        /* Active card cursor becomes pointer to hint full-card click */
+        .fsi-card.is-active { cursor: pointer; }
 
         /* ---- Bottom section divider ---- */
         .fsi-divider-bottom {
@@ -2550,9 +2590,11 @@
                 max-width: 100%;
             }
             .fsi-card-link {
-                font-size: 9.5px;
-                letter-spacing: 0.24em;
-                padding-bottom: 2px;
+                font-size: 10px;
+                letter-spacing: 0.18em;
+                padding: 9px 18px 9px 16px;
+                opacity: 1 !important;
+                transform: none !important;
             }
 
             /* ── Dots — centred, gold active pill ──────── */
@@ -4038,32 +4080,12 @@
                 <div class="container container-2"></div>
             </section>
 
-            <!-- Process (unchanged) -->
-            <section class="process-section overflow-hidden fade-wrapper">
-                <div class="bg-shape" data-background="assets/img/shapes/process-shape-1.png"></div>
-                <div class="container container-2">
-                    <div class="heading-space align-items-end">
-                        <div class="section-heading mb-0">
-                            <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char" data-duration="0.9" data-stagger="0.03">How We Work</h4>
-                            <h2 class="section-title cursor-effect title-2">A Thoughtful <span>Design <br> process</span> for exceptional <br> results.</h2>
-                        </div>
-                        <div class="process-desc"><p class="mb-0">Every project begins with understanding your vision and evolves through<br> careful planning, creative execution, and attention to detail. <br> Our process is designed to make your journey smooth, <br> collaborative, and inspiring from start to finish.</p></div>
-                    </div>
-                    <div class="row gy-xl-0 gy-4 process-wrap fade-wrapper">
-                        <div class="col-xl-3 col-lg-6 col-md-6"><div class="process-item fade-top"><div class="process-thumb"><img src="assets/img/images/process-img-1.png" alt="process"></div><div class="process-content"><h3 class="title"><span>01</span>. Initial Consultation</h3><p>We begin by understanding <br> your vision, space, and <br> functional requirements.</p></div><span class="number">01</span></div></div>
-                        <div class="col-xl-3 col-lg-6 col-md-6"><div class="process-item fade-top"><div class="process-thumb"><img src="assets/img/images/process-img-2.png" alt="process"></div><div class="process-content"><h3 class="title"><span>02</span>. Design & Planning</h3><p>We create layouts, concepts, <br> and design directions tailored <br> to your style and needs.</p></div><span class="number">02</span></div></div>
-                        <div class="col-xl-3 col-lg-6 col-md-6"><div class="process-item fade-top"><div class="process-thumb"><img src="assets/img/images/process-img-3.png" alt="process"></div><div class="process-content"><h3 class="title"><span>03</span>. Execution & Coordination</h3><p>We manage design progress, <br> materials, and on-site details <br> for smooth implementation.</p></div><span class="number">03</span></div></div>
-                        <div class="col-xl-3 col-lg-6 col-md-6"><div class="process-item fade-top"><div class="process-thumb"><img src="assets/img/images/process-img-4.png" alt="process"></div><div class="process-content"><h3 class="title"><span>04</span>. Final Styling & Handover</h3><p>We complete the finishing <br> touches and deliver a space <br> ready to be experienced.</p></div><span class="number">04</span></div></div>
-                    </div>
-                    <div class="process-text"><h5 class="bottom-text">Ready to transform your space? <a href="./contact.html">Let's bring your vision to life.</a></h5></div>
-                </div>
-            </section>
 
             <!-- Project section (unchanged) -->
-            <section class="project-section fade-wrapper" style="padding-top: 300px;">
+            <!-- <section class="project-section fade-wrapper" style="padding-top: 300px;">
                 <div class="project-text"><span>Interior</span></div>
                 <div class="project-house-img"><img src="assets/img/images/project-house.png" alt="img"></div>
-            </section>
+            </section> -->
 
 
             <section class="testimonials___section">
@@ -4210,7 +4232,7 @@
                                 <div class="col-md-6">
                                     <div class="img__box" id="testiImgWrap">
                                         <div class="testi-img-clip">
-                                            <img src="assets/img/testimonial.png" alt="Client testimonial" id="testiImg" class="testi-img-el">
+                                            <img src="assets/img/testimonials/founder-1.png" alt="Client testimonial" id="testiImg" class="testi-img-el">
                                         </div>
                                     </div>
                                 </div>
@@ -4239,12 +4261,12 @@
                 <script>
                 (function () {
                     var slides = [
-                        { img:'assets/img/testimonial.png', review:'Entrust redesigned our entire home and the results are breathtaking. Every detail was thoughtfully executed. The team truly listened and brought our dream interior to life perfectly.', name:'Priya Sharma', location:'Bengaluru, India', rating:5 },
-                        { img:'assets/img/testimonial.png', review:'Working with Entrust was seamless from start to finish. They understood our vision and created a space that truly reflects our personality. The quality is unmatched in this region.', name:'Rahul Mehta', location:'Mumbai, India', rating:5 },
-                        { img:'assets/img/testimonial.png', review:'Our wardrobe designs are absolutely stunning — perfect blend of aesthetics and function. Entrust brought a level of craftsmanship we have never seen before. Incredibly satisfied clients.', name:'Ananya Krishnan', location:'Calicut, India', rating:5 },
-                        { img:'assets/img/testimonial.png', review:'Hired Entrust for our villa and the result exceeded all expectations. The team was professional, creative and delivered a truly world-class luxury living space on time and within budget.', name:'James Wilson', location:'Dubai, UAE', rating:5 },
-                        { img:'assets/img/testimonial.png', review:'Entrust reimagined our kitchen and it is now the heart of our home. The quality of materials and the overall design philosophy is exceptional. We highly recommend them to everyone.', name:'Meera Nair', location:'Chennai, India', rating:5 },
-                        { img:'assets/img/testimonial.png', review:'Our office interior by Entrust is now the envy of every client who visits. They captured our brand identity brilliantly. The entire process was smooth, transparent and on budget.', name:'Sanjay Verma', location:'Hyderabad, India', rating:5 }
+                        { img:'assets/img/testimonials/founder-1.png', review:'Entrust redesigned our entire home and the results are breathtaking. Every detail was thoughtfully executed. The team truly listened and brought our dream interior to life perfectly.', name:'Priya Sharma', location:'Bengaluru, India', rating:5 },
+                        { img:'assets/img/testimonials/founder-2.png', review:'Working with Entrust was seamless from start to finish. They understood our vision and created a space that truly reflects our personality. The quality is unmatched in this region.', name:'Rahul Mehta', location:'Mumbai, India', rating:5 },
+                        { img:'assets/img/testimonials/founder-3.png', review:'Our wardrobe designs are absolutely stunning — perfect blend of aesthetics and function. Entrust brought a level of craftsmanship we have never seen before. Incredibly satisfied clients.', name:'Ananya Krishnan', location:'Calicut, India', rating:5 },
+                        { img:'assets/img/testimonials/founder-1.png', review:'Hired Entrust for our villa and the result exceeded all expectations. The team was professional, creative and delivered a truly world-class luxury living space on time and within budget.', name:'James Wilson', location:'Dubai, UAE', rating:5 },
+                        { img:'assets/img/testimonials/founder-2.png', review:'Entrust reimagined our kitchen and it is now the heart of our home. The quality of materials and the overall design philosophy is exceptional. We highly recommend them to everyone.', name:'Meera Nair', location:'Chennai, India', rating:5 },
+                        { img:'assets/img/testimonials/founder-3.png', review:'Our office interior by Entrust is now the envy of every client who visits. They captured our brand identity brilliantly. The entire process was smooth, transparent and on budget.', name:'Sanjay Verma', location:'Hyderabad, India', rating:5 }
                     ];
 
                     var current     = 0;
@@ -4432,7 +4454,7 @@
             <!-- =============================================
                  BENTO STATS SECTION
             ============================================= -->
-            <section class="bento-stats" id="bentoStats" aria-label="Our achievements in numbers">
+            <section class="bento-stats" id="bentoStats" aria-label="Our studio at a glance">
                 <div class="bento-grid">
 
                     <!-- Col 1: Image (top, 62%) · Stat (bottom, 38%) -->
@@ -4441,19 +4463,19 @@
                             <img src="assets/img/bg-img/lv3.jpg" alt="Modern interior living space" loading="lazy">
                         </div>
                         <div class="bento-stat" data-bento-stat>
-                            <p class="bento-stat__num" data-target="150">0<span class="bento-plus">+</span></p>
-                            <p class="bento-stat__lbl">Projects Completed</p>
+                            <p class="bento-stat__num" data-target="20">0<span class="bento-plus">+</span></p>
+                            <p class="bento-stat__lbl">Curated Design Styles</p>
                         </div>
                     </div>
 
                     <!-- Col 2: Stat (top, 36%) · Image (bottom, 64%) -->
                     <div class="bento-col bento-col--rev" style="--img-flex:64;--stat-flex:36">
                         <div class="bento-stat" data-bento-stat>
-                            <p class="bento-stat__num" data-target="8">0<span class="bento-plus">+</span></p>
-                            <p class="bento-stat__lbl">Years Experience</p>
+                            <p class="bento-stat__num" data-target="50">0<span class="bento-plus">+</span></p>
+                            <p class="bento-stat__lbl">Expert Designers</p>
                         </div>
                         <div class="bento-img">
-                            <img src="assets/img/bg-img/lv4.jpg" alt="Designer studio with plants" loading="lazy">
+                            <img src="assets/img/bg-img/lv4.jpg" alt="Designer studio workspace" loading="lazy">
                         </div>
                     </div>
 
@@ -4463,8 +4485,8 @@
                             <img src="assets/img/bg-img/lv1.jpg" alt="Bright open-plan interior" loading="lazy">
                         </div>
                         <div class="bento-stat" data-bento-stat>
-                            <p class="bento-stat__num" data-target="120">0<span class="bento-plus">+</span></p>
-                            <p class="bento-stat__lbl">Happy Customers</p>
+                            <p class="bento-stat__num" data-target="100">0<span class="bento-plus">+</span></p>
+                            <p class="bento-stat__lbl">Design Concepts Ready</p>
                         </div>
                     </div>
 
@@ -4472,7 +4494,7 @@
                     <div class="bento-col bento-col--rev" style="--img-flex:64;--stat-flex:36">
                         <div class="bento-stat" data-bento-stat>
                             <p class="bento-stat__num" data-target="50">0<span class="bento-plus">+</span></p>
-                            <p class="bento-stat__lbl">Homes Designed</p>
+                            <p class="bento-stat__lbl">Premium Material Partners</p>
                         </div>
                         <div class="bento-img">
                             <img src="assets/img/bg-img/lv5.jpg" alt="Warm wooden interior room" loading="lazy">
@@ -4492,9 +4514,10 @@
                     </div>
                 </div>
                 <div class="antra-panoroma-container container fade-top" id="panoContainer">
-                    <div class="pano-hint-overlay" id="panoHint">
-                        <div class="pano-hint-ring"><i class="fa-solid fa-rotate pano-hint-icon"></i></div>
-                        <span class="pano-hint-text">swipe around for 360-degree · Scroll to zoom</span>
+                    <div class="pano-hint-overlay" id="panoHint" aria-hidden="true">
+                        <div class="pano-hint-icon-wrap">
+                            <img src="assets/images/360-degrees.png" alt="" class="pano-360-icon" draggable="false">
+                        </div>
                     </div>
                     <div class="pano-release-toast" id="panoReleaseToast"><i class="fa-solid fa-arrow-down" style="margin-right:8px;font-size:10px;"></i>Scroll to continue</div>
                     <div class="antra-panoroma-img" data-img="assets/img/bg-img/virtual-tours.jpg"></div>
@@ -4671,32 +4694,11 @@
                             Get In Touch
                         </span>
 
-                        <!-- Stats row -->
-                        <div class="pct-stats" data-pct-anim="fade-up" data-pct-delay="0.08">
-                            <div class="pct-stat-item">
-                                <span class="pct-stat-num" data-counter="200" data-suffix="+">200+</span>
-                                <span class="pct-stat-label">Projects Done</span>
-                            </div>
-                            <div class="pct-stat-div"></div>
-                            <div class="pct-stat-item">
-                                <span class="pct-stat-num" data-counter="10" data-suffix="+">10+</span>
-                                <span class="pct-stat-label">Years Exp.</span>
-                            </div>
-                            <div class="pct-stat-div"></div>
-                            <div class="pct-stat-item">
-                                <span class="pct-stat-num" data-counter="98" data-suffix="%">98%</span>
-                                <span class="pct-stat-label">Satisfaction</span>
-                            </div>
-                        </div>
-
                         <!-- Heading (JS splits to chars) -->
                         <h2 class="pct-heading" id="pctHeading">Start Your <em>Conversation</em></h2>
 
                         <!-- Subtext -->
                         <p class="pct-subtext" data-pct-anim="fade-up" data-pct-delay="0.22">Reach us anytime — let's build something amazing together.</p>
-
-                        <!-- Animated divider -->
-                        <div class="pct-divider"></div>
 
                         <!-- Form -->
                         <form class="pct-form" id="pctForm" novalidate>
@@ -4771,23 +4773,6 @@
                             <div class="pct-img-overlay"></div>
                             <div class="pct-img-sheen"></div>
 
-                            <!-- Floating: top-left badge -->
-                            <div class="pct-img-badge">
-                                <span class="pct-pulse"></span>
-                                <span>Available Now</span>
-                            </div>
-
-                            <!-- Floating: bottom-right stat -->
-                            <div class="pct-img-stat">
-                                <span class="pct-img-stat-num">200+</span>
-                                <span class="pct-img-stat-lbl">Projects Delivered</span>
-                            </div>
-
-                            <!-- Floating: bottom-left location -->
-                            <div class="pct-img-loc">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="2.5"/></svg>
-                                <span>Bengaluru, Karnataka</span>
-                            </div>
                         </div>
 
                         <!-- Info cards -->
@@ -4959,8 +4944,25 @@
         }, { threshold: 0.4 });
         observer.observe(panoContainer);
 
-        function dismissHint() { hintDismissed = true; panoHint.classList.add('fade-out'); setTimeout(function(){ panoHint.style.display = 'none'; }, 800); }
-        panoContainer.addEventListener('mousedown', dismissHint, { once: true });
+        function dismissHint() {
+            if (hintDismissed) return;
+            hintDismissed = true;
+            if (window.gsap) {
+                /* Burst outward + blur + fade */
+                gsap.to(panoHint, {
+                    scale   : 1.6,
+                    opacity : 0,
+                    filter  : 'blur(10px)',
+                    duration: 0.65,
+                    ease    : 'power2.out',
+                    onComplete: function () { panoHint.style.display = 'none'; },
+                });
+            } else {
+                panoHint.classList.add('fade-out');
+                setTimeout(function () { panoHint.style.display = 'none'; }, 700);
+            }
+        }
+        panoContainer.addEventListener('mousedown',  dismissHint, { once: true });
         panoContainer.addEventListener('touchstart', dismissHint, { once: true, passive: true });
 
         var panoViewer = null;
@@ -5076,13 +5078,32 @@
         }
 
         cards.forEach(function (card, idx) {
-            card.addEventListener('click', function () {
-                if (!IS_MOBILE() && !card.classList.contains('is-active')) activate(idx);
+            card.addEventListener('click', function (e) {
+                /* Let the <a> tag handle its own navigation naturally */
+                if (e.target.closest('.fsi-card-link')) return;
+
+                if (IS_MOBILE()) {
+                    /* Mobile: tap on visible card → portfolio */
+                    window.location.href = './portfolio.html';
+                    return;
+                }
+
+                if (card.classList.contains('is-active')) {
+                    /* Already expanded → entire card click goes to portfolio */
+                    window.location.href = './portfolio.html';
+                } else {
+                    /* Collapsed → expand it first */
+                    activate(idx);
+                }
             });
             card.addEventListener('keydown', function (e) {
-                if ((e.key === 'Enter' || e.key === ' ') && !IS_MOBILE()) {
+                if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
-                    if (!card.classList.contains('is-active')) activate(idx);
+                    if (card.classList.contains('is-active')) {
+                        window.location.href = './portfolio.html';
+                    } else if (!IS_MOBILE()) {
+                        activate(idx);
+                    }
                 }
             });
         });
@@ -5712,63 +5733,216 @@
         'use strict';
 
         var section = document.getElementById('bentoStats');
-        if (!section) return;
+        if (!section || !window.gsap) return;
 
-        var cols      = section.querySelectorAll('.bento-col');
-        var statCells = section.querySelectorAll('[data-bento-stat]');
+        if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
 
-        /* ── Animated number counter (ease-out-cubic) ── */
-        function animateCount(cell) {
+        var cols      = Array.prototype.slice.call(section.querySelectorAll('.bento-col'));
+        var imgCells  = Array.prototype.slice.call(section.querySelectorAll('.bento-img'));
+        var statCells = Array.prototype.slice.call(section.querySelectorAll('[data-bento-stat]'));
+
+        /* ═══════════════════════════════════════════════════════
+           1. IMAGE SHIMMER → CINEMATIC REVEAL
+           Shimmer plays while image loads. On load: scale(1.12)
+           zooms back to scale(1) with opacity cross-fade.
+        ═══════════════════════════════════════════════════════ */
+        imgCells.forEach(function (cell) {
+            var img = cell.querySelector('img');
+            if (!img) return;
+
+            cell.classList.add('is-shimmer');
+            gsap.set(img, { scale: 1.14, autoAlpha: 0 });
+
+            function revealImg() {
+                cell.classList.remove('is-shimmer');
+                gsap.to(img, {
+                    scale    : 1,
+                    autoAlpha: 1,
+                    duration : 1.1,
+                    ease     : 'power2.out',
+                });
+            }
+
+            if (img.complete && img.naturalWidth) {
+                revealImg();
+            } else {
+                img.addEventListener('load',  revealImg, { once: true });
+                img.addEventListener('error', function () {
+                    cell.classList.remove('is-shimmer');
+                    gsap.set(img, { autoAlpha: 1, scale: 1 });
+                }, { once: true });
+            }
+        });
+
+        /* ═══════════════════════════════════════════════════════
+           2. KEN BURNS IDLE — each image slowly drifts on loop
+        ═══════════════════════════════════════════════════════ */
+        var kbDirs = [
+            { x: '-2.5%', y: '-2%'   },
+            { x:  '2%',   y: '-1.5%' },
+            { x: '-1.5%', y:  '2%'   },
+            { x:  '1.5%', y:  '1.5%' },
+        ];
+        imgCells.forEach(function (cell, i) {
+            var img = cell.querySelector('img');
+            if (!img) return;
+            var d = kbDirs[i % kbDirs.length];
+            gsap.to(img, {
+                x       : d.x,
+                y       : d.y,
+                duration: 14 + i * 2,
+                ease    : 'sine.inOut',
+                yoyo    : true,
+                repeat  : -1,
+                delay   : i * 1.2,
+            });
+        });
+
+        /* ═══════════════════════════════════════════════════════
+           3. HOVER PARALLAX — image depth follows cursor
+        ═══════════════════════════════════════════════════════ */
+        imgCells.forEach(function (cell) {
+            var img = cell.querySelector('img');
+            if (!img) return;
+            cell.addEventListener('mousemove', function (e) {
+                var r  = cell.getBoundingClientRect();
+                var dx = (e.clientX - (r.left + r.width  * 0.5)) / (r.width  * 0.5);
+                var dy = (e.clientY - (r.top  + r.height * 0.5)) / (r.height * 0.5);
+                gsap.to(img, { x: dx * 14, y: dy * 10,
+                    duration: 0.55, ease: 'power2.out', overwrite: 'auto' });
+            });
+            cell.addEventListener('mouseleave', function () {
+                gsap.to(img, { x: 0, y: 0,
+                    duration: 1.1, ease: 'elastic.out(1, 0.44)', overwrite: 'auto' });
+            });
+        });
+
+        /* ═══════════════════════════════════════════════════════
+           4. GSAP SCROLLTRIGGER ENTRANCE
+           Each column: clip-path curtain sweep bottom-to-top,
+           staggered 0.13 s apart.
+        ═══════════════════════════════════════════════════════ */
+        gsap.set(cols, {
+            clipPath: 'inset(0 0 100% 0 round 22px)',
+            y       : 24,
+            opacity : 0,
+        });
+
+        var entranceTween = gsap.to(cols, {
+            clipPath: 'inset(0 0 0% 0 round 22px)',
+            y       : 0,
+            opacity : 1,
+            stagger : 0.13,
+            duration: 0.96,
+            ease    : 'power3.out',
+            paused  : true,
+            onComplete: function () {
+                /* Remove clip-path after entrance so hover effects aren't clipped */
+                gsap.set(cols, { clipPath: 'none' });
+            },
+        });
+
+        if (window.ScrollTrigger) {
+            ScrollTrigger.create({
+                trigger      : section,
+                start        : 'top 80%',
+                toggleActions: 'play none none none',
+                onEnter      : function () { entranceTween.play(); },
+            });
+        } else {
+            /* Fallback: show immediately */
+            gsap.set(cols, { clipPath: 'none', y: 0, opacity: 1 });
+        }
+
+        /* ═══════════════════════════════════════════════════════
+           5. SLOT-MACHINE NUMBER COUNTER
+           Digits roll upward + blur out while counting.
+           Gold sweep races across. Pop on finish.
+        ═══════════════════════════════════════════════════════ */
+        function runCounter(cell) {
             var numEl  = cell.querySelector('.bento-stat__num');
             var plusEl = cell.querySelector('.bento-plus');
             if (!numEl || numEl.dataset.counted) return;
             numEl.dataset.counted = '1';
 
-            var target   = parseInt(numEl.dataset.target || numEl.textContent, 10);
-            var plus     = plusEl ? plusEl.outerHTML : '';
-            var duration = 1400;
+            var target   = parseInt(numEl.dataset.target || '0', 10);
+            var suffix   = plusEl ? plusEl.outerHTML : '';
+            var duration = Math.max(1000, Math.min(target * 14, 1800));
+            var easeOut  = function (t) { return 1 - Math.pow(1 - t, 3); };
             var start    = null;
-            var ease     = function (t) { return 1 - Math.pow(1 - t, 3); };
+
+            /* Inject gold sweep span */
+            var sweep = document.createElement('span');
+            sweep.className = 'bento-stat__sweep';
+            numEl.appendChild(sweep);
+            gsap.fromTo(sweep,
+                { x: '-115%' },
+                { x: '115%', duration: (duration / 1000) * 0.65,
+                  ease: 'power1.inOut', delay: 0.08 }
+            );
 
             numEl.classList.add('is-counting');
 
             requestAnimationFrame(function step(ts) {
                 if (!start) start = ts;
                 var p   = Math.min((ts - start) / duration, 1);
-                var val = Math.round(ease(p) * target);
-                numEl.innerHTML = val + plus;
+                var val = Math.round(easeOut(p) * target);
+
+                /* Rolling translateY + blur — settles as it slows */
+                var drift = (1 - easeOut(p)) * 18;
+                var blurV = (1 - easeOut(p)) * 3;
+                gsap.set(numEl, { y: drift, filter: 'blur(' + blurV + 'px)' });
+                numEl.innerHTML = val + suffix;
+
                 if (p < 1) {
                     requestAnimationFrame(step);
                 } else {
-                    numEl.innerHTML = target + plus;
+                    numEl.innerHTML = target + suffix;
                     numEl.classList.remove('is-counting');
+                    /* Settle + pop */
+                    gsap.to(numEl, { y: 0, filter: 'blur(0px)',
+                        duration: 0.28, ease: 'power2.out',
+                        onComplete: function () {
+                            gsap.fromTo(numEl,
+                                { scale: 1.07, color: '#C6A34F' },
+                                { scale: 1,    color: '#1C1C1C',
+                                  duration: 0.55, ease: 'back.out(2)' }
+                            );
+                            if (sweep.parentNode) sweep.remove();
+                        },
+                    });
                 }
             });
         }
 
-        /* ── Column reveal on scroll ── */
-        var colObs = new IntersectionObserver(function (entries) {
-            entries.forEach(function (e) {
-                if (e.isIntersecting) {
-                    e.target.classList.add('is-visible');
-                    colObs.unobserve(e.target);
-                }
-            });
-        }, { threshold: 0.12 });
-
-        cols.forEach(function (c) { colObs.observe(c); });
-
-        /* ── Counter fires when stat card enters view ── */
         var statObs = new IntersectionObserver(function (entries) {
             entries.forEach(function (e) {
                 if (e.isIntersecting) {
-                    setTimeout(function () { animateCount(e.target); }, 250);
+                    setTimeout(function () { runCounter(e.target); }, 280);
                     statObs.unobserve(e.target);
                 }
             });
-        }, { threshold: 0.35 });
+        }, { threshold: 0.4 });
 
         statCells.forEach(function (c) { statObs.observe(c); });
+
+        /* ═══════════════════════════════════════════════════════
+           6. MAGNETIC CURSOR GRADIENT ON STAT CARDS
+           Radial gold glow tracks the mouse inside each card.
+        ═══════════════════════════════════════════════════════ */
+        statCells.forEach(function (cell) {
+            cell.addEventListener('mousemove', function (e) {
+                var r  = cell.getBoundingClientRect();
+                var px = ((e.clientX - r.left) / r.width)  * 100;
+                var py = ((e.clientY - r.top)  / r.height) * 100;
+                cell.style.setProperty('--bx', px + '%');
+                cell.style.setProperty('--by', py + '%');
+                cell.classList.add('is-mag-hover');
+            });
+            cell.addEventListener('mouseleave', function () {
+                cell.classList.remove('is-mag-hover');
+            });
+        });
 
     })();
     </script>

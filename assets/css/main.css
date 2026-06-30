@@ -6501,6 +6501,57 @@ ul {
     margin-bottom: 0
 }
 
+/* ── Portfolio hover: dark scrim + gold EXPLORE pill ── */
+.project-item-2 .project-thumb::before {
+    content        : '';
+    position       : absolute;
+    inset          : 0;
+    border-radius  : 24px;
+    background     : rgba(10, 8, 5, 0.42);
+    opacity        : 0;
+    z-index        : 1;
+    pointer-events : none;
+    transition     : opacity 0.38s ease;
+}
+.project-item-2:hover .project-thumb::before { opacity: 1; }
+
+/* Keep tags and title above the scrim */
+.project-item-2 .project-thumb ul    { z-index: 2; position: relative; }
+.project-item-2 .project-content     { z-index: 2; }
+
+/* The anchor wraps the image — use it to centre the pill */
+.project-item-2 .project-thumb a {
+    position : relative;
+    display  : block;
+    height   : 100%;
+}
+.project-item-2 .project-thumb a::after {
+    content        : 'EXPLORE';
+    position       : absolute;
+    top            : 50%;
+    left           : 50%;
+    transform      : translate(-50%, -50%) translateY(14px) scale(0.88);
+    background     : #C6A34F;
+    color          : #1a1208;
+    font-family    : 'Jost', sans-serif;
+    font-size      : 12px;
+    font-weight    : 700;
+    letter-spacing : 0.24em;
+    text-transform : uppercase;
+    padding        : 14px 32px;
+    border-radius  : 100px;
+    white-space    : nowrap;
+    z-index        : 3;
+    opacity        : 0;
+    pointer-events : none;
+    transition     : opacity 0.40s cubic-bezier(0.22, 1, 0.36, 1),
+                     transform 0.40s cubic-bezier(0.22, 1, 0.36, 1);
+}
+.project-item-2:hover .project-thumb a::after {
+    opacity   : 1;
+    transform : translate(-50%, -50%) translateY(0) scale(1);
+}
+
 .award-section {
     position: relative;
     z-index: 1
@@ -19446,19 +19497,9 @@ blockquote .content .author {
     flex-direction : column;
     gap            : 14px;
     height         : 100%;
-    /* entrance animation */
-    opacity        : 0;
-    transform      : translateY(32px);
-    transition     : opacity 0.65s cubic-bezier(0.22,1,0.36,1),
-                     transform 0.65s cubic-bezier(0.22,1,0.36,1);
+    /* GSAP handles entrance — no CSS transition here */
+    will-change    : transform, opacity;
 }
-.bento-col.is-visible { opacity: 1; transform: translateY(0); }
-
-/* Stagger each column */
-.bento-col:nth-child(1) { transition-delay: 0.00s; }
-.bento-col:nth-child(2) { transition-delay: 0.09s; }
-.bento-col:nth-child(3) { transition-delay: 0.18s; }
-.bento-col:nth-child(4) { transition-delay: 0.27s; }
 
 /* ── Image cells ── */
 .bento-img {
@@ -19509,10 +19550,34 @@ blockquote .content .author {
     box-shadow : 0 4px 20px rgba(198,163,79,0.10);
 }
 
+/* ── Image shimmer skeleton — shown until image loads ── */
+.bento-img.is-shimmer::before {
+    content        : '';
+    position       : absolute;
+    inset          : 0;
+    z-index        : 3;
+    background     : linear-gradient(
+        90deg,
+        #E4DFD7 0%,
+        #EDEAD4 30%,
+        #F2EEE5 50%,
+        #EDEAD4 70%,
+        #E4DFD7 100%
+    );
+    background-size: 300% 100%;
+    animation      : bentoShimmer 1.7s ease-in-out infinite;
+    border-radius  : inherit;
+    pointer-events : none;
+}
+@keyframes bentoShimmer {
+    0%   { background-position: 100% 0; }
+    100% { background-position: -100% 0; }
+}
+
 /* ── Typography ── */
 .bento-stat__num {
     font-family    : 'Cal Sans', 'Plus Jakarta Sans', serif;
-    font-size      : 44px;           /* reduced per request */
+    font-size      : 44px;
     font-weight    : 400;
     color          : #1C1C1C;
     line-height    : 1;
@@ -19520,10 +19585,39 @@ blockquote .content .author {
     margin         : 0;
     position       : relative;
     z-index        : 1;
-    /* counter roll-up animation target */
-    will-change    : contents;
+    overflow       : hidden;   /* clips the gold sweep */
+    will-change    : transform, contents;
 }
-.bento-stat__num.is-counting { color: #C6A34F; }
+.bento-stat__num.is-counting { color: #1a1a1a; }
+
+/* ── Gold sweep element injected during counter ── */
+.bento-stat__sweep {
+    position       : absolute;
+    top            : -15%;
+    bottom         : -15%;
+    left           : 0;
+    width          : 60%;
+    background     : linear-gradient(
+        90deg,
+        transparent 0%,
+        rgba(198,163,79,0.42) 50%,
+        transparent 100%
+    );
+    pointer-events : none;
+    z-index        : 2;
+    will-change    : transform;
+}
+
+/* ── Cursor-tracking radial on stat card hover ── */
+.bento-stat.is-mag-hover::after {
+    background : radial-gradient(
+        ellipse at var(--bx, 50%) var(--by, 80%),
+        rgba(198,163,79,0.20) 0%,
+        transparent 60%
+    ) !important;
+    opacity    : 1 !important;
+    transition : none !important;
+}
 
 /* The "+" inline character */
 .bento-plus {
