@@ -23,6 +23,260 @@
     <link rel="stylesheet" href="assets/css/animation.css">
     <link rel="stylesheet" href="assets/css/swiper.min.css">
     <link rel="stylesheet" href="assets/css/main.css">
+
+
+    <style>
+
+        /* ---- Scroll reveal ---- */
+        .pct-reveal {
+            opacity: 0;
+            transform: translateY(44px);
+            transition: opacity 0.75s cubic-bezier(0.22,1,0.36,1),
+                        transform 0.75s cubic-bezier(0.22,1,0.36,1);
+        }
+        .pct-reveal-delay { transition-delay: 0.2s; }
+        .pct-reveal.is-revealed { opacity: 1; transform: translateY(0); }
+
+        /* ============================================
+           LEFT — FORM COLUMN
+        ============================================ */
+        .pct-tag {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Jost', sans-serif;
+            font-size: 10px;
+            font-weight: 600;
+            letter-spacing: 0.38em;
+            text-transform: uppercase;
+            color: #162950;
+            margin-bottom: 12px;
+        }
+
+        .pct-heading {
+            font-family: 'Cal Sans', serif;
+            font-size: clamp(26px, 3vw, 44px);
+            font-weight: 300;
+            color: #162950;
+            line-height: 1.1;
+            margin: 0 0 8px;
+            letter-spacing: -0.01em;
+        }
+        .pct-heading em { font-style: italic; color: #C6A34F; }
+
+        .pct-subtext {
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            color: rgba(22,41,80,0.55);
+            margin: 0 0 16px;
+            line-height: 1.65;
+        }
+
+        /* Form layout */
+        .pct-form { display: flex; flex-direction: column; gap: 10px; flex: 1; }
+        .pct-row  { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+
+        /* ---- Input field wrapper ---- */
+        .pct-field {
+            position: relative;
+            display: flex;
+            flex-direction: column;   /* stacks input → error naturally */
+        }
+
+        /* ---- All inputs: fixed height, zero vertical padding
+               The browser centers text inside a height-constrained input.
+               Using zero v-padding removes the calc discrepancy entirely.   ---- */
+        .pct-field input,
+        .pct-field textarea {
+            flex: none;
+            width: 100%;
+            height: 48px;             /* consistent across ALL fields */
+            padding: 0 18px 0 48px;   /* zero top/bottom — browser centers text */
+            background: #f5f8ff;
+            border: 1.5px solid rgba(22,41,80,0.12);
+            border-radius: 14px;
+            color: #162950;
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 48px;        /* match height for reliable centering */
+            outline: none;
+            resize: none;
+            -webkit-appearance: none;
+            appearance: none;
+            transition: border-color 0.3s ease, background 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        /* Taller textarea for message */
+        .pct-field-message textarea {
+            height: 120px;
+            padding: 14px 18px;
+            line-height: 1.6;
+        }
+
+        .pct-field input::placeholder,
+        .pct-field textarea::placeholder { color: transparent; }
+
+        .pct-field input:focus,
+        .pct-field textarea:focus {
+            border-color: rgba(22,41,80,0.55);
+            background: #ffffff;
+            box-shadow: 0 0 0 3px rgba(22,41,80,0.06);
+        }
+
+        /* ---- Floating label ----
+           KEY: use px (= input-height / 2 = 27px) not %, so the
+           error span growing the container never shifts the label.    ---- */
+        .pct-field label {
+            position: absolute;
+            top: 24px;                /* exactly 48px / 2 = always mid-input */
+            left: 48px;
+            transform: translateY(-50%);
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            color: rgba(22,41,80,0.38);
+            pointer-events: none;
+            white-space: nowrap;
+            transition: none;         /* snap back on blur — no ghost padding */
+        }
+
+        /* Textarea label sits near the top (not mid) */
+        .pct-field-message label {
+            top: 16px;
+            left: 18px;
+            transform: none;
+        }
+
+        /* Floated (focused or has content) — smooth spring float-up */
+        .pct-field input:focus + label,
+        .pct-field input:not(:placeholder-shown) + label {
+            top: 7px;
+            transform: translateY(0);
+            font-size: 9.5px;
+            letter-spacing: 0.1em;
+            color: #162950;
+            transition:
+                top        0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                transform  0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                font-size  0.24s ease,
+                color      0.24s ease,
+                letter-spacing 0.2s ease;
+        }
+        .pct-field textarea:focus + label,
+        .pct-field textarea:not(:placeholder-shown) + label {
+            top: 7px;
+            font-size: 9.5px;
+            letter-spacing: 0.1em;
+            color: #162950;
+            transition:
+                top        0.28s cubic-bezier(0.22, 1, 0.36, 1),
+                font-size  0.24s ease,
+                color      0.24s ease,
+                letter-spacing 0.2s ease;
+        }
+
+        /* ---- Field icon: fixed px anchor = input-height / 2 ---- */
+        .pct-field-icon {
+            position: absolute;
+            top: 24px;                /* 48px / 2 — never shifts with error */
+            left: 15px;
+            transform: translateY(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: rgba(22,41,80,0.28);
+            pointer-events: none;
+            transition: color 0.3s ease;
+        }
+        .pct-field-icon svg { width: 17px; height: 17px; }
+        .pct-field input:focus ~ .pct-field-icon { color: #162950; }
+
+        /* Validation error */
+        .pct-err {
+            display: block;
+            font-family: 'Jost', sans-serif;
+            font-size: 11px;
+            color: rgba(200,50,50,0.9);
+            padding: 4px 6px 0;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+        }
+        .pct-field.has-error .pct-err { max-height: 36px; }
+        .pct-field.has-error input,
+        .pct-field.has-error textarea {
+            border-color: rgba(200,50,50,0.4);
+            box-shadow: 0 0 0 3px rgba(200,50,50,0.06);
+            background: #fff8f8;
+        }
+
+        /* Submit button */
+        .pct-submit-wrap { margin-top: 6px; }
+        .pct-submit {
+            position: relative;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 200px;
+            height: 52px;
+            padding: 0 40px;
+            background: #162950;
+            color: #ffffff;
+            font-family: 'Jost', sans-serif;
+            font-size: 11.5px;
+            font-weight: 600;
+            letter-spacing: 0.26em;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 999px;
+            cursor: pointer;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.35s ease;
+        }
+        .pct-submit::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: #C6A34F;
+            transform: translateX(-101%);
+            transition: transform 0.5s cubic-bezier(0.22,1,0.36,1);
+        }
+        .pct-submit:hover::before { transform: translateX(0); }
+        .pct-submit:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 14px 36px -8px rgba(22,41,80,0.4);
+        }
+        .pct-submit:active { transform: translateY(0); }
+        .pct-submit:disabled { opacity: 0.7; cursor: not-allowed; }
+        .pct-submit:disabled:hover { transform: none; box-shadow: none; }
+
+        .pct-btn-inner {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            transition: opacity 0.3s ease, transform 0.3s ease;
+        }
+        .pct-btn-inner svg { width: 16px; height: 16px; flex-shrink: 0; }
+
+        .pct-btn-loading,
+        .pct-btn-success { opacity: 0; transform: translateY(8px); }
+
+        .pct-submit.is-loading .pct-btn-default  { opacity: 0; transform: translateY(-8px); }
+        .pct-submit.is-loading .pct-btn-loading  { opacity: 1; transform: translateY(0); }
+        .pct-submit.is-success  { background: #162950; }
+        .pct-submit.is-success  .pct-btn-default  { opacity: 0; transform: translateY(-8px); }
+        .pct-submit.is-success  .pct-btn-success  { opacity: 1; transform: translateY(0); color: #C6A34F; }
+
+        @keyframes pctSpin { to { transform: rotate(360deg); } }
+        .pct-spin { animation: pctSpin 0.75s linear infinite; }
+
+
+    </style>
 </head>
 
 <body>
@@ -200,7 +454,7 @@
                         </div>
                     </div>
                     <div class="row request-wrap contact-page-area">
-                        <div class="col-lg-6">
+                        <div class="col-lg-4">
                             <div class="request-content">
                                 <div class="request-item-wrap">
                                     <div class="request-item white-content">
@@ -218,54 +472,76 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-6">
+                        <div class="col-lg-8">
                             <div class="request-form-wrap">
-                                <form action="" method="post" id="ajax_contact" class="form-horizontal">
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <div class="form-item">
-                                                <h4 class="form-title">Full Name *</h4>
-                                                <input type="text" id="fullname" name="fullname" class="form-control"
-                                                    placeholder="Your Name">
-                                            </div>
+
+
+
+                                <!-- Heading (JS splits to chars) -->
+                                <h2 class="pct-heading" id="pctHeading">Start Your <em>Conversation</em></h2>
+
+                                <!-- Subtext -->
+                                <p class="pct-subtext" data-pct-anim="fade-up" data-pct-delay="0.22">Reach us anytime — let's build something amazing together.</p>
+
+
+                                
+                                <form class="pct-form" id="pctForm" novalidate>
+                                    <div class="pct-row" data-pct-anim="fade-up" data-pct-delay="0.28">
+                                        <div class="pct-field">
+                                            <input type="text" id="pct-name" name="name" placeholder=" " required autocomplete="name">
+                                            <label for="pct-name">Full Name</label>
+                                            <span class="pct-field-icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/></svg>
+                                            </span>
+                                            <span class="pct-err" role="alert"></span>
                                         </div>
-                                        <div class="col-md-6">
-                                            <div class="form-item">
-                                                <h4 class="form-title">phone *</h4>
-                                                <input type="text" id="phone" name="phone" class="form-control"
-                                                    placeholder="+91 98450 12345">
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-6">
-                                            <div class="form-item">
-                                                <h4 class="form-title">Email Address *</h4>
-                                                <input type="text" id="email" name="email" class="form-control"
-                                                    placeholder="info@entrustdesigns.com">
-                                            </div>
-                                        </div>
-                                        <div class="col-md-6">
-                                            <div class="form-item">
-                                                <h4 class="form-title">Services *</h4>
-                                                <input type="text" id="service" name="service" class="form-control"
-                                                    placeholder="I want">
-                                            </div>
+                                        <div class="pct-field">
+                                            <input type="email" id="pct-email" name="email" placeholder=" " required autocomplete="email">
+                                            <label for="pct-email">Email Address</label>
+                                            <span class="pct-field-icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+                                            </span>
+                                            <span class="pct-err" role="alert"></span>
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <div class="col-md-12">
-                                            <div class="form-item message-item">
-                                                <h4 class="form-title">Write Message *</h4>
-                                                <textarea id="message" name="message" cols="30" rows="5"
-                                                    class="form-control address"
-                                                    placeholder="Your message..."></textarea>
-                                            </div>
+                                    <div class="pct-row" data-pct-anim="fade-up" data-pct-delay="0.34">
+                                        <div class="pct-field">
+                                            <input type="text" id="pct-subject" name="subject" placeholder=" ">
+                                            <label for="pct-subject">Subject</label>
+                                            <span class="pct-field-icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="9" y1="13" x2="15" y2="13"/></svg>
+                                            </span>
+                                            <span class="pct-err" role="alert"></span>
+                                        </div>
+                                        <div class="pct-field">
+                                            <input type="tel" id="pct-phone" name="phone" placeholder=" " autocomplete="tel">
+                                            <label for="pct-phone">Phone Number</label>
+                                            <span class="pct-field-icon" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.21 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 1.29l3-.007a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                            </span>
+                                            <span class="pct-err" role="alert"></span>
                                         </div>
                                     </div>
-                                    <div class="submit-btn">
-                                        <button id="submit" class="tl-primary-btn" type="submit">Send Message <span
-                                                class="icon"><i class="fa-regular fa-arrow-right"></i></span></button>
+                                    <div class="pct-field pct-field-message" data-pct-anim="fade-up" data-pct-delay="0.40">
+                                        <textarea id="pct-message" name="message" placeholder=" " rows="5" required></textarea>
+                                        <label for="pct-message">Your Message</label>
+                                        <span class="pct-err" role="alert"></span>
+                                    </div>
+                                    <div class="pct-submit-wrap" data-pct-anim="fade-up" data-pct-delay="0.46">
+                                        <button type="submit" class="pct-submit" id="pctSubmit">
+                                            <span class="pct-btn-inner pct-btn-default">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                                                <span>Send Message</span>
+                                            </span>
+                                            <span class="pct-btn-inner pct-btn-loading" aria-hidden="true">
+                                                <svg class="pct-spin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9" stroke-opacity="0.2"/><path d="M12 3a9 9 0 0 1 9 9"/></svg>
+                                                <span>Sending&hellip;</span>
+                                            </span>
+                                            <span class="pct-btn-inner pct-btn-success" aria-hidden="true">
+                                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+                                                <span>Sent!</span>
+                                            </span>
+                                        </button>
                                     </div>
                                 </form>
                             </div>

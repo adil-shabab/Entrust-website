@@ -662,19 +662,27 @@
             justify-content: flex-end;
             padding: 28px 24px;
             overflow: hidden;
-            background: linear-gradient(155deg, rgba(255,255,255,0.94) 0%, rgba(var(--dvx-tint, 245,240,232), 1) 48%, rgba(var(--dvx-tint, 228,219,203), 1) 100%);
-            box-shadow: 0 24px 60px -28px rgba(28,26,23,0.5), 0 2px 10px rgba(28,26,23,0.06), inset 0 1px 0 rgba(255,255,255,0.65);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
+            background: #c8a86a;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            border: 1px solid rgba(0,0,0,0.12);
+            box-shadow:
+                0 2px 4px rgba(0,0,0,0.08),
+                0 8px 20px rgba(0,0,0,0.12),
+                0 28px 56px -16px rgba(0,0,0,0.28);
             transform-style: preserve-3d;
             transform-origin: center;
-            transition: box-shadow 0.4s ease, border-color 0.4s ease;
+            transition: box-shadow 0.4s ease, border-color 0.4s ease, transform 0.4s ease;
         }
 
         .dvx-card:hover .dvx-card-face,
         .dvx-card:focus-visible .dvx-card-face {
-            border-color: rgba(var(--dvx-tint, 201,169,110), 0.7);
-            box-shadow: 0 28px 70px -28px rgba(28,26,23,0.5), 0 2px 10px rgba(28,26,23,0.06), inset 0 1px 0 rgba(255,255,255,0.75), 0 0 46px -14px rgba(var(--dvx-tint, 201,169,110), 0.6);
+            border-color: rgba(255,255,255,0.18);
+            box-shadow:
+                0 2px 4px rgba(0,0,0,0.10),
+                0 12px 28px rgba(0,0,0,0.16),
+                0 36px 64px -14px rgba(0,0,0,0.34);
         }
 
         /* ---------- Picked-state thumbnail ----------
@@ -850,219 +858,107 @@
            Lacquer gloss applied via shared ::before on every card.
         ═══════════════════════════════════════════════════════════════ */
 
-        /* Polished lacquer highlight — same for all wood cards */
+        /* ── Real wood veneer textures (2048×2048 photographic scans) ── */
+
+        /* Bottom vignette: ensures text legibility over any texture tone */
         .dvx-card:not(.dvx-card--active) .dvx-card-face::before {
             content: '';
             position: absolute;
-            inset: 0;
-            border-radius: inherit;
-            background: linear-gradient(
-                140deg,
-                rgba(255,255,255,0.20) 0%,
-                rgba(255,255,255,0.07) 25%,
-                rgba(255,255,255,0) 52%,
-                rgba(0,0,0,0.06) 100%
-            );
-            z-index: 3;
+            bottom: 0; left: 0; right: 0;
+            height: 58%;
+            border-radius: 0 0 var(--dvx-radius) var(--dvx-radius);
+            background: linear-gradient(to top,
+                rgba(0,0,0,0.68) 0%,
+                rgba(0,0,0,0.38) 38%,
+                rgba(0,0,0,0) 100%);
+            z-index: 0;
             pointer-events: none;
         }
 
-        /* Kitchen — Oak Wood (warm honey-gold) */
+        /* Natural Oak — Kitchen */
         .dvx-card[data-room="kitchen"] .dvx-card-face {
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cfilter id='g' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.010 0.024' numOctaves='3' seed='3' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.34 0 0 0 0.17'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(
-                3deg,
-                transparent 0, transparent 20px,
-                rgba(90,56,10,0.07) 20px, rgba(90,56,10,0.07) 21.5px,
-                transparent 21.5px, transparent 46px,
-                rgba(70,42,8,0.04) 46px, rgba(70,42,8,0.04) 47px,
-                transparent 47px, transparent 78px,
-                rgba(105,64,12,0.08) 78px, rgba(105,64,12,0.08) 80px,
-                transparent 80px, transparent 106px),
-                linear-gradient(96deg, transparent 0%, rgba(255,228,130,0.07) 28%, transparent 58%, rgba(245,210,100,0.04) 80%, transparent 100%),
-                linear-gradient(158deg, #daa84a 0%, #c49030 28%, #b48020 52%, #c89a38 76%, #d8a844 100%);
-            background-size: 100% 100%;
+            background-image: url('assets/img/wood-textures/oak.jpg');
         }
 
-        /* Living Room — Walnut Wood (dark chocolate-brown) */
+        /* American Walnut — Living Room */
         .dvx-card[data-room="living"] .dvx-card-face {
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cfilter id='g' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.007 0.016' numOctaves='3' seed='7' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.38 0 0 0 0.20'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(
-                178deg,
-                transparent 0, transparent 22px,
-                rgba(120,70,22,0.09) 22px, rgba(120,70,22,0.09) 24px,
-                transparent 24px, transparent 52px,
-                rgba(95,52,16,0.06) 52px, rgba(95,52,16,0.06) 53.5px,
-                transparent 53.5px, transparent 84px,
-                rgba(140,82,26,0.10) 84px, rgba(140,82,26,0.10) 86.5px,
-                transparent 86.5px, transparent 112px),
-                linear-gradient(92deg, transparent 0%, rgba(100,60,20,0.05) 32%, transparent 60%, rgba(80,46,14,0.03) 82%, transparent 100%),
-                linear-gradient(158deg, #4a2a10 0%, #361a08 28%, #281208 52%, #341a08 76%, #4c2c12 100%);
-            background-size: 100% 100%;
+            background-image: url('assets/img/wood-textures/walnut.jpg');
         }
 
-        /* Bedroom — Cherry Wood (medium warm reddish-brown) */
+        /* Cherry Wood — Bedroom */
         .dvx-card[data-room="bedroom"] .dvx-card-face {
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cfilter id='g' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.009 0.020' numOctaves='3' seed='11' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.36 0 0 0 0.18'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(
-                4deg,
-                transparent 0, transparent 24px,
-                rgba(130,38,18,0.08) 24px, rgba(130,38,18,0.08) 26px,
-                transparent 26px, transparent 56px,
-                rgba(100,28,12,0.05) 56px, rgba(100,28,12,0.05) 57.5px,
-                transparent 57.5px, transparent 90px,
-                rgba(150,46,24,0.09) 90px, rgba(150,46,24,0.09) 92.5px,
-                transparent 92.5px, transparent 120px),
-                linear-gradient(93deg, transparent 0%, rgba(175,65,35,0.05) 30%, transparent 58%, rgba(148,50,24,0.03) 82%, transparent 100%),
-                linear-gradient(158deg, #8c3c2c 0%, #722818 28%, #601c12 52%, #7a2c1c 76%, #903c2a 100%);
-            background-size: 100% 100%;
+            background-image: url('assets/img/wood-textures/cherry.jpg');
         }
 
-        /* Bathroom — Bamboo Wood (golden amber, fine vertical grain) */
+        /* Ash Wood — Bathroom */
         .dvx-card[data-room="bathroom"] .dvx-card-face {
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cfilter id='g' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008 0.034' numOctaves='2' seed='5' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.30 0 0 0 0.15'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(
-                0deg,
-                transparent 0, transparent 9px,
-                rgba(80,56,4,0.08) 9px, rgba(80,56,4,0.08) 10px,
-                transparent 10px, transparent 20px,
-                rgba(60,42,2,0.05) 20px, rgba(60,42,2,0.05) 21px,
-                transparent 21px, transparent 34px,
-                rgba(100,70,6,0.09) 34px, rgba(100,70,6,0.09) 35.5px,
-                transparent 35.5px, transparent 48px),
-                linear-gradient(91deg, transparent 0%, rgba(230,190,80,0.07) 30%, transparent 56%, rgba(210,165,55,0.04) 78%, transparent 100%),
-                linear-gradient(158deg, #c49828 0%, #ae8418 28%, #987410 52%, #aa8a20 76%, #c8a030 100%);
-            background-size: 100% 100%;
+            background-image: url('assets/img/wood-textures/ash.jpg');
         }
 
-        /* Dining Room — Teak Wood (rich warm reddish-brown) */
+        /* Teak Wood — Dining Room */
         .dvx-card[data-room="dining"] .dvx-card-face {
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cfilter id='g' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.008 0.018' numOctaves='3' seed='13' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.36 0 0 0 0.18'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(
-                175deg,
-                transparent 0, transparent 18px,
-                rgba(100,38,8,0.08) 18px, rgba(100,38,8,0.08) 20px,
-                transparent 20px, transparent 44px,
-                rgba(76,28,6,0.05) 44px, rgba(76,28,6,0.05) 45.5px,
-                transparent 45.5px, transparent 72px,
-                rgba(118,46,10,0.09) 118px, rgba(118,46,10,0.09) 74.5px,
-                transparent 74.5px, transparent 98px),
-                linear-gradient(94deg, transparent 0%, rgba(200,100,50,0.05) 30%, transparent 56%, rgba(175,82,36,0.03) 80%, transparent 100%),
-                linear-gradient(158deg, #a84e28 0%, #8e3a1a 28%, #7a2c12 52%, #923e1e 76%, #ac5430 100%);
-            background-size: 100% 100%;
+            background-image: url('assets/img/wood-textures/teak.jpg');
         }
 
-        /* Home Office — Wenge Wood (near black, exotic) */
+        /* Wenge Wood — Home Office */
         .dvx-card[data-room="office"] .dvx-card-face {
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cfilter id='g' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.006 0.013' numOctaves='3' seed='17' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.42 0 0 0 0.22'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(
-                3deg,
-                transparent 0, transparent 28px,
-                rgba(200,170,80,0.07) 28px, rgba(200,170,80,0.07) 30px,
-                transparent 30px, transparent 64px,
-                rgba(170,140,60,0.04) 64px, rgba(170,140,60,0.04) 65.5px,
-                transparent 65.5px, transparent 100px,
-                rgba(220,188,90,0.08) 100px, rgba(220,188,90,0.08) 102.5px,
-                transparent 102.5px, transparent 132px),
-                linear-gradient(92deg, transparent 0%, rgba(180,150,60,0.04) 34%, transparent 62%, rgba(160,130,50,0.02) 84%, transparent 100%),
-                linear-gradient(158deg, #201408 0%, #140c04 28%, #0a0602 52%, #160c04 76%, #221608 100%);
-            background-size: 100% 100%;
+            background-image: url('assets/img/wood-textures/wenge.jpg');
         }
 
-        /* Foyer — Maple Wood (very light warm cream) */
+        /* White Oak — Foyer */
         .dvx-card[data-room="foyer"] .dvx-card-face {
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cfilter id='g' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.007 0.022' numOctaves='3' seed='9' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.28 0 0 0 0.14'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(
-                2deg,
-                transparent 0, transparent 18px,
-                rgba(160,110,40,0.06) 18px, rgba(160,110,40,0.06) 19.5px,
-                transparent 19.5px, transparent 44px,
-                rgba(140,90,30,0.04) 44px, rgba(140,90,30,0.04) 45px,
-                transparent 45px, transparent 74px,
-                rgba(180,125,50,0.07) 74px, rgba(180,125,50,0.07) 76px,
-                transparent 76px, transparent 102px),
-                linear-gradient(94deg, transparent 0%, rgba(255,240,190,0.10) 30%, transparent 56%, rgba(245,225,170,0.06) 80%, transparent 100%),
-                linear-gradient(158deg, #f0deb8 0%, #e4cc9e 28%, #dcc088 52%, #e2ca9a 76%, #ecd8b0 100%);
-            background-size: 100% 100%;
+            background-image: url('assets/img/wood-textures/white-oak.jpg');
         }
 
-        /* Balcony — Grey Wood (cool silver-grey) */
+        /* Smoked Oak — Balcony */
         .dvx-card[data-room="balcony"] .dvx-card-face {
-            background-image:
-                url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='600'%3E%3Cfilter id='g' color-interpolation-filters='sRGB' x='0' y='0' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.010 0.022' numOctaves='3' seed='21' result='n'/%3E%3CfeColorMatrix in='n' type='matrix' values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -0.38 0 0 0 0.20'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23g)'/%3E%3C/svg%3E"),
-                repeating-linear-gradient(
-                4deg,
-                transparent 0, transparent 16px,
-                rgba(40,50,50,0.07) 16px, rgba(40,50,50,0.07) 17.5px,
-                transparent 17.5px, transparent 38px,
-                rgba(30,40,40,0.04) 38px, rgba(30,40,40,0.04) 39.5px,
-                transparent 39.5px, transparent 62px,
-                rgba(50,60,60,0.08) 62px, rgba(50,60,60,0.08) 64px,
-                transparent 64px, transparent 88px),
-                linear-gradient(92deg, transparent 0%, rgba(180,195,195,0.05) 32%, transparent 60%, rgba(160,175,175,0.03) 84%, transparent 100%),
-                linear-gradient(158deg, #868e8e 0%, #747e7e 28%, #5e6868 52%, #707a7a 76%, #848c8c 100%);
-            background-size: 100% 100%;
+            background-image: url('assets/img/wood-textures/smoked-oak.jpg');
         }
 
-        /* ── Text & icon contrast per wood darkness ── */
+        /* ── Text contrast over real textures ── */
 
-        /* Dark woods: Walnut, Cherry, Teak, Wenge → white text */
-        .dvx-card[data-room="living"] .dvx-card-title,
-        .dvx-card[data-room="bedroom"] .dvx-card-title,
-        .dvx-card[data-room="dining"] .dvx-card-title  { color: #ffffff; }
-
-        .dvx-card[data-room="living"] .dvx-card-meta,
-        .dvx-card[data-room="bedroom"] .dvx-card-meta,
-        .dvx-card[data-room="dining"] .dvx-card-meta   { color: rgba(255,255,255,0.35); }
-
-        /* Wenge (office) — near-black: warm gold title for premium feel */
-        .dvx-card[data-room="office"] .dvx-card-title { color: #c9a96e; }
-        .dvx-card[data-room="office"] .dvx-card-meta  { color: rgba(201,169,110,0.45); }
-
-        /* Grey Wood (balcony) — medium-dark: white text */
-        .dvx-card[data-room="balcony"] .dvx-card-title { color: #ffffff; }
-        .dvx-card[data-room="balcony"] .dvx-card-meta  { color: rgba(255,255,255,0.35); }
-
-        /* Light woods: Oak (kitchen), Bamboo (bathroom), Maple (foyer) → dark charcoal text */
-        .dvx-card[data-room="kitchen"] .dvx-card-title  { color: #2a1a08; }
-        .dvx-card[data-room="kitchen"] .dvx-card-meta   { color: rgba(42,26,8,0.50); }
-        .dvx-card[data-room="bathroom"] .dvx-card-title { color: #2a1a08; }
-        .dvx-card[data-room="bathroom"] .dvx-card-meta  { color: rgba(42,26,8,0.50); }
-        .dvx-card[data-room="foyer"] .dvx-card-title    { color: #2a1c08; }
-        .dvx-card[data-room="foyer"] .dvx-card-meta     { color: rgba(42,28,8,0.50); }
-
-        /* Icon circles — dark woods get gold-tinted halos; light woods get warm dark rings */
-        .dvx-card[data-room="living"] .dvx-card-icon,
-        .dvx-card[data-room="bedroom"] .dvx-card-icon,
-        .dvx-card[data-room="dining"] .dvx-card-icon,
-        .dvx-card[data-room="office"] .dvx-card-icon,
-        .dvx-card[data-room="balcony"] .dvx-card-icon {
-            background: radial-gradient(circle at 30% 30%, rgba(201,169,110,0.13), rgba(0,0,0,0.12));
-            border-color: rgba(201,169,110,0.17);
+        /* All cards: white title over vignette by default */
+        .dvx-card .dvx-card-title {
+            color: #ffffff;
+            text-shadow: 0 1px 6px rgba(0,0,0,0.50), 0 2px 14px rgba(0,0,0,0.30);
         }
-        .dvx-card[data-room="kitchen"] .dvx-card-icon,
+        .dvx-card .dvx-card-meta {
+            color: rgba(255,255,255,0.72);
+            text-shadow: 0 1px 4px rgba(0,0,0,0.45);
+        }
+
+        /* Ash + White Oak — lighter texture tones, dark text on card upper half
+           but bottom vignette still makes these readable */
+        .dvx-card[data-room="bathroom"] .dvx-card-title,
+        .dvx-card[data-room="foyer"] .dvx-card-title {
+            color: #ffffff;
+        }
+
+        /* Wenge — warm gold accent for the near-black surface */
+        .dvx-card[data-room="office"] .dvx-card-title { color: #d4aa6a; text-shadow: 0 1px 4px rgba(0,0,0,0.60); }
+        .dvx-card[data-room="office"] .dvx-card-meta  { color: rgba(212,170,106,0.70); }
+
+        /* ── Icon circles — frosted glass style ── */
+        .dvx-card .dvx-card-icon {
+            background: rgba(255,255,255,0.12);
+            border-color: rgba(255,255,255,0.22);
+            color: rgba(255,255,255,0.92);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        /* ── Corner brackets — semi-transparent white ── */
+        .dvx-card .dvx-card-corner {
+            border-color: rgba(255,255,255,0.28);
+            opacity: 0.55;
+        }
+
+        /* Light-toned texture overrides for icon/corner (ash, white oak) */
         .dvx-card[data-room="bathroom"] .dvx-card-icon,
         .dvx-card[data-room="foyer"] .dvx-card-icon {
-            background: radial-gradient(circle at 30% 30%, rgba(160,110,40,0.10), rgba(80,50,10,0.08));
-            border-color: rgba(120,80,30,0.18);
+            background: rgba(255,255,255,0.18);
+            border-color: rgba(255,255,255,0.30);
         }
-
-        /* Corner brackets — dark woods: gold; light woods: warm brown */
-        .dvx-card[data-room="living"] .dvx-card-corner,
-        .dvx-card[data-room="bedroom"] .dvx-card-corner,
-        .dvx-card[data-room="dining"] .dvx-card-corner,
-        .dvx-card[data-room="office"] .dvx-card-corner,
-        .dvx-card[data-room="balcony"] .dvx-card-corner { border-color: rgba(201,169,110,0.275); opacity: 0.55; }
-        .dvx-card[data-room="kitchen"] .dvx-card-corner,
-        .dvx-card[data-room="bathroom"] .dvx-card-corner,
-        .dvx-card[data-room="foyer"] .dvx-card-corner   { border-color: rgba(120,80,30,0.22); opacity: 0.60; }
 
         /* ── Active / selected state: force white text on any dark card ── */
         /* Dark-background cards when active (expanded gallery) */
