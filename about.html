@@ -2465,7 +2465,7 @@
         .founder__portrait-shape { display: none !important; }
 
         .founder__portrait-frame {
-            height: 420px !important;
+            height: 400px !important;
             border-radius: 20px !important;
             overflow: hidden !important;
             will-change: transform;
@@ -2569,13 +2569,239 @@
             .founder__portrait-img   { height: 400px !important; }
         }
         @media (max-width: 600px) {
+            .founder__phil-grid {
+                gap: 0px;
+            }
             .founder__portrait-frame { height: 320px !important; }
             .founder__portrait-img   { height: 320px !important; }
             .founder__stats-row { gap: 7px; }
             .founder__stat-item { padding: 10px 11px; }
             .founder__stat-item .founder__stat-num { font-size: 18px; }
+            .aboutJourney__row--right .aboutJourney__row-img{
+                width: 100%;
+            }
         }
 
+    </style>
+
+    <!-- ╔══ ABOUT JOURNEY — Design Philosophy ══╗ -->
+    <style>
+    /* ═══════════════════════════════════════════════════════════════
+       ABOUT JOURNEY — Curved SVG S-path cinematic timeline
+       Prefix: aboutJourney__   Engine: GSAP 3 + ScrollTrigger
+    ═══════════════════════════════════════════════════════════════ */
+
+    /* ── Section shell ────────────────────────────────────────────── */
+    .aboutJourney__section { position: relative; background: #f5f2ed; overflow: hidden; }
+
+    /* ── Background ───────────────────────────────────────────────── */
+    .aboutJourney__bg { position: absolute; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+    .aboutJourney__bg-grid {
+        position: absolute; inset: 0;
+        background-image: linear-gradient(rgba(22,41,80,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(22,41,80,0.025) 1px, transparent 1px);
+        background-size: 58px 58px;
+    }
+    .aboutJourney__bg-radial {
+        position: absolute; top: 0; left: 50%; transform: translateX(-50%);
+        width: 1200px; height: 700px; border-radius: 50%;
+        background: radial-gradient(ellipse, rgba(198,163,79,0.06) 0%, transparent 70%);
+    }
+    .aboutJourney__noise-canvas { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0.025; mix-blend-mode: multiply; pointer-events: none; }
+
+    /* ── Header — centered ───────────────────────────────────────── */
+    .aboutJourney__header {
+        position: relative; z-index: 2; text-align: center; padding: 90px 80px 72px;
+    }
+    .aboutJourney__label {
+        display: inline-flex; align-items: center; gap: 14px; justify-content: center;
+        font-family: var(--tl-ff-body); font-size: 10px; font-weight: 600;
+        letter-spacing: 0.36em; text-transform: uppercase; color: #C6A34F; margin-bottom: 20px;
+    }
+    .aboutJourney__label::before,
+    .aboutJourney__label::after { content: ''; display: block; width: 28px; height: 1px; background: #C6A34F; flex-shrink: 0; }
+    .aboutJourney__heading {
+        font-family: var(--tl-ff-heading); font-size: clamp(42px, 3vw, 76px);
+        font-weight: 400; color: #0e1c38; line-height: 1.08; letter-spacing: -0.03em; margin: 0 0 22px;
+    }
+    .aboutJourney__h-line { display: block; }
+    .aboutJourney__h-line--accent { color: #C6A34F; font-style: italic; }
+    .aboutJourney__intro {
+        font-family: var(--tl-ff-body); font-size: 14px; font-weight: 400;
+        color: rgba(26,23,20,0.5); line-height: 1.8; margin: 0 auto; max-width: 560px;
+    }
+
+    /* ── Body: rows + SVG rail ────────────────────────────────────── */
+    .aboutJourney__body {
+        position: relative; z-index: 1;
+        max-width: 1340px; margin: 0 auto; padding: 0 64px 100px;
+    }
+
+    /* ── SVG rail — centred thin column ──────────────────────────── */
+    .aboutJourney__svg-rail {
+        position: absolute; top: 0; bottom: 0;
+        left: 50%; transform: translateX(-50%);
+        width: 80px; pointer-events: none; z-index: 1;
+    }
+    #ajSvg { position: absolute; top: 0; left: 0; width: 100%; overflow: visible; pointer-events: none; }
+
+    /* ── Glass ball (inside rail, top driven by JS) ───────────────── */
+    .aboutJourney__ball {
+        position: absolute; left: 0; top: 0;
+        width: 28px; height: 28px; z-index: 10;
+        pointer-events: none; will-change: left, top;
+    }
+    .aboutJourney__ball-body {
+        width: 100%; height: 100%; border-radius: 50%;
+        background: linear-gradient(145deg, rgba(255,255,255,0.94) 0%, rgba(255,247,222,0.72) 45%, rgba(198,163,79,0.58) 100%);
+        border: 1.5px solid rgba(198,163,79,0.78);
+        backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+        box-shadow: 0 3px 14px rgba(198,163,79,0.42), inset 0 1.5px 3px rgba(255,255,255,0.92);
+        animation: ajBallBreathe 2.6s ease-in-out infinite;
+        position: relative; overflow: hidden;
+    }
+    .aboutJourney__ball-glare { position: absolute; top: 13%; left: 15%; width: 40%; height: 32%; border-radius: 50%; background: rgba(255,255,255,0.9); filter: blur(2px); }
+    .aboutJourney__ball-glow { position: absolute; inset: -14px; border-radius: 50%; background: radial-gradient(circle, rgba(198,163,79,0.28) 0%, transparent 68%); pointer-events: none; }
+    .aboutJourney__ball-pulse { position: absolute; inset: -6px; border-radius: 50%; border: 1.5px solid rgba(198,163,79,0.5); opacity: 0; animation: ajPulseRing 3.2s ease-out infinite; pointer-events: none; }
+    @keyframes ajBallBreathe { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.08); } }
+    @keyframes ajPulseRing { 0% { opacity: 0.7; transform: scale(1); } 100% { opacity: 0; transform: scale(2.2); } }
+
+    /* ── Milestone rows ───────────────────────────────────────────── */
+    .aboutJourney__row {
+        display: grid;
+        grid-template-columns: 1fr 80px 1fr;
+        align-items: center;
+        gap: 0 52px;
+        min-height: max(500px, 54vh);
+        padding: 52px 0;
+        position: relative; z-index: 2;
+    }
+
+    /* LEFT: image col-1, dot col-2, text col-3 */
+    .aboutJourney__row--left  .aboutJourney__row-img    { grid-column: 1; grid-row: 1; }
+    .aboutJourney__row--left  .aboutJourney__row-center { grid-column: 2; grid-row: 1; }
+    .aboutJourney__row--left  .aboutJourney__row-card   { grid-column: 3; grid-row: 1; }
+
+    /* RIGHT: text col-1, dot col-2, image col-3 */
+    .aboutJourney__row--right .aboutJourney__row-card   { grid-column: 1; grid-row: 1; text-align: right; }
+    .aboutJourney__row--right .aboutJourney__row-center { grid-column: 2; grid-row: 1; }
+    .aboutJourney__row--right .aboutJourney__row-img    { grid-column: 3; grid-row: 1; }
+
+    /* Image */
+    .aboutJourney__img-wrap {
+        border-radius: 20px; overflow: hidden;
+        height: max(340px, 42vh);
+        box-shadow: 0 28px 80px rgba(22,41,80,0.13), 0 4px 16px rgba(22,41,80,0.06);
+        position: relative; will-change: clip-path;
+    }
+    .aboutJourney__img { width: 100%; height: 100%; object-fit: cover; display: block; will-change: transform; }
+    .aboutJourney__img-scrim {
+        position: absolute; inset: 0; pointer-events: none;
+        background: linear-gradient(180deg, transparent 55%, rgba(22,41,80,0.18) 100%);
+        border-radius: 20px;
+    }
+
+    /* Center column dot */
+    .aboutJourney__row-center { display: flex; justify-content: center; align-items: center; height: 100%; }
+    .aj-cp-marker {
+        display: flex; align-items: center; justify-content: center;
+        width: 22px; height: 22px; border-radius: 50%;
+        background: #f5f2ed;
+        border: 2px solid rgba(22,41,80,0.12);
+        flex-shrink: 0; position: relative; z-index: 5;
+        transition: border-color 0.45s ease, box-shadow 0.45s ease;
+    }
+    .aj-cp-marker::after {
+        content: ''; width: 9px; height: 9px; border-radius: 50%;
+        background: rgba(22,41,80,0.15);
+        transition: background 0.45s ease, transform 0.45s cubic-bezier(0.34,1.56,0.64,1);
+    }
+    .aj-cp-marker.is-active { border-color: rgba(198,163,79,0.65); box-shadow: 0 0 0 5px rgba(198,163,79,0.1), 0 0 18px rgba(198,163,79,0.28); }
+    .aj-cp-marker.is-active::after { background: #C6A34F; transform: scale(1.3); }
+
+    /* Text card */
+    .aboutJourney__row-card { position: relative; }
+    .aboutJourney__card-num {
+        font-family: var(--tl-ff-heading); font-size: clamp(60px, 7.5vw, 100px);
+        font-weight: 200; color: rgba(198,163,79,0.1); line-height: 1;
+        letter-spacing: -0.05em; display: block; margin-bottom: -6px;
+    }
+    .aboutJourney__card-rule { width: 32px; height: 1.5px; background: linear-gradient(90deg, #C6A34F, rgba(198,163,79,0.2)); border-radius: 999px; margin-bottom: 14px; }
+    .aboutJourney__card-title {
+        font-family: var(--tl-ff-heading); font-size: clamp(36px, 4.2vw, 62px);
+        font-weight: 600; color: #0e1c38; line-height: 1.1; letter-spacing: -0.03em; margin: 0 0 12px;
+    }
+    .aboutJourney__card-sub { font-family: var(--tl-ff-body); font-size: 15px; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #C6A34F; display: block; margin-bottom: 20px; }
+    .aboutJourney__card-desc {
+        font-family: var(--tl-ff-body); font-size: 14px; font-weight: 400;
+        color: rgba(26,23,20,0.52); line-height: 1.82; margin: 0; max-width: 380px;
+    }
+    /* Right row: right-align text */
+    .aboutJourney__row--right .aboutJourney__card-rule { margin-left: auto; }
+    .aboutJourney__row--right .aboutJourney__card-desc { margin-left: auto; }
+    .aboutJourney__row--right .aboutJourney__card-num  { text-align: right; }
+
+    /* SVG path transition helpers */
+    .aj-cp-core { transition: fill 0.42s ease; }
+    .aj-cp-ring  { transition: stroke 0.42s ease; }
+
+    /* ── Responsive ──────────────────────────────────────────────── */
+    @media (max-width: 1100px) {
+        .aboutJourney__header { padding: 70px 48px 56px; }
+        .aboutJourney__body   { padding: 0 40px 80px; }
+        .aboutJourney__row    { gap: 0 36px; min-height: max(440px, 50vh); padding: 44px 0; }
+        .aboutJourney__img-wrap { height: max(300px, 38vh); }
+    }
+    @media (max-width: 768px) {
+        .aboutJourney__header { padding: 60px 24px 44px; }
+        .aboutJourney__body   { padding: 0 20px 64px; }
+        .aboutJourney__row {
+            grid-template-columns: 1fr; min-height: auto;
+            padding: 0 0 56px; gap: 0;
+        }
+        .aboutJourney__row--left  .aboutJourney__row-img,
+        .aboutJourney__row--left  .aboutJourney__row-center,
+        .aboutJourney__row--left  .aboutJourney__row-card,
+        .aboutJourney__row--right .aboutJourney__row-card,
+        .aboutJourney__row--right .aboutJourney__row-center,
+        .aboutJourney__row--right .aboutJourney__row-img { grid-column: 1; grid-row: auto; }
+        .aboutJourney__row-center { display: none; }
+        .aboutJourney__svg-rail   { display: none; }
+        .aboutJourney__ball       { display: none; }
+        .aboutJourney__row-img  { margin-bottom: 28px; }
+        .aboutJourney__row-card { padding: 0; }
+        .aboutJourney__row--right { display: flex; flex-direction: column; }
+        .aboutJourney__row--right .aboutJourney__row-img  { order: 1; }
+        .aboutJourney__row--right .aboutJourney__row-card { order: 2; text-align: left; }
+        .aboutJourney__row--right .aboutJourney__card-rule { margin-left: 0; }
+        .aboutJourney__row--right .aboutJourney__card-desc { margin-left: 0; }
+        .aboutJourney__row--right .aboutJourney__card-num  { text-align: left; }
+        .aboutJourney__img-wrap { height: 300px; }
+        .aboutJourney__card-num { font-size: 52px; }
+        .aboutJourney__card-rule { margin-bottom: 10px; }
+    }
+    @media (max-width: 480px) {
+        .aboutJourney__header { padding: 48px 18px 36px; }
+        .aboutJourney__body   { padding: 0 16px 48px; }
+        .aboutJourney__heading { font-size: clamp(26px, 8vw, 38px); }
+        .aboutJourney__img-wrap { height: 260px; }
+    }
+    </style>
+
+    <style>
+        /* Breadcrumb video background */
+        .page-header .page-header-video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+            pointer-events: none;
+        }
+        /* Lighter overlay for video (was opacity .64) */
+        .page-header .overlay {
+            opacity: 0.7;
+        }
     </style>
 
 </head>
@@ -2724,7 +2950,7 @@
         <div id="antra-smooth-content">
 
             <section class="page-header">
-                <div class="bg-img" data-background="assets/img/bg-img/ab.png"></div>
+                <video class="page-header-video" src="assets/images/video-3.mp4" autoplay muted loop playsinline></video>
                 <div class="overlay"></div>
                 <div class="container">
                     <div class="page-header-content">
@@ -2932,11 +3158,7 @@
                                 <span class="wcu__trust-val">4.9</span>
                                 <span class="wcu__trust-lbl">Client Rating</span>
                             </div>
-                            <div class="wcu__trust-divider" aria-hidden="true"></div>
-                            <div class="wcu__trust-item">
-                                <strong class="wcu__trust-val">500+</strong>
-                                <span class="wcu__trust-lbl">Projects Done</span>
-                            </div>
+
                             <div class="wcu__trust-divider" aria-hidden="true"></div>
                             <div class="wcu__trust-item">
                                 <strong class="wcu__trust-val">98%</strong>
@@ -3591,84 +3813,162 @@
             </section> -->
             <!-- ./ project-section -->
 
-            <section class="award-section bg-grey pt-130 pb-130">
-                <div class="bg-shape"><img src="assets/img/shapes/team-bg-shape-1.png" alt="shape"></div>
-                <div class="container container-2">
-                    <div class="row section-heading-wrap">
-                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="section-heading mb-0">
-                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
-                                    data-duration="0.9" data-stagger="0.03">OUR SIGNATURE STANDARDS</h4>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-12">
-                            <div class="section-heading section-heading-2 mb-0">
-                                <h2 class="section-title title-2">The Design Standards <br> <span>That Shape Every
-                                        Space</span> <br>
-                                    We Create</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row award-wrap">
-                        <div class="col-lg-5">
-                            <div class="award-img">
-                                <img src="assets/img/images/award-img-1.png" alt="img">
-                            </div>
-                        </div>
-                        <div class="col-lg-7">
-                            <div class="award-item-list">
-                                <div class="award-item" data-img="assets/img/images/award-img-1.png">
-                                    <div class="left-content">
-                                        <span class="number">01</span>
-                                        <h3 class="title">Thoughtful Planning</h3>
-                                    </div>
-                                    <div class="mid-content">
-                                        <span>FOUNDATION</span>
-                                    </div>
-                                </div>
-                                <div class="award-item" data-img="assets/img/images/award-img-2.png">
-                                    <div class="left-content">
-                                        <span class="number">02</span>
-                                        <h3 class="title">Refined Aesthetics</h3>
-                                    </div>
-                                    <div class="mid-content">
-                                        <span>VISUAL BALANCE</span>
-                                    </div>
-                                </div>
-                                <div class="award-item" data-img="assets/img/images/award-img-3.png">
-                                    <div class="left-content">
-                                        <span class="number">03</span>
-                                        <h3 class="title">Smart Functionality</h3>
-                                    </div>
-                                    <div class="mid-content">
-                                        <span>EVERYDAY USE</span>
-                                    </div>
-                                </div>
-                                <div class="award-item" data-img="assets/img/images/award-img-4.png">
-                                    <div class="left-content">
-                                        <span class="number">04</span>
-                                        <h3 class="title">Curated Material Choices</h3>
-                                    </div>
-                                    <div class="mid-content">
-                                        <span>QUALITY FINISHES</span>
-                                    </div>
-                                </div>
-                                <div class="award-item" data-img="assets/img/images/award-img-5.png">
-                                    <div class="left-content">
-                                        <span class="number">05</span>
-                                        <h3 class="title">Timeless Appeal</h3>
-                                    </div>
-                                    <div class="mid-content">
-                                        <span>LASTING VALUE</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+            <!-- ═══════════════════════════════════════════════════════
+                 OUR DESIGN PHILOSOPHY — Cinematic Scroll Timeline
+            ════════════════════════════════════════════════════════ -->
+            <section class="aboutJourney__section" id="aboutJourney" aria-label="Our Design Philosophy">
+
+                <!-- Background -->
+                <div class="aboutJourney__bg" aria-hidden="true">
+                    <div class="aboutJourney__bg-grid"></div>
+                    <div class="aboutJourney__bg-radial"></div>
+                    <canvas class="aboutJourney__noise-canvas" id="ajNoiseCanvas"></canvas>
                 </div>
+
+                <!-- Centred section header -->
+                <header class="aboutJourney__header">
+                    <span class="aboutJourney__label" id="ajLabel">OUR DESIGN PHILOSOPHY</span>
+                    <h2 class="aboutJourney__heading" id="ajHeading">
+                        <span class="aboutJourney__h-line">Every Great Interior</span>
+                        <span class="aboutJourney__h-line">Begins With</span>
+                        <span class="aboutJourney__h-line aboutJourney__h-line--accent">One Thoughtful Decision</span>
+                    </h2>
+                    <p class="aboutJourney__intro" id="ajIntro">We believe every exceptional space starts with a single purposeful choice. Our five-step design philosophy transforms that first decision into a timeless interior experience.</p>
+                </header>
+
+                <!-- Rows + SVG rail -->
+                <div class="aboutJourney__body" id="ajBody">
+
+                    <!-- SVG S-curve rail (built dynamically by JS) -->
+                    <div class="aboutJourney__svg-rail" id="ajSvgRail" aria-hidden="true">
+                        <svg id="ajSvg" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="ajGoldGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%"   stop-color="#C6A34F"/>
+                                    <stop offset="100%" stop-color="rgba(198,163,79,0.28)"/>
+                                </linearGradient>
+                                <filter id="ajGlowF" x="-200%" y="-5%" width="500%" height="110%">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+                                </filter>
+                            </defs>
+                            <path id="ajPathBg"   fill="none" stroke="rgba(22,41,80,0.07)"   stroke-width="2"/>
+                            <path id="ajPathGlow" fill="none" stroke="rgba(198,163,79,0.35)" stroke-width="14" stroke-linecap="round" filter="url(#ajGlowF)"/>
+                            <path id="ajPathFill" fill="none" stroke="url(#ajGoldGrad)"      stroke-width="2"  stroke-linecap="round"/>
+                        </svg>
+                        <!-- Glass ball travels along path -->
+                        <div class="aboutJourney__ball" id="ajBall">
+                            <div class="aboutJourney__ball-body">
+                                <div class="aboutJourney__ball-glare"></div>
+                            </div>
+                            <div class="aboutJourney__ball-glow"></div>
+                            <div class="aboutJourney__ball-pulse"></div>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 01  LEFT ───────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--left" data-aj-row="0">
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-1.png" alt="Thoughtful Planning" loading="eager">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark0" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">01</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Thoughtful Planning</h3>
+                            <span class="aboutJourney__card-sub">Foundation</span>
+                            <p class="aboutJourney__card-desc">Every successful interior begins with careful planning, understanding the client's vision, and creating a functional design strategy that serves both beauty and purpose.</p>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 02  RIGHT ──────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--right" data-aj-row="1">
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">02</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Refined Aesthetics</h3>
+                            <span class="aboutJourney__card-sub">Visual Balance</span>
+                            <p class="aboutJourney__card-desc">We carefully combine colours, textures, lighting, and proportions to create timeless and visually balanced interiors that feel both curated and effortless.</p>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark1" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-2.png" alt="Refined Aesthetics" loading="lazy">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 03  LEFT ───────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--left" data-aj-row="2">
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-3.png" alt="Smart Functionality" loading="lazy">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark2" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">03</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Smart Functionality</h3>
+                            <span class="aboutJourney__card-sub">Everyday Living</span>
+                            <p class="aboutJourney__card-desc">Every design decision improves usability while maintaining elegance, ensuring beautiful spaces that work effortlessly for everyday life.</p>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 04  RIGHT ──────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--right" data-aj-row="3">
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">04</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Curated Material Choices</h3>
+                            <span class="aboutJourney__card-sub">Premium Finishes</span>
+                            <p class="aboutJourney__card-desc">From premium wood finishes to carefully selected fabrics and stone surfaces, every material we choose reflects craftsmanship and lasting quality.</p>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark3" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-4.png" alt="Curated Material Choices" loading="lazy">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 05  LEFT ───────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--left" data-aj-row="4">
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-5.png" alt="Timeless Appeal" loading="lazy">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark4" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">05</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Timeless Appeal</h3>
+                            <span class="aboutJourney__card-sub">Lasting Value</span>
+                            <p class="aboutJourney__card-desc">Our goal is to create interiors that remain elegant, functional, and deeply relevant for years — spaces that grow more meaningful over time.</p>
+                        </div>
+                    </div>
+
+                </div><!-- /.aboutJourney__body -->
+
             </section>
-            <!-- ./ award-section -->
+            <!-- /.aboutJourney__section -->
 
 
 
@@ -4403,6 +4703,193 @@
         document.addEventListener('keydown', e => {
             if (e.key === 'Escape') entrust_closeMenu();
         });
+    </script>
+
+    <!-- ╔══ ABOUT JOURNEY — Scroll-driven Timeline ══╗ -->
+    <script>
+    (function () {
+        'use strict';
+
+        var section  = document.getElementById('aboutJourney');
+        var body     = document.getElementById('ajBody');
+        var rail     = document.getElementById('ajSvgRail');
+        var svgEl    = document.getElementById('ajSvg');
+        var pathBg   = document.getElementById('ajPathBg');
+        var pathFill = document.getElementById('ajPathFill');
+        var pathGlow = document.getElementById('ajPathGlow');
+        var ball     = document.getElementById('ajBall');
+        var markers  = document.querySelectorAll('.aj-cp-marker');
+        var rows     = document.querySelectorAll('.aboutJourney__row');
+
+        if (!section || typeof gsap === 'undefined' || typeof ScrollTrigger === 'undefined') return;
+        gsap.registerPlugin(ScrollTrigger);
+
+        /* ── Noise canvas ──────────────────────────────────────── */
+        (function(){
+            var c = document.getElementById('ajNoiseCanvas');
+            if (!c) return;
+            c.width = c.height = 200;
+            var ctx = c.getContext('2d'), d = ctx.createImageData(200,200);
+            for (var i = 0; i < d.data.length; i += 4) {
+                var v = Math.random()*255|0;
+                d.data[i]=d.data[i+1]=d.data[i+2]=v; d.data[i+3]=255;
+            }
+            ctx.putImageData(d,0,0);
+        })();
+
+        /* ── Build SVG S-curve through actual marker positions ─── */
+        var totalLen = 0;
+
+        function buildPath() {
+            if (!rail || !svgEl || !pathBg) return;
+            var railRect = rail.getBoundingClientRect();
+            var railH    = rail.offsetHeight;
+            if (railH < 10) return;
+
+            svgEl.style.height = railH + 'px';
+            svgEl.setAttribute('viewBox', '0 0 80 ' + railH);
+
+            /* Measure Y of each marker relative to rail top */
+            var pts = Array.from(markers).map(function(m) {
+                var r = m.getBoundingClientRect();
+                return r.top + r.height * 0.5 - railRect.top;
+            });
+
+            /* Build smooth S-curve: alternate right/left bow between checkpoints */
+            var cx = 40; /* centre x in 80-wide viewBox */
+            var d = 'M ' + cx + ',0';
+            var prevY = 0;
+            pts.forEach(function(y, i) {
+                var bow  = (i % 2 === 0) ? 72 : 8; /* right for even, left for odd */
+                var span = y - prevY;
+                d += ' C ' + bow + ',' + (prevY + span * 0.35)
+                   + ' ' + bow + ',' + (prevY + span * 0.65)
+                   + ' ' + cx + ',' + y;
+                prevY = y;
+            });
+            d += ' C ' + cx + ',' + (railH * 0.97) + ' ' + cx + ',' + railH + ' ' + cx + ',' + railH;
+
+            [pathBg, pathFill, pathGlow].forEach(function(p) { if (p) p.setAttribute('d', d); });
+
+            totalLen = pathBg.getTotalLength();
+            pathFill.style.strokeDasharray  = totalLen;
+            pathFill.style.strokeDashoffset = totalLen;
+            pathGlow.style.strokeDasharray  = totalLen;
+            pathGlow.style.strokeDashoffset = totalLen;
+
+            /* Reset ball to path start */
+            gsap.set(ball, { left: 40 - 14, top: 0 - 14 });
+        }
+
+        /* ── Position ball along path ──────────────────────────── */
+        function positionBall(progress) {
+            if (!pathBg || !totalLen || !rail) return;
+            var pt = pathBg.getPointAtLength(progress * totalLen);
+            /* viewBox is "0 0 80 railH" and rail CSS is also 80px wide → 1:1 mapping */
+            gsap.set(ball, { left: pt.x - 14, top: pt.y - 14 });
+        }
+
+        /* ── Run setup after layout paint ─────────────────────── */
+        requestAnimationFrame(function() {
+            buildPath();
+
+            /* Header fade-in */
+            gsap.timeline({ scrollTrigger: { trigger: '#ajLabel', start: 'top 90%', once: true } })
+               .from('#ajLabel',              { opacity: 0, y: 18, duration: 0.55, ease: 'power3.out' }, 0)
+               .from('.aboutJourney__h-line', { opacity: 0, y: 26, stagger: 0.1,  duration: 0.65, ease: 'power3.out' }, 0.1)
+               .from('#ajIntro',              { opacity: 0, y: 16, duration: 0.5,  ease: 'power2.out' }, 0.34);
+
+            /* Scroll-driven path fill + ball travel */
+            ScrollTrigger.create({
+                trigger  : body,
+                start    : 'top 78%',
+                end      : 'bottom 28%',
+                scrub    : 1.6,
+                onUpdate : function(self) {
+                    var p   = self.progress;
+                    var off = totalLen * (1 - p);
+                    if (pathFill) pathFill.style.strokeDashoffset = off;
+                    if (pathGlow) pathGlow.style.strokeDashoffset = off;
+                    positionBall(p);
+                }
+            });
+
+            /* Per-row reveal: clip-path wipe on image + stagger text */
+            rows.forEach(function(row) {
+                var isLeft  = row.classList.contains('aboutJourney__row--left');
+                var imgWrap = row.querySelector('.aboutJourney__img-wrap');
+                var img     = row.querySelector('.aboutJourney__img');
+                var cardEl  = row.querySelector('.aboutJourney__row-card');
+
+                if (imgWrap) gsap.set(imgWrap, { clipPath: isLeft ? 'inset(0 100% 0 0 round 20px)' : 'inset(0 0 0 100% round 20px)' });
+                if (img)     gsap.set(img,     { scale: 1.1 });
+
+                var tl = gsap.timeline({ scrollTrigger: { trigger: row, start: 'top 78%', once: true } });
+                if (imgWrap) tl.to(imgWrap, { clipPath: 'inset(0 0% 0 0% round 20px)', duration: 0.9, ease: 'power3.inOut' }, 0);
+                if (img)     tl.to(img,     { scale: 1, duration: 1.1, ease: 'power2.out' }, 0);
+                if (cardEl && cardEl.children.length) {
+                    tl.from(Array.from(cardEl.children), { opacity: 0, y: 24, stagger: 0.08, duration: 0.65, ease: 'power3.out' }, 0.2);
+                }
+            });
+
+            /* Checkpoint dot activate on scroll */
+            markers.forEach(function(m) {
+                ScrollTrigger.create({
+                    trigger    : m,
+                    start      : 'center 62%',
+                    onEnter    : function() { m.classList.add('is-active'); },
+                    onLeaveBack: function() { m.classList.remove('is-active'); }
+                });
+            });
+
+            /* Scroll parallax on images */
+            document.querySelectorAll('.aboutJourney__img').forEach(function(img) {
+                var wrap = img.closest('.aboutJourney__img-wrap');
+                if (!wrap) return;
+                ScrollTrigger.create({
+                    trigger : wrap, start: 'top bottom', end: 'bottom top',
+                    scrub   : 1.4,
+                    onUpdate: function(self) { gsap.set(img, { y: (self.progress - 0.5) * 44 }); }
+                });
+            });
+        });
+
+        /* ── Rebuild path on resize ────────────────────────────── */
+        var resizeId;
+        window.addEventListener('resize', function() {
+            clearTimeout(resizeId);
+            resizeId = setTimeout(buildPath, 220);
+        });
+
+        /* ── Image hover parallax ──────────────────────────────── */
+        document.querySelectorAll('.aboutJourney__img-wrap').forEach(function(wrap) {
+            var img = wrap.querySelector('.aboutJourney__img');
+            if (!img) return;
+            wrap.addEventListener('mousemove', function(e) {
+                var r = wrap.getBoundingClientRect();
+                var x = (e.clientX - r.left)/r.width  - 0.5;
+                var y = (e.clientY - r.top) /r.height - 0.5;
+                gsap.to(img, { x: x*14, scale: 1.06, duration: 0.8, ease: 'power2.out', overwrite: 'auto' });
+            });
+            wrap.addEventListener('mouseleave', function() {
+                gsap.to(img, { x: 0, scale: 1, duration: 1.0, ease: 'power3.out', overwrite: 'auto' });
+            });
+        });
+
+        /* ── Card text subtle tilt ─────────────────────────────── */
+        document.querySelectorAll('.aboutJourney__row-card').forEach(function(card) {
+            card.addEventListener('mousemove', function(e) {
+                var r = card.getBoundingClientRect();
+                var x = (e.clientX - r.left)/r.width  - 0.5;
+                var y = (e.clientY - r.top) /r.height - 0.5;
+                gsap.to(card, { rotateX: -y*3, rotateY: x*3, duration: 0.5, ease: 'power2.out', transformPerspective: 900, overwrite: 'auto' });
+            });
+            card.addEventListener('mouseleave', function() {
+                gsap.to(card, { rotateX: 0, rotateY: 0, duration: 0.7, ease: 'power3.out', overwrite: 'auto' });
+            });
+        });
+
+    })();
     </script>
 
 </body>

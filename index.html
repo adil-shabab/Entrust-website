@@ -935,7 +935,7 @@
         }
 
         /* Wenge — warm gold accent for the near-black surface */
-        .dvx-card[data-room="office"] .dvx-card-title { color: #d4aa6a; text-shadow: 0 1px 4px rgba(0,0,0,0.60); }
+        .dvx-card[data-room="office"] .dvx-card-title { color: white; text-shadow: 0 1px 4px rgba(0,0,0,0.60); }
         .dvx-card[data-room="office"] .dvx-card-meta  { color: rgba(212,170,106,0.70); }
 
         /* ── Icon circles — frosted glass style ── */
@@ -3586,9 +3586,7 @@
                 <div class="bg__hero">
                     <!-- Background image slides -->
                     <div class="hero__bg-slides">
-                        <div class="hero__bg-slide active" style="background-image:url('assets/images/hero-1.jpg')"></div>
-                        <div class="hero__bg-slide" style="background-image:url('assets/images/hero-2.jpg')"></div>
-                        <div class="hero__bg-slide" style="background-image:url('assets/images/hero-3.jpg')"></div>
+                        <video class="hero__bg-video" src="assets/images/hero-video.mp4" autoplay muted loop playsinline></video>
                     </div>
 
                     <div class="container">
@@ -5639,6 +5637,13 @@
         /* Set initial hidden state */
         gsap.set(heroLineEls, { y: '105%' });
         gsap.set(subtitleEl,  { opacity: 0, y: 18 });
+
+        /* Slow down hero video to 0.5× speed */
+        var heroVid = document.querySelector('.hero__bg-video');
+        if (heroVid) {
+            heroVid.playbackRate = 0.4;
+            heroVid.addEventListener('canplay', function () { heroVid.playbackRate = 0.4; }, { once: true });
+        }
 
         /* Slight delay so page has painted */
         gsap.delayedCall(0.4, function () {

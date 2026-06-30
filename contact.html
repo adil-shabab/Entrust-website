@@ -275,6 +275,76 @@
         @keyframes pctSpin { to { transform: rotate(360deg); } }
         .pct-spin { animation: pctSpin 0.75s linear infinite; }
 
+        /* Equal-height left/right columns */
+        .contact-page-area {
+            align-items: stretch;
+        }
+        .contact-page-area > [class*="col-"] {
+            display: flex;
+            flex-direction: column;
+        }
+        .request-content {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+        .contact-img {
+            flex: 1;
+            min-height: 0;
+            overflow: hidden;
+            border-radius: 16px;
+        }
+        .contact-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            border-radius: 16px;
+        }
+        .pct-col-form {
+            height: 100%;
+            box-sizing: border-box;
+        }
+
+        /* Card wrapper — matches home page pct-col */
+        .pct-col {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 28px;
+            border: 1px solid rgba(22,41,80,0.08);
+            box-shadow:
+                0 4px 20px rgba(22,41,80,0.07),
+                0 1px 3px rgba(22,41,80,0.04),
+                inset 0 1px 0 rgba(255,255,255,0.9);
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+        /* Sparkle decorations */
+        .pct-sparks { position: absolute; inset: 0; pointer-events: none; z-index: 0; }
+        .pct-spark {
+            position: absolute;
+            color: #C6A34F;
+            opacity: 0.7;
+            animation: pctSparkle 3.5s ease-in-out infinite;
+        }
+        .pct-spark:nth-child(1) { top: 10%; right: 5%;  animation-delay: 0s;    font-size: 10px; }
+        .pct-spark:nth-child(2) { top: 20%; right: 10%; animation-delay: -1.4s; font-size: 7px;  opacity: 0.6; }
+        .pct-spark:nth-child(3) { top: 5%;  right: 18%; animation-delay: -2.8s; font-size: 14px; }
+        @keyframes pctSparkle {
+            0%, 100% { opacity: 0.5; transform: scale(1) rotate(0deg); }
+            50%       { opacity: 1;   transform: scale(1.3) rotate(20deg); }
+        }
+        .pct-pulse {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            border-radius: 50%;
+            background: #C6A34F;
+            flex-shrink: 0;
+        }
+        .pct-col > *:not(.pct-sparks) { position: relative; z-index: 1; }
 
     </style>
 </head>
@@ -473,18 +543,27 @@
                             </div>
                         </div>
                         <div class="col-lg-8">
-                            <div class="request-form-wrap">
+                            <div class="pct-col pct-col-form">
 
+                                <!-- Sparkle decorations -->
+                                <div class="pct-sparks" aria-hidden="true">
+                                    <span class="pct-spark">✦</span>
+                                    <span class="pct-spark">✦</span>
+                                    <span class="pct-spark">✦</span>
+                                </div>
 
+                                <!-- Tag -->
+                                <span class="pct-tag">
+                                    <span class="pct-pulse"></span>
+                                    Get In Touch
+                                </span>
 
-                                <!-- Heading (JS splits to chars) -->
+                                <!-- Heading -->
                                 <h2 class="pct-heading" id="pctHeading">Start Your <em>Conversation</em></h2>
 
                                 <!-- Subtext -->
-                                <p class="pct-subtext" data-pct-anim="fade-up" data-pct-delay="0.22">Reach us anytime — let's build something amazing together.</p>
+                                <p class="pct-subtext">Reach us anytime — let's build something amazing together.</p>
 
-
-                                
                                 <form class="pct-form" id="pctForm" novalidate>
                                     <div class="pct-row" data-pct-anim="fade-up" data-pct-delay="0.28">
                                         <div class="pct-field">
@@ -544,7 +623,7 @@
                                         </button>
                                     </div>
                                 </form>
-                            </div>
+                            </div><!-- /.pct-col-form -->
                         </div>
                     </div>
                 </div>
