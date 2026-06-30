@@ -19,12 +19,12 @@
        DATA — edit this array to add / remove / reorder features
     ═══════════════════════════════════════════════════════════ */
     var FEATURES = [
-        { icon:'fa-solid fa-medal',          title:'5-Year Warranty',    desc:'Every project backed by our comprehensive craftsmanship guarantee.' },
-        { icon:'fa-solid fa-ruler-combined', title:'Precision Design',   desc:'Millimeter-perfect layouts shaped by decades of unbroken expertise.' },
-        { icon:'fa-solid fa-user-tie',       title:'Expert Consultants', desc:'Dedicated designers who listen, then translate vision into reality.' },
-        { icon:'fa-solid fa-couch',          title:'Luxury Materials',   desc:"Sourced from the world's finest suppliers for enduring beauty." },
-        { icon:'fa-solid fa-award',          title:'Award-Winning',      desc:'Globally recognised for excellence in residential interior design.' },
-        { icon:'fa-solid fa-house',          title:'End-to-End Service', desc:'From first sketch to final reveal — every detail managed for you.' },
+        { icon:'fa-solid fa-medal',          title:'5-Year Warranty',    desc:'Every project backed by our comprehensive craftsmanship guarantee.',  img:'assets/img/bg-img/lv1.jpg' },
+        { icon:'fa-solid fa-ruler-combined', title:'Precision Design',   desc:'Millimeter-perfect layouts shaped by decades of unbroken expertise.', img:'assets/img/bg-img/lv2.jpg' },
+        { icon:'fa-solid fa-user-tie',       title:'Expert Consultants', desc:'Dedicated designers who listen, then translate vision into reality.',  img:'assets/img/bg-img/lv3.jpg' },
+        { icon:'fa-solid fa-couch',          title:'Luxury Materials',   desc:"Sourced from the world's finest suppliers for enduring beauty.",        img:'assets/img/bg-img/lv4.jpg' },
+        { icon:'fa-solid fa-award',          title:'Award-Winning',      desc:'Globally recognised for excellence in residential interior design.',    img:'assets/img/bg-img/lv5.jpg' },
+        { icon:'fa-solid fa-house',          title:'End-to-End Service', desc:'From first sketch to final reveal — every detail managed for you.',    img:'assets/img/bg-img/kmain.jpg' },
     ];
 
     /* ═══════════════════════════════════════════════════════════
@@ -87,6 +87,13 @@
 
         var rm = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
         if (window.ScrollTrigger) gsap.registerPlugin(ScrollTrigger);
+
+        /* Preload feature images in the background */
+        preloadImages();
+
+        /* Set initial center image to match FEATURES[0] */
+        var initImg = D.imgWrap.querySelector('.wcu__img');
+        if (initImg && FEATURES[0] && FEATURES[0].img) initImg.src = FEATURES[0].img;
 
         /* Live image radius from rendered DOM */
         S.imgR = D.imgWrap.offsetWidth / 2 || S.imgR;
@@ -194,6 +201,59 @@
     }
 
     /* ═══════════════════════════════════════════════════════════
+       CENTER IMAGE — cross-fades to the active feature's image
+    ═══════════════════════════════════════════════════════════ */
+    function updateCenterImage(newIdx) {
+        var circle = D.imgWrap ? D.imgWrap.querySelector('.wcu__img-circle') : null;
+        if (!circle) return;
+        var curImg = circle.querySelector('.wcu__img:not(.wcu__img--next)');
+        if (!curImg) return;
+        var f = FEATURES[newIdx % FEATURES.length];
+        if (!f || !f.img) return;
+
+        /* Overlay the incoming image on top (position:absolute so it stacks) */
+        var nextImg = document.createElement('img');
+        nextImg.className   = 'wcu__img wcu__img--next';
+        nextImg.alt         = 'Luxury interior — ' + f.title;
+        nextImg.draggable   = false;
+        nextImg.style.cssText =
+            'position:absolute;inset:0;width:100%;height:100%;' +
+            'object-fit:cover;display:block;pointer-events:none;user-select:none;' +
+            'opacity:0;z-index:1;';
+        circle.insertBefore(nextImg, curImg.nextSibling);
+
+        /* Start loading, then cross-fade */
+        function doFade() {
+            gsap.timeline()
+                .to(curImg,  { opacity:0, scale:1.05, duration:0.32, ease:'power2.in' })
+                .to(nextImg, { opacity:1, scale:1,    duration:0.44, ease:'power2.out' }, '-=0.14')
+                .call(function () {
+                    /* Replace base image, clear GSAP transforms, strip overlay */
+                    curImg.src = f.img;
+                    gsap.set(curImg, { opacity:1, scale:1, clearProps:'transform' });
+                    if (nextImg.parentNode) nextImg.remove();
+                });
+        }
+
+        if (nextImg.complete && nextImg.naturalWidth) {
+            doFade();
+        } else {
+            nextImg.onload  = doFade;
+            nextImg.onerror = function () { if (nextImg.parentNode) nextImg.remove(); };
+        }
+        nextImg.src = f.img;
+    }
+
+    /* Preload all feature images so cross-fades are instant */
+    function preloadImages() {
+        FEATURES.forEach(function (f) {
+            if (!f.img) return;
+            var img = new Image();
+            img.src = f.img;
+        });
+    }
+
+    /* ═══════════════════════════════════════════════════════════
        CARD FACTORY — generates DOM from FEATURES data
     ═══════════════════════════════════════════════════════════ */
     function makeCard(rawIdx) {
@@ -291,8 +351,9 @@
         oldT.classList.remove('is-active');   /* now cRight — not active   */
         oldL.classList.add('is-active');       /* now cTop  — becomes active */
 
-        /* Update pagination counter */
+        /* Update pagination counter + sync center image */
         S.activeIdx = (S.activeIdx + 1) % FEATURES.length;
+        updateCenterImage(S.activeIdx);
         updateNav();
 
         /* Restart floats after transition completes */

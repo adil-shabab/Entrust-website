@@ -19305,15 +19305,15 @@ blockquote .content .author {
 }
 .wcu__card-icon i { font-size:18px;color:var(--wcu-gold); }
 
-/* Status dot (inactive = subtle; active = golden pulse) */
+/* Status dot (inactive = subtle; active = navy pulse) */
 .wcu__card-dot {
     width:8px;height:8px;border-radius:50%;margin-top:4px;flex-shrink:0;
-    background:rgba(198,163,79,0.28);
+    background:rgba(22,41,80,0.22);
     transition:background 0.35s ease,box-shadow 0.35s ease,transform 0.35s ease;
 }
 .wcu__card.is-active .wcu__card-dot {
-    background:var(--wcu-gold);
-    box-shadow:0 0 10px rgba(198,163,79,0.85);
+    background:var(--wcu-navy);
+    box-shadow:0 0 10px rgba(22,41,80,0.60);
     animation:wcuDotPulse 1.8s ease-in-out infinite;
 }
 @keyframes wcuDotPulse { 0%,100%{transform:scale(1);opacity:1;}50%{transform:scale(0.70);opacity:0.55;} }
@@ -19328,21 +19328,24 @@ blockquote .content .author {
     display:-webkit-box;-webkit-line-clamp:3;-webkit-box-orient:vertical;
 }
 
-/* Active card: golden breathing border */
+/* Active card: navy-blue breathing border (logo colour) */
 .wcu__card.is-active {
-    border-color:rgba(198,163,79,0.48)!important;
-    background:rgba(255,255,255,0.96)!important;
+    border-color:rgba(22,41,80,0.48)!important;
+    background:rgba(22,41,80,0.05)!important;
     box-shadow:
-        0 1px 0 rgba(255,255,255,0.96) inset,
-        0 0 0 1.5px rgba(198,163,79,0.42),
-        0 20px 60px rgba(22,41,80,0.14),
-        0 0 28px rgba(198,163,79,0.16) !important;
+        0 1px 0 rgba(255,255,255,0.88) inset,
+        0 0 0 1.5px rgba(22,41,80,0.44),
+        0 20px 60px rgba(22,41,80,0.16),
+        0 0 28px rgba(22,41,80,0.14) !important;
     animation:wcuCardBreathe 3s ease-in-out infinite;
 }
-.wcu__card.is-active::before { opacity:1!important; }
+.wcu__card.is-active::before {
+    opacity:1!important;
+    background:linear-gradient(90deg,transparent,rgba(22,41,80,0.60),transparent)!important;
+}
 @keyframes wcuCardBreathe {
-    0%,100%{box-shadow:0 1px 0 rgba(255,255,255,0.96) inset,0 0 0 1.5px rgba(198,163,79,0.42),0 20px 60px rgba(22,41,80,0.14),0 0 28px rgba(198,163,79,0.16);}
-    50%    {box-shadow:0 1px 0 rgba(255,255,255,0.96) inset,0 0 0 1.5px rgba(198,163,79,0.62),0 22px 66px rgba(22,41,80,0.18),0 0 42px rgba(198,163,79,0.28);}
+    0%,100%{box-shadow:0 1px 0 rgba(255,255,255,0.88) inset,0 0 0 1.5px rgba(22,41,80,0.44),0 20px 60px rgba(22,41,80,0.16),0 0 28px rgba(22,41,80,0.14);}
+    50%    {box-shadow:0 1px 0 rgba(255,255,255,0.88) inset,0 0 0 2px   rgba(22,41,80,0.66),0 22px 66px rgba(22,41,80,0.24),0 0 44px rgba(22,41,80,0.24);}
 }
 /* Card click ripple */
 .wcu__card-ripple { position:absolute;border-radius:50%;background:rgba(198,163,79,0.22);transform:scale(0);animation:wcuCardRipple .65s ease-out forwards;pointer-events:none; }
@@ -19571,4 +19574,12 @@ blockquote .content .author {
     .bento-stat__lbl { font-size: 12px; }
     .bento-img       { border-radius: 16px; }
     .bento-stat      { border-radius: 16px; }
+}
+
+
+.footer-widget .widget-header .footer-logo{
+    max-width: 250px;
+}
+.footer-logo img{
+    width: 250px;
 }
