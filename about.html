@@ -2962,6 +2962,160 @@
             </section>
             <!-- ./ page-header -->
 
+
+                        <section class="aboutJourney__section" id="aboutJourney" aria-label="Our Design Philosophy">
+
+                <!-- Background -->
+                <div class="aboutJourney__bg" aria-hidden="true">
+                    <div class="aboutJourney__bg-grid"></div>
+                    <div class="aboutJourney__bg-radial"></div>
+                    <canvas class="aboutJourney__noise-canvas" id="ajNoiseCanvas"></canvas>
+                </div>
+
+                <!-- Centred section header -->
+                <header class="aboutJourney__header">
+                    <span class="aboutJourney__label" id="ajLabel">OUR DESIGN PHILOSOPHY</span>
+                    <h2 class="aboutJourney__heading" id="ajHeading">
+                        <span class="aboutJourney__h-line">Every Great Interior</span>
+                        <span class="aboutJourney__h-line">Begins With</span>
+                        <span class="aboutJourney__h-line aboutJourney__h-line--accent">One Thoughtful Decision</span>
+                    </h2>
+                    <p class="aboutJourney__intro" id="ajIntro">We believe every exceptional space starts with a single purposeful choice. Our five-step design philosophy transforms that first decision into a timeless interior experience.</p>
+                </header>
+
+                <!-- Rows + SVG rail -->
+                <div class="aboutJourney__body" id="ajBody">
+
+                    <!-- SVG S-curve rail (built dynamically by JS) -->
+                    <div class="aboutJourney__svg-rail" id="ajSvgRail" aria-hidden="true">
+                        <svg id="ajSvg" preserveAspectRatio="none">
+                            <defs>
+                                <linearGradient id="ajGoldGrad" x1="0" y1="0" x2="0" y2="1">
+                                    <stop offset="0%"   stop-color="#C6A34F"/>
+                                    <stop offset="100%" stop-color="rgba(198,163,79,0.28)"/>
+                                </linearGradient>
+                                <filter id="ajGlowF" x="-200%" y="-5%" width="500%" height="110%">
+                                    <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
+                                </filter>
+                            </defs>
+                            <path id="ajPathBg"   fill="none" stroke="rgba(22,41,80,0.07)"   stroke-width="2"/>
+                            <path id="ajPathGlow" fill="none" stroke="rgba(198,163,79,0.35)" stroke-width="14" stroke-linecap="round" filter="url(#ajGlowF)"/>
+                            <path id="ajPathFill" fill="none" stroke="url(#ajGoldGrad)"      stroke-width="2"  stroke-linecap="round"/>
+                        </svg>
+                        <!-- Glass ball travels along path -->
+                        <div class="aboutJourney__ball" id="ajBall">
+                            <div class="aboutJourney__ball-body">
+                                <div class="aboutJourney__ball-glare"></div>
+                            </div>
+                            <div class="aboutJourney__ball-glow"></div>
+                            <div class="aboutJourney__ball-pulse"></div>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 01  LEFT ───────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--left" data-aj-row="0">
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-1.png" alt="Thoughtful Planning" loading="eager">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark0" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">01</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Thoughtful Planning</h3>
+                            <span class="aboutJourney__card-sub">Foundation</span>
+                            <p class="aboutJourney__card-desc">Every successful interior begins with careful planning, understanding the client's vision, and creating a functional design strategy that serves both beauty and purpose.</p>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 02  RIGHT ──────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--right" data-aj-row="1">
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">02</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Refined Aesthetics</h3>
+                            <span class="aboutJourney__card-sub">Visual Balance</span>
+                            <p class="aboutJourney__card-desc">We carefully combine colours, textures, lighting, and proportions to create timeless and visually balanced interiors that feel both curated and effortless.</p>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark1" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-2.png" alt="Refined Aesthetics" loading="lazy">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 03  LEFT ───────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--left" data-aj-row="2">
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-3.png" alt="Smart Functionality" loading="lazy">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark2" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">03</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Smart Functionality</h3>
+                            <span class="aboutJourney__card-sub">Everyday Living</span>
+                            <p class="aboutJourney__card-desc">Every design decision improves usability while maintaining elegance, ensuring beautiful spaces that work effortlessly for everyday life.</p>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 04  RIGHT ──────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--right" data-aj-row="3">
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">04</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Curated Material Choices</h3>
+                            <span class="aboutJourney__card-sub">Premium Finishes</span>
+                            <p class="aboutJourney__card-desc">From premium wood finishes to carefully selected fabrics and stone surfaces, every material we choose reflects craftsmanship and lasting quality.</p>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark3" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-4.png" alt="Curated Material Choices" loading="lazy">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ── Milestone 05  LEFT ───────────────────── -->
+                    <div class="aboutJourney__row aboutJourney__row--left" data-aj-row="4">
+                        <div class="aboutJourney__row-img">
+                            <div class="aboutJourney__img-wrap">
+                                <img class="aboutJourney__img" src="assets/img/images/award-img-5.png" alt="Timeless Appeal" loading="lazy">
+                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
+                            </div>
+                        </div>
+                        <div class="aboutJourney__row-center">
+                            <span class="aj-cp-marker" id="ajMark4" aria-hidden="true"></span>
+                        </div>
+                        <div class="aboutJourney__row-card">
+                            <span class="aboutJourney__card-num" aria-hidden="true">05</span>
+                            <div class="aboutJourney__card-rule"></div>
+                            <h3 class="aboutJourney__card-title">Timeless Appeal</h3>
+                            <span class="aboutJourney__card-sub">Lasting Value</span>
+                            <p class="aboutJourney__card-desc">Our goal is to create interiors that remain elegant, functional, and deeply relevant for years — spaces that grow more meaningful over time.</p>
+                        </div>
+                    </div>
+
+                </div><!-- /.aboutJourney__body -->
+
+            </section>
+
             <section class="about-section-2 pt-130 pb-130">
                 <div class="shape-1"><img src="assets/img/shapes/about-shape-1.png" alt="shape"></div>
                 <div class="container container-2">
@@ -3126,7 +3280,7 @@
                         <div class="wcu__badge">
                             <span class="wcu__badge-shine" aria-hidden="true"></span>
                             <span class="wcu__badge-star">✦</span>
-                            <span>Since 1986</span>
+                            <span>Bengaluru, India</span>
                         </div>
 
                         <!-- Heading -->
@@ -3169,7 +3323,7 @@
                         <!-- Trusted-by line -->
                         <p class="wcu__trusted">
                             <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-                            Trusted by homeowners &amp; businesses across the region
+                            Designing beautiful spaces for homeowners &amp; businesses across Bengaluru
                         </p>
 
                     </div><!-- /.wcu__content -->
@@ -3281,16 +3435,16 @@
                             <!-- Stats row below the image -->
                             <div class="founder__stats-row">
                                 <div class="founder__stat-item">
-                                    <span class="founder__stat-num">15<span class="founder__stat-accent">+</span></span>
-                                    <span class="founder__stat-label">Years Experience</span>
+                                    <span class="founder__stat-num">100<span class="founder__stat-accent">%</span></span>
+                                    <span class="founder__stat-label">Bespoke Designs</span>
                                 </div>
                                 <div class="founder__stat-item">
-                                    <span class="founder__stat-num">500<span class="founder__stat-accent">+</span></span>
-                                    <span class="founder__stat-label">Luxury Projects</span>
+                                    <span class="founder__stat-num">Est.<span class="founder__stat-accent" style="font-size:0.7em"> 2025</span></span>
+                                    <span class="founder__stat-label">Design Studio</span>
                                 </div>
                                 <div class="founder__stat-item">
-                                    <span class="founder__stat-num">98<span class="founder__stat-accent">%</span></span>
-                                    <span class="founder__stat-label">Client Satisfaction</span>
+                                    <span class="founder__stat-num">∞<span class="founder__stat-accent"></span></span>
+                                    <span class="founder__stat-label">Creative Vision</span>
                                 </div>
                             </div>
 
@@ -3812,325 +3966,6 @@
                 </div>
             </section> -->
             <!-- ./ project-section -->
-
-            <!-- ═══════════════════════════════════════════════════════
-                 OUR DESIGN PHILOSOPHY — Cinematic Scroll Timeline
-            ════════════════════════════════════════════════════════ -->
-            <section class="aboutJourney__section" id="aboutJourney" aria-label="Our Design Philosophy">
-
-                <!-- Background -->
-                <div class="aboutJourney__bg" aria-hidden="true">
-                    <div class="aboutJourney__bg-grid"></div>
-                    <div class="aboutJourney__bg-radial"></div>
-                    <canvas class="aboutJourney__noise-canvas" id="ajNoiseCanvas"></canvas>
-                </div>
-
-                <!-- Centred section header -->
-                <header class="aboutJourney__header">
-                    <span class="aboutJourney__label" id="ajLabel">OUR DESIGN PHILOSOPHY</span>
-                    <h2 class="aboutJourney__heading" id="ajHeading">
-                        <span class="aboutJourney__h-line">Every Great Interior</span>
-                        <span class="aboutJourney__h-line">Begins With</span>
-                        <span class="aboutJourney__h-line aboutJourney__h-line--accent">One Thoughtful Decision</span>
-                    </h2>
-                    <p class="aboutJourney__intro" id="ajIntro">We believe every exceptional space starts with a single purposeful choice. Our five-step design philosophy transforms that first decision into a timeless interior experience.</p>
-                </header>
-
-                <!-- Rows + SVG rail -->
-                <div class="aboutJourney__body" id="ajBody">
-
-                    <!-- SVG S-curve rail (built dynamically by JS) -->
-                    <div class="aboutJourney__svg-rail" id="ajSvgRail" aria-hidden="true">
-                        <svg id="ajSvg" preserveAspectRatio="none">
-                            <defs>
-                                <linearGradient id="ajGoldGrad" x1="0" y1="0" x2="0" y2="1">
-                                    <stop offset="0%"   stop-color="#C6A34F"/>
-                                    <stop offset="100%" stop-color="rgba(198,163,79,0.28)"/>
-                                </linearGradient>
-                                <filter id="ajGlowF" x="-200%" y="-5%" width="500%" height="110%">
-                                    <feGaussianBlur in="SourceGraphic" stdDeviation="5" result="blur"/>
-                                </filter>
-                            </defs>
-                            <path id="ajPathBg"   fill="none" stroke="rgba(22,41,80,0.07)"   stroke-width="2"/>
-                            <path id="ajPathGlow" fill="none" stroke="rgba(198,163,79,0.35)" stroke-width="14" stroke-linecap="round" filter="url(#ajGlowF)"/>
-                            <path id="ajPathFill" fill="none" stroke="url(#ajGoldGrad)"      stroke-width="2"  stroke-linecap="round"/>
-                        </svg>
-                        <!-- Glass ball travels along path -->
-                        <div class="aboutJourney__ball" id="ajBall">
-                            <div class="aboutJourney__ball-body">
-                                <div class="aboutJourney__ball-glare"></div>
-                            </div>
-                            <div class="aboutJourney__ball-glow"></div>
-                            <div class="aboutJourney__ball-pulse"></div>
-                        </div>
-                    </div>
-
-                    <!-- ── Milestone 01  LEFT ───────────────────── -->
-                    <div class="aboutJourney__row aboutJourney__row--left" data-aj-row="0">
-                        <div class="aboutJourney__row-img">
-                            <div class="aboutJourney__img-wrap">
-                                <img class="aboutJourney__img" src="assets/img/images/award-img-1.png" alt="Thoughtful Planning" loading="eager">
-                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
-                            </div>
-                        </div>
-                        <div class="aboutJourney__row-center">
-                            <span class="aj-cp-marker" id="ajMark0" aria-hidden="true"></span>
-                        </div>
-                        <div class="aboutJourney__row-card">
-                            <span class="aboutJourney__card-num" aria-hidden="true">01</span>
-                            <div class="aboutJourney__card-rule"></div>
-                            <h3 class="aboutJourney__card-title">Thoughtful Planning</h3>
-                            <span class="aboutJourney__card-sub">Foundation</span>
-                            <p class="aboutJourney__card-desc">Every successful interior begins with careful planning, understanding the client's vision, and creating a functional design strategy that serves both beauty and purpose.</p>
-                        </div>
-                    </div>
-
-                    <!-- ── Milestone 02  RIGHT ──────────────────── -->
-                    <div class="aboutJourney__row aboutJourney__row--right" data-aj-row="1">
-                        <div class="aboutJourney__row-card">
-                            <span class="aboutJourney__card-num" aria-hidden="true">02</span>
-                            <div class="aboutJourney__card-rule"></div>
-                            <h3 class="aboutJourney__card-title">Refined Aesthetics</h3>
-                            <span class="aboutJourney__card-sub">Visual Balance</span>
-                            <p class="aboutJourney__card-desc">We carefully combine colours, textures, lighting, and proportions to create timeless and visually balanced interiors that feel both curated and effortless.</p>
-                        </div>
-                        <div class="aboutJourney__row-center">
-                            <span class="aj-cp-marker" id="ajMark1" aria-hidden="true"></span>
-                        </div>
-                        <div class="aboutJourney__row-img">
-                            <div class="aboutJourney__img-wrap">
-                                <img class="aboutJourney__img" src="assets/img/images/award-img-2.png" alt="Refined Aesthetics" loading="lazy">
-                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ── Milestone 03  LEFT ───────────────────── -->
-                    <div class="aboutJourney__row aboutJourney__row--left" data-aj-row="2">
-                        <div class="aboutJourney__row-img">
-                            <div class="aboutJourney__img-wrap">
-                                <img class="aboutJourney__img" src="assets/img/images/award-img-3.png" alt="Smart Functionality" loading="lazy">
-                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
-                            </div>
-                        </div>
-                        <div class="aboutJourney__row-center">
-                            <span class="aj-cp-marker" id="ajMark2" aria-hidden="true"></span>
-                        </div>
-                        <div class="aboutJourney__row-card">
-                            <span class="aboutJourney__card-num" aria-hidden="true">03</span>
-                            <div class="aboutJourney__card-rule"></div>
-                            <h3 class="aboutJourney__card-title">Smart Functionality</h3>
-                            <span class="aboutJourney__card-sub">Everyday Living</span>
-                            <p class="aboutJourney__card-desc">Every design decision improves usability while maintaining elegance, ensuring beautiful spaces that work effortlessly for everyday life.</p>
-                        </div>
-                    </div>
-
-                    <!-- ── Milestone 04  RIGHT ──────────────────── -->
-                    <div class="aboutJourney__row aboutJourney__row--right" data-aj-row="3">
-                        <div class="aboutJourney__row-card">
-                            <span class="aboutJourney__card-num" aria-hidden="true">04</span>
-                            <div class="aboutJourney__card-rule"></div>
-                            <h3 class="aboutJourney__card-title">Curated Material Choices</h3>
-                            <span class="aboutJourney__card-sub">Premium Finishes</span>
-                            <p class="aboutJourney__card-desc">From premium wood finishes to carefully selected fabrics and stone surfaces, every material we choose reflects craftsmanship and lasting quality.</p>
-                        </div>
-                        <div class="aboutJourney__row-center">
-                            <span class="aj-cp-marker" id="ajMark3" aria-hidden="true"></span>
-                        </div>
-                        <div class="aboutJourney__row-img">
-                            <div class="aboutJourney__img-wrap">
-                                <img class="aboutJourney__img" src="assets/img/images/award-img-4.png" alt="Curated Material Choices" loading="lazy">
-                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ── Milestone 05  LEFT ───────────────────── -->
-                    <div class="aboutJourney__row aboutJourney__row--left" data-aj-row="4">
-                        <div class="aboutJourney__row-img">
-                            <div class="aboutJourney__img-wrap">
-                                <img class="aboutJourney__img" src="assets/img/images/award-img-5.png" alt="Timeless Appeal" loading="lazy">
-                                <div class="aboutJourney__img-scrim" aria-hidden="true"></div>
-                            </div>
-                        </div>
-                        <div class="aboutJourney__row-center">
-                            <span class="aj-cp-marker" id="ajMark4" aria-hidden="true"></span>
-                        </div>
-                        <div class="aboutJourney__row-card">
-                            <span class="aboutJourney__card-num" aria-hidden="true">05</span>
-                            <div class="aboutJourney__card-rule"></div>
-                            <h3 class="aboutJourney__card-title">Timeless Appeal</h3>
-                            <span class="aboutJourney__card-sub">Lasting Value</span>
-                            <p class="aboutJourney__card-desc">Our goal is to create interiors that remain elegant, functional, and deeply relevant for years — spaces that grow more meaningful over time.</p>
-                        </div>
-                    </div>
-
-                </div><!-- /.aboutJourney__body -->
-
-            </section>
-            <!-- /.aboutJourney__section -->
-
-
-
-            <!-- <section class="gallary-section-2 pb-130 overflow-hidden">
-                <div class="bg-img" data-background="assets/img/bg-img/gallary-bg-1.png"></div>
-                <div class="container container-2">
-                    <div class="row">
-                        <div class="col-lg-4 col-md-12">
-                            <div class="gallary-left-content">
-                                <div class="section-heading white-content mb-0">
-                                    <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
-                                        data-duration="0.9" data-stagger="0.03">our gallery</h4>
-                                    <h2 class="section-title">Interior <br>design</h2>
-                                    <p class="mb-0">
-                                        A glimpse into spaces designed with purpose and passion. <br>
-                                        Where aesthetics meet functionality in perfect harmony. <br>
-                                        Inspired living, beautifully realized.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-8">
-                            <div class="gallary-carousel-wrap">
-                                <div class="gallary-carousel swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="gallary-inner-item">
-                                                <a><img src="assets/img/images/gallary-img-1.png"
-                                                        alt="img"></a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="gallary-inner-item">
-                                                <a><img src="assets/img/images/gallary-img-2.png"
-                                                        alt="img"></a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="gallary-inner-item">
-                                                <a><img src="assets/img/images/gallary-img-3.png"
-                                                        alt="img"></a>
-                                            </div>
-                                        </div>
-                                        <div class="swiper-slide">
-                                            <div class="gallary-inner-item">
-                                                <a><img src="assets/img/images/gallary-img-4.png"
-                                                        alt="img"></a>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="swiper-arrow">
-                                    <div class="swiper-nav swiper-prev"><i class="fa-regular fa-arrow-left"></i></div>
-                                    <div class="swiper-nav swiper-next"><i class="fa-regular fa-arrow-right"></i></div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
-            <!-- ./ gallary-section -->
-
-            <!-- <section class="testimonial-section pt-150 pb-130 fade-wrapper">
-                <div class="container container-2">
-                    <div class="row section-heading-wrap fade-top">
-                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
-                        <div class="col-lg-4 col-md-12">
-                            <div class="section-heading mb-0">
-                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
-                                    data-duration="0.9" data-stagger="0.03">WHY CHOOSE ENTRUST</h4>
-                            </div>
-                        </div>
-                        <div class="col-lg-8 col-md-12">
-                            <div class="section-heading section-heading-2 mb-0">
-                                <h2 class="section-title cursor-effect title-2">Thoughtful Design. <br> <span>Perfect
-                                        Execution.</span> <br> Spaces You’ll Love.</h2>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="testi-img slide-anim" data-delay="0.3" data-offset="100" data-direction="left">
-                                <img src="assets/img/testi/testi-img-1.png" alt="testi">
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="testi-carousel-wrap slide-anim" data-delay="0.3" data-offset="100"
-                                data-direction="right">
-                                <div class="testi-top-content">
-                                    <div class="right-content rating-list">
-                                        <p> <i class="fa-solid fa-star" style="color: #C6A34F;"></i> Tailored To Your
-                                            Lifestyle <br> <i class="fa-solid fa-star" style="color: #C6A34F;"></i>
-                                            Transparent From Start To Finish <br> <i class="fa-solid fa-star"
-                                                style="color: #C6A34F;"></i> Designs That Balance Beauty & Function</p>
-                                    </div>
-                                </div>
-                                <div class="testi-carousel swiper">
-                                    <div class="swiper-wrapper">
-                                        <div class="swiper-slide">
-                                            <div class="testi-item">
-                                                <p>“We believe every space deserves a design journey built on
-                                                    creativity, clarity, and careful attention to detail.”</p>
-                                                <div class="testi-author">
-                                                    <div class="author-img">
-                                                        <img src="assets/img/favicon.png" alt="author">
-                                                    </div>
-                                                    <h4 class="name">The Entrust Promise <span>Client-First Design
-                                                            Approach</span></h4>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
-            <!-- ./ testimonial-section -->
-
-            <!-- <section class="sponsor-section bg-white pt-120 pb-130 overflow-hidden">
-                <div class="container">
-                    <div class="sponsor-text-wrap sponsor-text-wrap-2">
-                        <h5 class="sponsor-text">Our Website <span>75000</span>+ VIP Customer</h5>
-                    </div>
-                    <div class="sponsor-carousel swiper">
-                        <div class="swiper-wrapper">
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <a><img src="assets/img/sponsor/sponsor-1.png" alt="sponsor"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <a><img src="assets/img/sponsor/sponsor-2.png" alt="sponsor"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <a><img src="assets/img/sponsor/sponsor-3.png" alt="sponsor"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <a><img src="assets/img/sponsor/sponsor-4.png" alt="sponsor"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <a><img src="assets/img/sponsor/sponsor-5.png" alt="sponsor"></a>
-                                </div>
-                            </div>
-                            <div class="swiper-slide">
-                                <div class="sponsor-item">
-                                    <a><img src="assets/img/sponsor/sponsor-6.png" alt="sponsor"></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </section> -->
-            <!-- ./ sponsor-section -->
 
 
             <footer class="footer-section overflow-hidden">
