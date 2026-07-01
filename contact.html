@@ -346,6 +346,84 @@
         }
         .pct-col > *:not(.pct-sparks) { position: relative; z-index: 1; }
 
+        /* ============================================
+           INFO SECTION — Address / Support (boxy)
+        ============================================ */
+        .info-section { background: #f5f8ff; padding-top: 90px; }
+
+        .info-box {
+            position: relative;
+            height: 100%;
+            background: #ffffff;
+            border: 1.5px solid rgba(22,41,80,0.12);
+            border-radius: 6px;
+            padding: 44px 40px;
+            box-sizing: border-box;
+            transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
+        }
+        .info-box:hover {
+            transform: translateY(-6px);
+            border-color: rgba(22,41,80,0.25);
+            box-shadow: 0 20px 44px -12px rgba(22,41,80,0.14);
+        }
+
+        /* corner brackets — the "boxy" signature */
+        .info-box-corner { position: absolute; width: 20px; height: 20px; pointer-events: none; }
+        .info-box-corner.tl { top: -1.5px; left: -1.5px; border-top: 2px solid #C6A34F; border-left: 2px solid #C6A34F; }
+        .info-box-corner.tr { top: -1.5px; right: -1.5px; border-top: 2px solid #C6A34F; border-right: 2px solid #C6A34F; }
+        .info-box-corner.bl { bottom: -1.5px; left: -1.5px; border-bottom: 2px solid #C6A34F; border-left: 2px solid #C6A34F; }
+        .info-box-corner.br { bottom: -1.5px; right: -1.5px; border-bottom: 2px solid #C6A34F; border-right: 2px solid #C6A34F; }
+
+        .info-box-icon {
+            width: 56px;
+            height: 56px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #162950;
+            border-radius: 6px;
+            color: #C6A34F;
+            margin-bottom: 24px;
+        }
+        .info-box-icon svg { width: 24px; height: 24px; }
+
+        .info-box-title {
+            font-family: 'Cal Sans', serif;
+            font-size: 22px;
+            font-weight: 300;
+            color: #162950;
+            margin: 4px 0 14px;
+        }
+
+        .info-box-text {
+            font-family: 'Jost', sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.75;
+            color: rgba(22,41,80,0.6);
+            margin: 0;
+        }
+
+        .info-box-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Jost', sans-serif;
+            font-size: 14.5px;
+            font-weight: 500;
+            color: #162950;
+            text-decoration: none;
+            margin-bottom: 10px;
+            transition: color 0.3s ease, gap 0.3s ease;
+        }
+        .info-box-link:last-child { margin-bottom: 0; }
+        .info-box-link svg { width: 15px; height: 15px; flex-shrink: 0; color: #C6A34F; }
+        .info-box-link:hover { color: #C6A34F; gap: 12px; }
+
+        @media (max-width: 991px) {
+            .info-box { margin-bottom: 24px; }
+        }
+
     </style>
 </head>
 
@@ -526,17 +604,6 @@
                     <div class="row request-wrap contact-page-area">
                         <div class="col-lg-4">
                             <div class="request-content">
-                                <div class="request-item-wrap">
-                                    <div class="request-item white-content">
-                                        <span>Address</span>
-                                        <p>Entrust interior Designers <br> Bengaluru, Karnataka 560043</p>
-                                    </div>
-                                    <div class="request-item white-content">
-                                        <span>Support</span>
-                                        <a href="tel:+919845012345">+91 98450 12345</a>
-                                        <a href="mailto:info@entrustdesigns.com">info@entrustdesigns.com</a>
-                                    </div>
-                                </div>
                                 <div class="contact-img">
                                     <img src="assets/img/images/contact-img-1.png" alt="img">
                                 </div>
@@ -630,7 +697,63 @@
             </section>
             <!-- ./ contact-section -->
 
-            <div class="map-wrapper pb-150">
+            <section class="info-section pb-150">
+                <div class="container container-2">
+                    <div class="row section-heading-wrap w-100 ml-0">
+                        <div class="shape"><img src="assets/img/shapes/section-heading.png" alt="shape"></div>
+                        <div class="col-lg-4 col-md-12">
+                            <div class="section-heading mb-0">
+                                <h4 class="sub-heading" data-text-animation="fade-in-right" data-split="char"
+                                    data-duration="0.9" data-stagger="0.03">reach us</h4>
+                            </div>
+                        </div>
+                        <div class="col-lg-8 col-md-12">
+                            <div class="section-heading section-heading-2 mb-0">
+                                <h2 class="section-title title-2">Visit our studio<br> <span>or drop us</span>
+                                    a line</h2>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-corner tl"></span>
+                                <span class="info-box-corner tr"></span>
+                                <span class="info-box-corner bl"></span>
+                                <span class="info-box-corner br"></span>
+                                <div class="info-box-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 12-9 12s-9-5-9-12a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                                </div>
+                                <h3 class="info-box-title">Address</h3>
+                                <p class="info-box-text">Entrust Interior Designers <br> Bengaluru, Karnataka 560043 <br> India</p>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 col-md-6">
+                            <div class="info-box">
+                                <span class="info-box-corner tl"></span>
+                                <span class="info-box-corner tr"></span>
+                                <span class="info-box-corner bl"></span>
+                                <span class="info-box-corner br"></span>
+                                <div class="info-box-icon" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.21 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 1.29l3-.007a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                </div>
+                                <h3 class="info-box-title">Support</h3>
+                                <a href="tel:+919845012345" class="info-box-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.21 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 1.29l3-.007a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                                    +91 98450 12345
+                                </a>
+                                <a href="mailto:info@entrustdesigns.com" class="info-box-link">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+                                    info@entrustdesigns.com
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- ./ info-section -->
+
+            <div class="map-wrapper pb-80">
                 <div class="container">
                     <iframe
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d971.8812660209969!2d77.6603418!3d13.0022004!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae157e756c6543%3A0x3b37aa5c7755c497!2sthinkB%20Agency!5e0!3m2!1sen!2sin!4v1775541154227!5m2!1sen!2sin"

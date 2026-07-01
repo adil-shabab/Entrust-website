@@ -39,6 +39,10 @@
             --config-images-bg: #f9f5ee;
         }
 
+        .bento-stats{
+            padding-top: 125px !important;
+        }
+
         /* =============================================
            ENTRUST SPLIT BANNER
            Left: fullscreen video · Right: 3 nav boxes
@@ -4011,367 +4015,6 @@
             </section> -->
 
 
-            <section class="testimonials___section">
-                <!-- Advanced slider CSS — scoped -->
-                <style>
-                /* ── Keyframes ─────────────────────────────── */
-                @keyframes testiImgReveal {
-                    0%   { opacity:0; clip-path:inset(0 100% 0 0); transform:scale(1.12); }
-                    55%  { clip-path:inset(0 0% 0 0); }
-                    100% { opacity:1; clip-path:inset(0 0% 0 0); transform:scale(1); }
-                }
-                @keyframes testiImgRevealRev {
-                    0%   { opacity:0; clip-path:inset(0 0 0 100%); transform:scale(1.12); }
-                    55%  { clip-path:inset(0 0 0 0%); }
-                    100% { opacity:1; clip-path:inset(0 0 0 0%); transform:scale(1); }
-                }
-                @keyframes testiStarsFloat {
-                    0%   { opacity:0; transform:translateY(18px) scale(.7); }
-                    100% { opacity:1; transform:translateY(0) scale(1); }
-                }
-                @keyframes testiReviewIn {
-                    0%   { opacity:0; transform:translateY(28px); filter:blur(4px); }
-                    100% { opacity:1; transform:translateY(0); filter:blur(0); }
-                }
-                @keyframes testiAuthorIn {
-                    0%   { opacity:0; transform:translateX(-20px); }
-                    100% { opacity:1; transform:translateX(0); }
-                }
-                @keyframes testiLocIn {
-                    0%   { opacity:0; transform:translateX(-14px); }
-                    100% { opacity:1; transform:translateX(0); }
-                }
-                @keyframes testiNumPop {
-                    0%   { opacity:0; transform:scale(.4) rotate(-8deg); }
-                    65%  { transform:scale(1.08) rotate(2deg); }
-                    100% { opacity:.055; transform:scale(1) rotate(0deg); }
-                }
-                @keyframes testiBarFill {
-                    from { width:0%; }
-                    to   { width:100%; }
-                }
-                @keyframes testiArrowPulse {
-                    0%,100% { box-shadow:0 0 0 0 rgba(198,163,79,0); }
-                    50%     { box-shadow:0 0 0 8px rgba(198,163,79,.18); }
-                }
-
-                /* ── Element base (hidden until JS animates) ── */
-                .testi-img-el  { animation-fill-mode:both; }
-                .testi-stars-el,
-                .testi-review-el,
-                .testi-name-el,
-                .testi-loc-el   { animation-fill-mode:both; }
-
-                /* ── Clip wrapper for image ── */
-                .testi-img-clip { overflow:hidden; border-radius:inherit; width:100%; height:100%; }
-
-                /* ── Background decorative number ── */
-                .testi-bg-num {
-                    position:absolute; right:-10px; top:50%;
-                    transform:translateY(-50%);
-                    font-family:'Cal Sans',serif;
-                    font-size:clamp(80px,12vw,160px);
-                    font-weight:700;
-                    color:rgba(22,41,80,.055);
-                    line-height:1;
-                    pointer-events:none;
-                    user-select:none;
-                    letter-spacing:-.04em;
-                    animation-fill-mode:both;
-                    z-index:0;
-                }
-                .second_b_x { position:relative; }
-
-                /* ── Progress bar — hidden ── */
-                .testi-progress-bar { display:none; }
-
-                /* ── Arrow hover glow ── */
-                .left_arrow:hover,
-                .right_arrow:hover { animation:testiArrowPulse .8s ease forwards; }
-
-                /* ── Dots ── */
-                .testi-dots {
-                    display:flex; align-items:center; justify-content:center;
-                    gap:8px; margin-top:18px;
-                }
-                .testi-dot {
-                    width:8px; height:8px; border-radius:50%;
-                    background:rgba(255,255,255,0.35);
-                    border:1.5px solid rgba(255,255,255,0.55);
-                    cursor:pointer; padding:0;
-                    transition: all .45s cubic-bezier(0.34,1.4,0.64,1);
-                    outline:none;
-                }
-                .testi-dot:hover:not(.active) {
-                    background:rgba(255,255,255,0.55);
-                    border-color:rgba(255,255,255,0.80);
-                    transform:scale(1.2);
-                }
-                .testi-dot.active {
-                    width:26px; border-radius:999px;
-                    background:#C6A34F;
-                    border-color:#C6A34F;
-                    box-shadow:0 0 12px rgba(198,163,79,.55), 0 0 4px rgba(198,163,79,.3);
-                }
-                </style>
-
-                <div class="container container-2">
-                    <div class="row">
-                        <div class="col-md-5 d-flex flex-column justify-content-center">
-                            <h4>Hear from Clients</h4>
-                            <p>Every project we complete is shaped by trust, vision, and a shared dream. Here is what our clients say about living in the spaces we crafted together.</p>
-
-                            <div class="count__section">
-                                <span class="bld">4.92</span>
-                                <div class="rating">
-                                    <div class="stars">
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star"></i>
-                                        <i class="fa-solid fa-star-half-stroke"></i>
-                                    </div>
-                                    <span class="total_rating">
-                                        4800 Ratings
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-7">
-                            <div class="row second_b_x">
-                                <div class="left_arrow" id="testiPrev">
-                                    <i class="fa-solid fa-chevron-left"></i>
-                                </div>
-                                <div class="right_arrow" id="testiNext">
-                                    <i class="fa-solid fa-chevron-right"></i>
-                                </div>
-                                <!-- Slide wrapper — only inner content changes -->
-                                <!-- Decorative background slide number -->
-                                <div class="testi-bg-num" id="testiBgNum">01</div>
-                                <!-- Auto-play progress bar -->
-                                <div class="testi-progress-bar" id="testiBar"></div>
-
-                                <div class="col-md-6">
-                                    <div class="img__box" id="testiImgWrap">
-                                        <div class="testi-img-clip">
-                                            <img src="assets/img/testimonials/founder-1.png" alt="Client testimonial" id="testiImg" class="testi-img-el">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="content__section" id="testiContentWrap">
-                                        <div class="stars testi-stars-el" id="testiStars">
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                            <i class="fa-solid fa-star"></i>
-                                        </div>
-                                        <p class="review testi-review-el" id="testiReview">Entrust redesigned our entire home and the results are breathtaking. Every detail was thoughtfully executed. The team truly listened and brought our dream interior to life perfectly.</p>
-
-                                        <h5 class="testi-name-el" id="testiName">Priya Sharma</h5>
-                                        <h6 class="testi-loc-el" id="testiLocation">Bengaluru, India</h6>
-                                    </div>
-                                </div>
-                            </div>
-                            <!-- Slide dots — below the slider row, no layout impact -->
-                            <div class="testi-dots" id="testiDots"></div>
-                        </div>
-                    </div>
-                </div>
-
-                <script>
-                (function () {
-                    var slides = [
-                        { img:'assets/img/testimonials/founder-1.png', review:'Entrust redesigned our entire home and the results are breathtaking. Every detail was thoughtfully executed. The team truly listened and brought our dream interior to life perfectly.', name:'Priya Sharma', location:'Bengaluru, India', rating:5 },
-                        { img:'assets/img/testimonials/founder-2.png', review:'Working with Entrust was seamless from start to finish. They understood our vision and created a space that truly reflects our personality. The quality is unmatched in this region.', name:'Rahul Mehta', location:'Mumbai, India', rating:5 },
-                        { img:'assets/img/testimonials/founder-3.png', review:'Our wardrobe designs are absolutely stunning — perfect blend of aesthetics and function. Entrust brought a level of craftsmanship we have never seen before. Incredibly satisfied clients.', name:'Ananya Krishnan', location:'Calicut, India', rating:5 },
-                        { img:'assets/img/testimonials/founder-1.png', review:'Hired Entrust for our villa and the result exceeded all expectations. The team was professional, creative and delivered a truly world-class luxury living space on time and within budget.', name:'James Wilson', location:'Dubai, UAE', rating:5 },
-                        { img:'assets/img/testimonials/founder-2.png', review:'Entrust reimagined our kitchen and it is now the heart of our home. The quality of materials and the overall design philosophy is exceptional. We highly recommend them to everyone.', name:'Meera Nair', location:'Chennai, India', rating:5 },
-                        { img:'assets/img/testimonials/founder-3.png', review:'Our office interior by Entrust is now the envy of every client who visits. They captured our brand identity brilliantly. The entire process was smooth, transparent and on budget.', name:'Sanjay Verma', location:'Hyderabad, India', rating:5 }
-                    ];
-
-                    var current     = 0;
-                    var total       = slides.length;
-                    var autoTimer   = null;
-                    var barTimer    = null;
-                    var isAnimating = false;
-                    var DURATION    = 5200;
-                    var ANIM_OUT    = 380;   /* exit duration ms */
-                    var ANIM_IN     = 700;   /* entry duration ms */
-
-                    /* ── DOM refs ── */
-                    var imgEl       = document.getElementById('testiImg');
-                    var reviewEl    = document.getElementById('testiReview');
-                    var nameEl      = document.getElementById('testiName');
-                    var locationEl  = document.getElementById('testiLocation');
-                    var starsEl     = document.getElementById('testiStars');
-                    var bgNumEl     = document.getElementById('testiBgNum');
-                    var barEl       = document.getElementById('testiBar');
-                    var dotsWrap    = document.getElementById('testiDots');
-                    var prevBtn     = document.getElementById('testiPrev');
-                    var nextBtn     = document.getElementById('testiNext');
-
-                    /* ── Build dots ── */
-                    var dots = [];
-                    slides.forEach(function (_, i) {
-                        var btn = document.createElement('button');
-                        btn.className = 'testi-dot' + (i === 0 ? ' active' : '');
-                        btn.setAttribute('aria-label', 'Testimonial ' + (i + 1));
-                        btn.addEventListener('click', function () { goTo(i); });
-                        dotsWrap.appendChild(btn);
-                        dots.push(btn);
-                    });
-
-                    /* ── Helpers ── */
-                    function padNum(n)    { return n < 10 ? '0' + n : '' + n; }
-                    function starHTML(n)  {
-                        var h = '';
-                        for (var i = 0; i < 5; i++) h += '<i class="fa-solid fa-star' + (i < n ? '' : ' fa-regular') + '"></i>';
-                        return h;
-                    }
-
-                    /* One-shot CSS animation restart */
-                    function reAnimate(el, name, dur, delay, easing) {
-                        el.style.animation = 'none';
-                        el.offsetHeight; /* reflow */
-                        el.style.animation = name + ' ' + dur + 'ms ' + (easing || 'cubic-bezier(0.22,1,0.36,1)') + ' ' + (delay || 0) + 'ms both';
-                    }
-
-                    /* ── Exit animations ── */
-                    function exitSlide(dir) {
-                        var tx = dir === 'next' ? '-32px' : '32px';
-                        /* Image clip out */
-                        reAnimate(imgEl, dir === 'next' ? 'testiImgReveal' : 'testiImgRevealRev', ANIM_OUT, 0);
-                        imgEl.style.opacity = '0';
-                        /* Content fade-slide out */
-                        [starsEl, reviewEl, nameEl, locationEl].forEach(function (el, i) {
-                            el.style.transition = 'opacity ' + ANIM_OUT + 'ms ease, transform ' + ANIM_OUT + 'ms ease';
-                            el.style.opacity    = '0';
-                            el.style.transform  = 'translateX(' + tx + ')';
-                        });
-                    }
-
-                    /* ── Entry animations ── */
-                    function enterSlide(dir) {
-                        /* Image — clip-path reveal */
-                        imgEl.style.opacity   = '1';
-                        imgEl.style.animation = 'none';
-                        imgEl.offsetHeight;
-                        imgEl.style.animation = (dir === 'next' ? 'testiImgReveal' : 'testiImgRevealRev') + ' ' + ANIM_IN + 'ms cubic-bezier(0.22,1,0.36,1) both';
-
-                        /* Background number pop */
-                        if (bgNumEl) {
-                            bgNumEl.style.animation = 'none';
-                            bgNumEl.offsetHeight;
-                            bgNumEl.style.animation = 'testiNumPop ' + ANIM_IN + 'ms cubic-bezier(0.22,1,0.36,1) both';
-                        }
-
-                        /* Staggered text reveal */
-                        var elements = [starsEl, reviewEl, nameEl, locationEl];
-                        var delays   = [80, 180, 420, 510];
-                        var anims    = ['testiStarsFloat', 'testiReviewIn', 'testiAuthorIn', 'testiLocIn'];
-                        elements.forEach(function (el, i) {
-                            el.style.transition = 'none';
-                            el.style.opacity    = '';
-                            el.style.transform  = '';
-                            reAnimate(el, anims[i], ANIM_IN - i * 20, delays[i], 'cubic-bezier(0.22,1,0.36,1)');
-                        });
-                    }
-
-                    /* ── Go to slide n ── */
-                    function goTo(n, dir) {
-                        if (isAnimating || n === current) return;
-                        isAnimating = true;
-                        dir = dir || (n > current ? 'next' : 'prev');
-                        resetAuto();
-
-                        exitSlide(dir);
-
-                        setTimeout(function () {
-                            /* Update content */
-                            var s = slides[n];
-                            imgEl.src              = s.img;
-                            imgEl.alt              = s.name;
-                            reviewEl.textContent   = s.review;
-                            nameEl.textContent     = s.name;
-                            locationEl.textContent = s.location;
-                            starsEl.innerHTML      = starHTML(s.rating);
-                            if (bgNumEl) bgNumEl.textContent = padNum(n + 1);
-
-                            /* Update dots */
-                            dots[current].classList.remove('active');
-                            current = n;
-                            dots[current].classList.add('active');
-
-                            enterSlide(dir);
-
-                            setTimeout(function () { isAnimating = false; }, ANIM_IN + 100);
-                        }, ANIM_OUT + 20);
-                    }
-
-                    function next() { goTo((current + 1) % total, 'next'); }
-                    function prev() { goTo((current - 1 + total) % total, 'prev'); }
-
-                    /* ── Progress bar ── */
-                    function startBar() {
-                        if (!barEl) return;
-                        clearTimeout(barTimer);
-                        barEl.style.transition = 'none';
-                        barEl.style.width      = '0%';
-                        barEl.offsetHeight;
-                        barEl.style.transition = 'width ' + DURATION + 'ms linear';
-                        barEl.style.width      = '100%';
-                    }
-                    function resetBar() {
-                        if (!barEl) return;
-                        barEl.style.transition = 'none';
-                        barEl.style.width      = '0%';
-                    }
-
-                    /* ── Auto-play ── */
-                    function startAuto() { autoTimer = setInterval(next, DURATION); startBar(); }
-                    function resetAuto() { clearInterval(autoTimer); resetBar(); startAuto(); }
-
-                    /* ── Initial entrance ── */
-                    if (bgNumEl) bgNumEl.textContent = padNum(1);
-                    enterSlide('next');
-
-                    /* ── Wire controls ── */
-                    if (nextBtn) nextBtn.addEventListener('click', next);
-                    if (prevBtn) prevBtn.addEventListener('click', prev);
-
-                    /* Pause on hover */
-                    var section = document.querySelector('.testimonials___section');
-                    if (section) {
-                        section.addEventListener('mouseenter', function () {
-                            clearInterval(autoTimer);
-                            if (barEl) { barEl.style.transition = 'none'; }
-                        });
-                        section.addEventListener('mouseleave', startAuto);
-                    }
-
-                    /* Keyboard */
-                    document.addEventListener('keydown', function (e) {
-                        if (e.key === 'ArrowLeft')  prev();
-                        if (e.key === 'ArrowRight') next();
-                    });
-
-                    /* Touch swipe */
-                    var touchStartX = 0;
-                    if (section) {
-                        section.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].clientX; }, { passive:true });
-                        section.addEventListener('touchend',   function (e) {
-                            var dx = e.changedTouches[0].clientX - touchStartX;
-                            if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
-                        }, { passive:true });
-                    }
-
-                    startAuto();
-                })();
-                </script>
-            </section>
 
 
             <!-- =============================================
@@ -4478,7 +4121,7 @@
                             <div class="fsi-card-content">
                                 <span class="fsi-card-badge">Single Home</span>
                                 <h3 class="fsi-card-title">Vintage Glamour</h3>
-                                <p class="fsi-card-subtitle">Berlin, Germany &middot; 2025</p>
+                                <p class="fsi-card-subtitle">Jaipur, Rajasthan &middot; 2025</p>
                                 <p class="fsi-card-desc">A seamless blend of old-world opulence and contemporary comfort — where every detail whispers luxury.</p>
                                 <a href="./portfolio.html" class="fsi-card-link">
                                     <span>Explore</span>
@@ -4497,7 +4140,7 @@
                             <div class="fsi-card-content">
                                 <span class="fsi-card-badge">Contemporary</span>
                                 <h3 class="fsi-card-title">Modern Interiors</h3>
-                                <p class="fsi-card-subtitle">Tokyo, Japan &middot; 2025</p>
+                                <p class="fsi-card-subtitle">Pune, Maharashtra &middot; 2025</p>
                                 <p class="fsi-card-desc">Clean lines and breathtaking vistas — where minimalism meets maximum visual impact.</p>
                                 <a href="./portfolio.html" class="fsi-card-link">
                                     <span>Explore</span>
@@ -4516,7 +4159,7 @@
                             <div class="fsi-card-content">
                                 <span class="fsi-card-badge">Dining Spaces</span>
                                 <h3 class="fsi-card-title">Premium Dining</h3>
-                                <p class="fsi-card-subtitle">Paris, France &middot; 2025</p>
+                                <p class="fsi-card-subtitle">Kolkata, West Bengal &middot; 2025</p>
                                 <p class="fsi-card-desc">Spaces designed to elevate every meal into an experience — atmosphere crafted to perfection.</p>
                                 <a href="./portfolio.html" class="fsi-card-link">
                                     <span>Explore</span>
@@ -4535,7 +4178,7 @@
                             <div class="fsi-card-content">
                                 <span class="fsi-card-badge">Bedroom</span>
                                 <h3 class="fsi-card-title">Elegant Bedrooms</h3>
-                                <p class="fsi-card-subtitle">Milan, Italy &middot; 2025</p>
+                                <p class="fsi-card-subtitle">Ahmedabad, Gujarat &middot; 2025</p>
                                 <p class="fsi-card-desc">Sanctuaries of serenity — conceived to soothe the senses and invite deep, restful repose.</p>
                                 <a href="./portfolio.html" class="fsi-card-link">
                                     <span>Explore</span>
@@ -4764,6 +4407,369 @@
                 </div><!-- /.pct-inner -->
             </section><!-- /.pct-section -->
 
+
+            <section class="testimonials___section">
+                <!-- Advanced slider CSS — scoped -->
+                <style>
+                /* ── Keyframes ─────────────────────────────── */
+                @keyframes testiImgReveal {
+                    0%   { opacity:0; clip-path:inset(0 100% 0 0); transform:scale(1.12); }
+                    55%  { clip-path:inset(0 0% 0 0); }
+                    100% { opacity:1; clip-path:inset(0 0% 0 0); transform:scale(1); }
+                }
+                @keyframes testiImgRevealRev {
+                    0%   { opacity:0; clip-path:inset(0 0 0 100%); transform:scale(1.12); }
+                    55%  { clip-path:inset(0 0 0 0%); }
+                    100% { opacity:1; clip-path:inset(0 0 0 0%); transform:scale(1); }
+                }
+                @keyframes testiStarsFloat {
+                    0%   { opacity:0; transform:translateY(18px) scale(.7); }
+                    100% { opacity:1; transform:translateY(0) scale(1); }
+                }
+                @keyframes testiReviewIn {
+                    0%   { opacity:0; transform:translateY(28px); filter:blur(4px); }
+                    100% { opacity:1; transform:translateY(0); filter:blur(0); }
+                }
+                @keyframes testiAuthorIn {
+                    0%   { opacity:0; transform:translateX(-20px); }
+                    100% { opacity:1; transform:translateX(0); }
+                }
+                @keyframes testiLocIn {
+                    0%   { opacity:0; transform:translateX(-14px); }
+                    100% { opacity:1; transform:translateX(0); }
+                }
+                @keyframes testiNumPop {
+                    0%   { opacity:0; transform:scale(.4) rotate(-8deg); }
+                    65%  { transform:scale(1.08) rotate(2deg); }
+                    100% { opacity:.055; transform:scale(1) rotate(0deg); }
+                }
+                @keyframes testiBarFill {
+                    from { width:0%; }
+                    to   { width:100%; }
+                }
+                @keyframes testiArrowPulse {
+                    0%,100% { box-shadow:0 0 0 0 rgba(198,163,79,0); }
+                    50%     { box-shadow:0 0 0 8px rgba(198,163,79,.18); }
+                }
+
+                /* ── Element base (hidden until JS animates) ── */
+                .testi-img-el  { animation-fill-mode:both; }
+                .testi-stars-el,
+                .testi-review-el,
+                .testi-name-el,
+                .testi-loc-el   { animation-fill-mode:both; }
+
+                /* ── Clip wrapper for image ── */
+                .testi-img-clip { overflow:hidden; border-radius:inherit; width:100%; height:100%; }
+
+                /* ── Background decorative number ── */
+                .testi-bg-num {
+                    position:absolute; right:-10px; top:50%;
+                    transform:translateY(-50%);
+                    font-family:'Cal Sans',serif;
+                    font-size:clamp(80px,12vw,160px);
+                    font-weight:700;
+                    color:rgba(22,41,80,.055);
+                    line-height:1;
+                    pointer-events:none;
+                    user-select:none;
+                    letter-spacing:-.04em;
+                    animation-fill-mode:both;
+                    z-index:0;
+                }
+                .second_b_x { position:relative; }
+
+                /* ── Progress bar — hidden ── */
+                .testi-progress-bar { display:none; }
+
+                /* ── Arrow hover glow ── */
+                .left_arrow:hover,
+                .right_arrow:hover { animation:testiArrowPulse .8s ease forwards; }
+
+                /* ── Dots ── */
+                .testi-dots {
+                    display:flex; align-items:center; justify-content:center;
+                    gap:8px; margin-top:18px;
+                }
+                .testi-dot {
+                    width:8px; height:8px; border-radius:50%;
+                    background:rgba(255,255,255,0.35);
+                    border:1.5px solid rgba(255,255,255,0.55);
+                    cursor:pointer; padding:0;
+                    transition: all .45s cubic-bezier(0.34,1.4,0.64,1);
+                    outline:none;
+                }
+                .testi-dot:hover:not(.active) {
+                    background:rgba(255,255,255,0.55);
+                    border-color:rgba(255,255,255,0.80);
+                    transform:scale(1.2);
+                }
+                .testi-dot.active {
+                    width:26px; border-radius:999px;
+                    background:#C6A34F;
+                    border-color:#C6A34F;
+                    box-shadow:0 0 12px rgba(198,163,79,.55), 0 0 4px rgba(198,163,79,.3);
+                }
+                </style>
+
+                <div class="container container-2">
+                    <div class="row">
+                        <div class="col-md-5 d-flex flex-column justify-content-center">
+                            <h4>Hear from Clients</h4>
+                            <p>Every project we complete is shaped by trust, vision, and a shared dream. Here is what our clients say about living in the spaces we crafted together.</p>
+
+                            <div class="count__section">
+                                <span class="bld">4.92</span>
+                                <div class="rating">
+                                    <div class="stars">
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star"></i>
+                                        <i class="fa-solid fa-star-half-stroke"></i>
+                                    </div>
+                                    <span class="total_rating">
+                                        4800 Ratings
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-7">
+                            <div class="row second_b_x">
+                                <div class="left_arrow" id="testiPrev">
+                                    <i class="fa-solid fa-chevron-left"></i>
+                                </div>
+                                <div class="right_arrow" id="testiNext">
+                                    <i class="fa-solid fa-chevron-right"></i>
+                                </div>
+                                <!-- Slide wrapper — only inner content changes -->
+                                <!-- Decorative background slide number -->
+                                <div class="testi-bg-num" id="testiBgNum">01</div>
+                                <!-- Auto-play progress bar -->
+                                <div class="testi-progress-bar" id="testiBar"></div>
+
+                                <div class="col-md-6">
+                                    <div class="img__box" id="testiImgWrap">
+                                        <div class="testi-img-clip">
+                                            <img src="assets/img/testimonials/founder-1.png" alt="Client testimonial" id="testiImg" class="testi-img-el">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="content__section" id="testiContentWrap">
+                                        <div class="stars testi-stars-el" id="testiStars">
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                            <i class="fa-solid fa-star"></i>
+                                        </div>
+                                        <p class="review testi-review-el" id="testiReview">Entrust redesigned our entire home and the results are breathtaking. Every detail was thoughtfully executed. The team truly listened and brought our dream interior to life perfectly.</p>
+
+                                        <h5 class="testi-name-el" id="testiName">Priya Sharma</h5>
+                                        <h6 class="testi-loc-el" id="testiLocation">Bengaluru, India</h6>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Slide dots — below the slider row, no layout impact -->
+                            <div class="testi-dots" id="testiDots"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                (function () {
+                    var slides = [
+                        { img:'assets/img/testimonials/founder-1.png', review:'Entrust redesigned our entire home and the results are breathtaking. Every detail was thoughtfully executed. The team truly listened and brought our dream interior to life perfectly.', name:'Priya Sharma', location:'Bengaluru, India', rating:5 },
+                        { img:'assets/img/testimonials/founder-2.png', review:'Working with Entrust was seamless from start to finish. They understood our vision and created a space that truly reflects our personality. The quality is unmatched in this region.', name:'Rahul Mehta', location:'Mumbai, India', rating:5 },
+                        { img:'assets/img/testimonials/founder-3.png', review:'Our wardrobe designs are absolutely stunning — perfect blend of aesthetics and function. Entrust brought a level of craftsmanship we have never seen before. Incredibly satisfied clients.', name:'Ananya Krishnan', location:'Calicut, India', rating:5 },
+                        { img:'assets/img/testimonials/founder-1.png', review:'Hired Entrust for our villa and the result exceeded all expectations. The team was professional, creative and delivered a truly world-class luxury living space on time and within budget.', name:'Arjun Malhotra', location:'Delhi, India', rating:5 },
+                        { img:'assets/img/testimonials/founder-2.png', review:'Entrust reimagined our kitchen and it is now the heart of our home. The quality of materials and the overall design philosophy is exceptional. We highly recommend them to everyone.', name:'Meera Nair', location:'Chennai, India', rating:5 },
+                        { img:'assets/img/testimonials/founder-3.png', review:'Our office interior by Entrust is now the envy of every client who visits. They captured our brand identity brilliantly. The entire process was smooth, transparent and on budget.', name:'Sanjay Verma', location:'Hyderabad, India', rating:5 }
+                    ];
+
+                    var current     = 0;
+                    var total       = slides.length;
+                    var autoTimer   = null;
+                    var barTimer    = null;
+                    var isAnimating = false;
+                    var DURATION    = 5200;
+                    var ANIM_OUT    = 380;   /* exit duration ms */
+                    var ANIM_IN     = 700;   /* entry duration ms */
+
+                    /* ── DOM refs ── */
+                    var imgEl       = document.getElementById('testiImg');
+                    var reviewEl    = document.getElementById('testiReview');
+                    var nameEl      = document.getElementById('testiName');
+                    var locationEl  = document.getElementById('testiLocation');
+                    var starsEl     = document.getElementById('testiStars');
+                    var bgNumEl     = document.getElementById('testiBgNum');
+                    var barEl       = document.getElementById('testiBar');
+                    var dotsWrap    = document.getElementById('testiDots');
+                    var prevBtn     = document.getElementById('testiPrev');
+                    var nextBtn     = document.getElementById('testiNext');
+
+                    /* ── Build dots ── */
+                    var dots = [];
+                    slides.forEach(function (_, i) {
+                        var btn = document.createElement('button');
+                        btn.className = 'testi-dot' + (i === 0 ? ' active' : '');
+                        btn.setAttribute('aria-label', 'Testimonial ' + (i + 1));
+                        btn.addEventListener('click', function () { goTo(i); });
+                        dotsWrap.appendChild(btn);
+                        dots.push(btn);
+                    });
+
+                    /* ── Helpers ── */
+                    function padNum(n)    { return n < 10 ? '0' + n : '' + n; }
+                    function starHTML(n)  {
+                        var h = '';
+                        for (var i = 0; i < 5; i++) h += '<i class="fa-solid fa-star' + (i < n ? '' : ' fa-regular') + '"></i>';
+                        return h;
+                    }
+
+                    /* One-shot CSS animation restart */
+                    function reAnimate(el, name, dur, delay, easing) {
+                        el.style.animation = 'none';
+                        el.offsetHeight; /* reflow */
+                        el.style.animation = name + ' ' + dur + 'ms ' + (easing || 'cubic-bezier(0.22,1,0.36,1)') + ' ' + (delay || 0) + 'ms both';
+                    }
+
+                    /* ── Exit animations ── */
+                    function exitSlide(dir) {
+                        var tx = dir === 'next' ? '-32px' : '32px';
+                        /* Image clip out */
+                        reAnimate(imgEl, dir === 'next' ? 'testiImgReveal' : 'testiImgRevealRev', ANIM_OUT, 0);
+                        imgEl.style.opacity = '0';
+                        /* Content fade-slide out */
+                        [starsEl, reviewEl, nameEl, locationEl].forEach(function (el, i) {
+                            el.style.transition = 'opacity ' + ANIM_OUT + 'ms ease, transform ' + ANIM_OUT + 'ms ease';
+                            el.style.opacity    = '0';
+                            el.style.transform  = 'translateX(' + tx + ')';
+                        });
+                    }
+
+                    /* ── Entry animations ── */
+                    function enterSlide(dir) {
+                        /* Image — clip-path reveal */
+                        imgEl.style.opacity   = '1';
+                        imgEl.style.animation = 'none';
+                        imgEl.offsetHeight;
+                        imgEl.style.animation = (dir === 'next' ? 'testiImgReveal' : 'testiImgRevealRev') + ' ' + ANIM_IN + 'ms cubic-bezier(0.22,1,0.36,1) both';
+
+                        /* Background number pop */
+                        if (bgNumEl) {
+                            bgNumEl.style.animation = 'none';
+                            bgNumEl.offsetHeight;
+                            bgNumEl.style.animation = 'testiNumPop ' + ANIM_IN + 'ms cubic-bezier(0.22,1,0.36,1) both';
+                        }
+
+                        /* Staggered text reveal */
+                        var elements = [starsEl, reviewEl, nameEl, locationEl];
+                        var delays   = [80, 180, 420, 510];
+                        var anims    = ['testiStarsFloat', 'testiReviewIn', 'testiAuthorIn', 'testiLocIn'];
+                        elements.forEach(function (el, i) {
+                            el.style.transition = 'none';
+                            el.style.opacity    = '';
+                            el.style.transform  = '';
+                            reAnimate(el, anims[i], ANIM_IN - i * 20, delays[i], 'cubic-bezier(0.22,1,0.36,1)');
+                        });
+                    }
+
+                    /* ── Go to slide n ── */
+                    function goTo(n, dir) {
+                        if (isAnimating || n === current) return;
+                        isAnimating = true;
+                        dir = dir || (n > current ? 'next' : 'prev');
+                        resetAuto();
+
+                        exitSlide(dir);
+
+                        setTimeout(function () {
+                            /* Update content */
+                            var s = slides[n];
+                            imgEl.src              = s.img;
+                            imgEl.alt              = s.name;
+                            reviewEl.textContent   = s.review;
+                            nameEl.textContent     = s.name;
+                            locationEl.textContent = s.location;
+                            starsEl.innerHTML      = starHTML(s.rating);
+                            if (bgNumEl) bgNumEl.textContent = padNum(n + 1);
+
+                            /* Update dots */
+                            dots[current].classList.remove('active');
+                            current = n;
+                            dots[current].classList.add('active');
+
+                            enterSlide(dir);
+
+                            setTimeout(function () { isAnimating = false; }, ANIM_IN + 100);
+                        }, ANIM_OUT + 20);
+                    }
+
+                    function next() { goTo((current + 1) % total, 'next'); }
+                    function prev() { goTo((current - 1 + total) % total, 'prev'); }
+
+                    /* ── Progress bar ── */
+                    function startBar() {
+                        if (!barEl) return;
+                        clearTimeout(barTimer);
+                        barEl.style.transition = 'none';
+                        barEl.style.width      = '0%';
+                        barEl.offsetHeight;
+                        barEl.style.transition = 'width ' + DURATION + 'ms linear';
+                        barEl.style.width      = '100%';
+                    }
+                    function resetBar() {
+                        if (!barEl) return;
+                        barEl.style.transition = 'none';
+                        barEl.style.width      = '0%';
+                    }
+
+                    /* ── Auto-play ── */
+                    function startAuto() { autoTimer = setInterval(next, DURATION); startBar(); }
+                    function resetAuto() { clearInterval(autoTimer); resetBar(); startAuto(); }
+
+                    /* ── Initial entrance ── */
+                    if (bgNumEl) bgNumEl.textContent = padNum(1);
+                    enterSlide('next');
+
+                    /* ── Wire controls ── */
+                    if (nextBtn) nextBtn.addEventListener('click', next);
+                    if (prevBtn) prevBtn.addEventListener('click', prev);
+
+                    /* Pause on hover */
+                    var section = document.querySelector('.testimonials___section');
+                    if (section) {
+                        section.addEventListener('mouseenter', function () {
+                            clearInterval(autoTimer);
+                            if (barEl) { barEl.style.transition = 'none'; }
+                        });
+                        section.addEventListener('mouseleave', startAuto);
+                    }
+
+                    /* Keyboard */
+                    document.addEventListener('keydown', function (e) {
+                        if (e.key === 'ArrowLeft')  prev();
+                        if (e.key === 'ArrowRight') next();
+                    });
+
+                    /* Touch swipe */
+                    var touchStartX = 0;
+                    if (section) {
+                        section.addEventListener('touchstart', function (e) { touchStartX = e.changedTouches[0].clientX; }, { passive:true });
+                        section.addEventListener('touchend',   function (e) {
+                            var dx = e.changedTouches[0].clientX - touchStartX;
+                            if (Math.abs(dx) > 40) { dx < 0 ? next() : prev(); }
+                        }, { passive:true });
+                    }
+
+                    startAuto();
+                })();
+                </script>
+            </section>
+
             <!-- Footer (unchanged) -->
             <footer class="footer-section overflow-hidden">
                 <div class="footer-bg" data-background="assets/img/bg-img/footer-bg.png"></div>
@@ -4965,10 +4971,16 @@
     <!-- Featured Inspirations: accordion (desktop) + auto-advance swipe carousel (mobile/tablet) -->
     <script>
     (function () {
-        var cards   = document.querySelectorAll('.fsi-card');
-        var dots    = document.querySelectorAll('.fsi-dot');
-        var cardsEl = document.querySelector('.fsi-cards');
+        var cards      = document.querySelectorAll('.fsi-card');
+        var dots       = document.querySelectorAll('.fsi-dot');
+        var cardsEl    = document.querySelector('.fsi-cards');
+        var fsiSection = document.getElementById('featuredInspirations');
         if (!cards.length) return;
+
+        /* Only auto-advance while this section is actually on screen —
+           otherwise scrollIntoView() below yanks the page back to it
+           from wherever the visitor has scrolled to (mobile bug). */
+        var sectionInView = false;
 
         var busy      = false;
         var LOCK_MS   = 380;
@@ -5076,6 +5088,7 @@
 
         function startAuto() {
             stopAuto();
+            if (!sectionInView) return;
             autoTimer = setInterval(nextCard, ADVANCE_MS);
         }
 
@@ -5122,6 +5135,22 @@
 
                 cards.forEach(function (card) { io.observe(card); });
             }
+        }
+
+        /* Section-level visibility → gate auto-advance so it can never
+           force-scroll the page in from another section */
+        if (fsiSection && 'IntersectionObserver' in window) {
+            var sectionObserver = new IntersectionObserver(function (entries) {
+                entries.forEach(function (entry) {
+                    sectionInView = entry.isIntersecting;
+                    if (!sectionInView) {
+                        stopAuto();
+                    } else if (IS_MOBILE() || IS_TAB()) {
+                        startAuto();
+                    }
+                });
+            }, { threshold: 0.35 });
+            sectionObserver.observe(fsiSection);
         }
 
         /* ── Touch swipe detection (left / right) ── */
